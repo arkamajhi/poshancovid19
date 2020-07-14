@@ -182,16 +182,13 @@
               if(i<3)
               {
                 string += '<center><table id="borderless_table" style="text-align: justify"><tbody id="borderless_table"><tr id="borderless_table"><td id="borderless_table">';
-                string += json.feed.entry[i].gsx$rightcontent.$t;
+                string += json.feed.entry[i].gsx$finalcontent.$t;
                 string += "</td></tr></tbody></table></center><br>";
               }
               else
               {
                 string += '<div class="row">';
-                string += json.feed.entry[i].gsx$leftcontent.$t;
-                string += '<div class="col-lg-6 col-md-6 col-xs-12"><center><table id="borderless_table" style="text-align: justify"><tbody id="borderless_table"><tr id="borderless_table"><td id="borderless_table">';
-                string += json.feed.entry[i].gsx$rightcontent.$t;
-                string += "</td></tr></tbody></table></center></div>";
+                string += json.feed.entry[i].gsx$finalcontent.$t;
                 string += '</div>';
               }
 
