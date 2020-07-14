@@ -112,7 +112,7 @@
                                 +'<th scope="col"><center>'+"Where"+'</center></th>'
                                 +'<th scope="col"><center>'+"When"+'</center></th>'
                               +'</tr></thead>'
-                              +'<tbody>'+tableW4+'</tbody></table>';
+                              +'<tbody>'+tableW4+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_W4></div><br>';
               $(stringW4).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
             }
           }
@@ -167,7 +167,7 @@
                                 +'<th scope="col"><center>'+json.feed.entry[10].gsx$header.$t+'</center></th>'
                                 +'<th scope="col"><center>'+json.feed.entry[11].gsx$header.$t+'</center></th>'
                               +'</tr></thead>'
-                              +'<tbody>'+tableCOS+'</tbody></table><br>';
+                              +'<tbody>'+tableCOS+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_COS></div><br>';
               $(stringCOS).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
             }
           }
