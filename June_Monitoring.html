@@ -175,7 +175,7 @@
           else if(json.feed.entry[0].gsx$type.$t=="RP")
           {
             console.log("Length of RP = "+len);
-            for(int i=0;i<len/44;i++)
+            for(int i=0;i<(len/44);i++)
             {
               console.log(json.feed.entry[i*44].gsx$state.$t);
             }
