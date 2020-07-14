@@ -172,6 +172,54 @@
             }
           }
 
+          else if(json.feed.entry[0].gsx$type.$t=="RP")
+          {
+            console.log("Length of RP = "+len);
+            /*for (var i=0; i<100; i++)
+            {
+              var tableCOS="";
+              for (var j=0; j<len; j++)
+              {
+                if(json.feed.entry[j].gsx$state.$t==json.feed.entry[i].gsx$states.$t&&json.feed.entry[j].gsx$state.$t!="")
+                {
+                  tableCOS+='<tr>'
+                  +"<th>"+'<div class="container">'+json.feed.entry[j].gsx$a2.$t+"</div>"+"</th>"
+                  +json.feed.entry[j].gsx$a3.$t
+                  +json.feed.entry[j].gsx$a4.$t
+                  +json.feed.entry[j].gsx$a5.$t
+                  +json.feed.entry[j].gsx$a6.$t
+                  +json.feed.entry[j].gsx$a7.$t
+                  +json.feed.entry[j].gsx$a8.$t
+                  +json.feed.entry[j].gsx$a9.$t
+                  +json.feed.entry[j].gsx$a10.$t
+                  +json.feed.entry[j].gsx$a11.$t
+                  +json.feed.entry[j].gsx$a12.$t
+                  +json.feed.entry[j].gsx$a13.$t
+                  +'</tr>';
+                }
+              }
+
+              var stringCOS='<h6>Continuity of services</h6>'
+                              +'<table class="table_res table-striped table-hover table-sm table-responsive" id = json.feed.entry[i].gsx$states.$t+"_W4" ><thead>'
+                              +'<tr>'
+                                +'<th scope="col"><center>'+json.feed.entry[0].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[1].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[2].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[3].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[4].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[5].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[6].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[7].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[8].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[9].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[10].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[11].gsx$header.$t+'</center></th>'
+                              +'</tr></thead>'
+                              +'<tbody>'+tableCOS+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_COS></div><br>';
+              $(stringCOS).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
+            }*/
+          }
+
           else if(json.feed.entry[0].gsx$type.$t=="Single")
           {
             var len = json.feed.entry.length;
@@ -247,6 +295,7 @@
         <script src="https://spreadsheets.google.com/feeds/list/13vg3ELbZgTAUCAvDnyaIZ81PBSpuj87GfYYlkploVKE/2/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
         <script src="https://spreadsheets.google.com/feeds/list/13vg3ELbZgTAUCAvDnyaIZ81PBSpuj87GfYYlkploVKE/3/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
         <script src="https://spreadsheets.google.com/feeds/list/13vg3ELbZgTAUCAvDnyaIZ81PBSpuj87GfYYlkploVKE/4/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+        <script src="https://spreadsheets.google.com/feeds/list/13vg3ELbZgTAUCAvDnyaIZ81PBSpuj87GfYYlkploVKE/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
