@@ -104,7 +104,7 @@
 
 
 
-              var stringW4='<h6>4W – Who does What, Where and When</h6>'
+              var stringW4='<center><h6>4W – Who does What, Where and When</h6></center><br>'
                               +'<table class="table_res table-striped table-hover table-sm table-responsive" id = json.feed.entry[i].gsx$states.$t+"_W4" ><thead>'
                               +'<tr>'
                                 +'<th scope="col"><center>'+"Who"+'</center></th>'
@@ -144,14 +144,9 @@
                 }
               }
 
-              var newdivstring='<div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black" id="'+json.feed.entry[i].gsx$statecode.$t+'">';
-              newdivstring+='<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+'</h4><br>'+"</div>";
-              $(newdivstring).appendTo("#States");
 
-              var droplist = '<a class="dropdown-item" href="#'+json.feed.entry[i].gsx$statecode.$t+'">'+json.feed.entry[i].gsx$states.$t+'</a>';
-              $(droplist).appendTo("#State_Monitoring_dropdown_menu");
 
-              var stringCOS='<h6>Continuity of services</h6>'
+              var stringCOS='<center><h6>Continuity of services</h6></center><br>'
                               +'<table class="table_res table-striped table-hover table-sm table-responsive" id = json.feed.entry[i].gsx$states.$t+"_W4" ><thead>'
                               +'<tr>'
                                 +'<th scope="col"><center>'+json.feed.entry[0].gsx$header.$t+'</center></th>'
@@ -175,9 +170,75 @@
           else if(json.feed.entry[0].gsx$type.$t=="RP")
           {
             console.log("Length of RP = "+len);
-            for(int i=0;i<(len/44);i++)
+
+            for (var i=0; i<100; i++)
             {
-              console.log(json.feed.entry[i*44].gsx$state.$t);
+              var newdivstring='<div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black" id="'+json.feed.entry[i].gsx$statecode.$t+'">';
+              newdivstring+='<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+'</h4><br>'+"</div>";
+              $(newdivstring).appendTo("#States");
+
+              var droplist = '<a class="dropdown-item" href="#'+json.feed.entry[i].gsx$statecode.$t+'">'+json.feed.entry[i].gsx$states.$t+'</a>';
+              $(droplist).appendTo("#State_Monitoring_dropdown_menu");
+            }
+
+            var stringRP="";
+            for(var i=0;i<(len/44);i++)
+            {
+              console.log(json.feed.entry[(i*44)+0].gsx$state.$t);
+              stringRP="<center><h6>Risk Profiles</h6></center><br>";
+              stringRP += '<table class="table table-striped table-hover table-sm table-responsive text-center">'
+                              +'<tbody>';
+
+              stringRP+='<tr>'+'<th>'+json.feed.entry[(i*44)+0].gsx$left.$t+'</th>'+'<th colspan="6" scope="colgroup">'+json.feed.entry[(i*44)+0].gsx$right.$t+'</th>'+'</tr>';
+              for (var j=1; j<=2; j++)
+              {
+                stringRP+='<tr>'+'<td><div class="text-left">'+json.feed.entry[(i*44)+j].gsx$left.$t+'</div></td>'+'<td colspan="6" scope="colgroup"><div class="text-left">'+json.feed.entry[(i*44)+j].gsx$right.$t+'</div></td>'+'</tr>';
+              }
+
+              stringRP+='<tr>'+'<th>'+json.feed.entry[(i*44)+3].gsx$left.$t+'</th>'+'<th colspan="6" scope="colgroup">'+json.feed.entry[(i*44)+3].gsx$right.$t+'</th>'+'</tr>';
+              for (var j=4; j<=8; j++)
+              {
+                stringRP+='<tr>'+'<td><div class="text-left">'+json.feed.entry[(i*44)+j].gsx$left.$t+'</div></td>'+'<td colspan="6" scope="colgroup"><div class="text-left">'+json.feed.entry[(i*44)+j].gsx$right.$t+'</div></td>'+'</tr>';
+              }
+
+              stringRP+='<tr>'+'<th>'+json.feed.entry[(i*44)+9].gsx$left.$t+'</th>'+'<th colspan="6" scope="colgroup">'+json.feed.entry[(i*44)+9].gsx$right.$t+'</th>'+'</tr>';
+              for (var j=10; j<=15; j++)
+              {
+                stringRP+='<tr>'+'<td><div class="text-left">'+json.feed.entry[(i*44)+j].gsx$left.$t+'</div></td>'+'<td colspan="6" scope="colgroup"><div class="text-left">'+json.feed.entry[(i*44)+j].gsx$right.$t+'</div></td>'+'</tr>';
+              }
+
+              stringRP+='<tr>'+'<th>'+json.feed.entry[(i*44)+16].gsx$left.$t+'</th>'+'<td colspan="6" scope="colgroup">'+json.feed.entry[(i*44)+16].gsx$right.$t+'</td>'+'</tr>';
+
+              stringRP+='<tr>'
+              +'<th>'+json.feed.entry[(i*44)+16+1].gsx$left.$t+'</th>'
+              +'<th scope="col">'+json.feed.entry[(i*44)+16+1].gsx$right.$t+'</th>'
+              +'<th scope="col">'+json.feed.entry[(i*44)+16+2].gsx$right.$t+'</th>'
+              +'<th scope="col">'+json.feed.entry[(i*44)+16+3].gsx$right.$t+'</th>'
+              +'<th scope="col">'+json.feed.entry[(i*44)+16+4].gsx$right.$t+'</th>'
+              +'<th scope="col">'+json.feed.entry[(i*44)+16+5].gsx$right.$t+'</th>'
+              +'<th scope="col">'+json.feed.entry[(i*44)+16+6].gsx$right.$t+'</th>'
+              +'</tr>';
+
+              for (var a=1;a<=3;a++)//Number of lines
+              {
+              stringRP+='<tr>'
+              +'<td>'+json.feed.entry[(i*44)+16+(a*6)+1].gsx$left.$t+'</td>'
+              +'<td scope="col">'+json.feed.entry[(i*44)+16+(a*6)+1].gsx$right.$t+'</td>'
+              +'<td scope="col">'+json.feed.entry[(i*44)+16+(a*6)+2].gsx$right.$t+'</td>'
+              +'<td scope="col">'+json.feed.entry[(i*44)+16+(a*6)+3].gsx$right.$t+'</td>'
+              +'<td scope="col">'+json.feed.entry[(i*44)+16+(a*6)+4].gsx$right.$t+'</td>'
+              +'<td scope="col">'+json.feed.entry[(i*44)+16+(a*6)+5].gsx$right.$t+'</td>'
+              +'<td scope="col">'+json.feed.entry[(i*44)+16+(a*6)+6].gsx$right.$t+'</td>'
+              +'</tr>';
+              }
+
+              for (var j=41; j<=43; j++)
+              {
+                stringRP+='<tr>'+'<td><div class="text-left">'+json.feed.entry[(i*44)+j].gsx$left.$t+'</div></td>'+'<td colspan="6" scope="colgroup"><div class="text-left">'+json.feed.entry[(i*44)+j].gsx$right.$t+'</div></td>'+'</tr>';
+              }
+
+              stringRP += '</tbody></table><br>';
+              $(stringRP).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
             }
             /*for (var i=0; i<100; i++)
             {
