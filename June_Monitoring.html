@@ -89,7 +89,7 @@
             for (var i=0; i<100; i++)
             {
               var tableW4="";
-              for (var j=0; j<=len; j++)
+              for (var j=0; j<len; j++)
               {
                 if(json.feed.entry[j].gsx$state.$t==json.feed.entry[i].gsx$states.$t&&json.feed.entry[j].gsx$state.$t!="")
                 {
@@ -123,6 +123,7 @@
               var tableCOS="";
               for (var j=0; j<len; j++)
               {
+                console.log("i = "+i+" ; j = "+j);
                 if(json.feed.entry[j].gsx$state.$t==json.feed.entry[i].gsx$states.$t&&json.feed.entry[j].gsx$state.$t!="")
                 {
                   tableCOS+='<tr>'
