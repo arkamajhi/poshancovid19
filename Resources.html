@@ -62,8 +62,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
       <div class="collapse navbar-collapse " id="navbarNavDropdown">
         <ul class="nav nav-pills ml-auto justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link" href="#National Resources">National Resources</a>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">National Resources</a>
+            <div class="dropdown-menu" id="National_Resources_dropdown_menu">
+            </div>
           </li>
 
           <li class="nav-item">
@@ -73,13 +76,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">State Resources</a>
             <div class="dropdown-menu" id="State_Resources_dropdown_menu">
-              <div role="separator" class="dropdown-divider"></div>
             </div>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#Global Guidelines and Materials on COVID-19">International Resources</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">International Resources</a>
+            <div class="dropdown-menu" id="InterNational_Resources_dropdown_menu">
+            </div>
           </li>
+
+          <!--li class="nav-item">
+            <a class="nav-link" href="#Global Guidelines and Materials on COVID-19">International Resources</a>
+          </li-->
 
         </ul>
       </div>
@@ -673,6 +681,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 {
                   if(l==2)
                   {
+                    var nationaldroplist = document.createElement('a');
+                    nationaldroplist.innerHTML="";
+                    var internationaldroplist = document.createElement('a');
+                    internationaldroplist.innerHTML="";
+
                     for(var i=0;i<len;i++)
                     {
                       if(l2!=json.feed.entry[i].gsx$l2.$t)
@@ -687,8 +700,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         var element = document.getElementById(json.feed.entry[i].gsx$l1.$t);
                         element.appendChild(div);
 
+                        if(json.feed.entry[i].gsx$l1.$t=="National Resources")
+                        {
+                          nationaldroplist.innerHTML += '<a href="#'+json.feed.entry[i].gsx$l2.$t+'">'+json.feed.entry[i].gsx$l2.$t+'</a><br>';
+                        }
+                        else
+                        {
+                          internationaldroplist.innerHTML += '<a href="#'+json.feed.entry[i].gsx$l2.$t+'">'+json.feed.entry[i].gsx$l2.$t+'</a><br>';
+                        }
+
                       }
                     }
+
+                    nationaldroplist.className="dropdown-item";
+                    var element = document.getElementById("National_Resources_dropdown_menu");
+                    element.appendChild(nationaldroplist);
+
+                    internationaldroplist.className="dropdown-item";
+                    var element = document.getElementById("InterNational_Resources_dropdown_menu");
+                    element.appendChild(internationaldroplist);
                   }
                   else if(l==3)
                   {
@@ -791,9 +821,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           font-weight: bold;
         }
 
+        #navbarNavDropdown a{
+          color: black;
+          font-weight: normal;
+          text-decoration: none;
+        }
+
         div a{
           color: black;
           font-weight: normal;
+          text-decoration: underline;
         }
 
         table a:link, table a:visited, table a:active, table a:hover
