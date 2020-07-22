@@ -95,8 +95,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       </style>
 
-      <div id="Feedback"  style="border-bottom: 1px solid black">
+      <div id="Feedback"  style="">
+      </div>
 
+      <div id="Logo" class="col-lg-12 col-md-12 col-md-12 col-xs-12 text-center" style="border-bottom: 1px solid black">
       </div>
 
       <div id="Methods" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black" >
@@ -289,7 +291,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             for(i=0;i<len;i++)
             {
               var string="";
-              if(i<3)
+              if(i<4)
               {
                 string += '<center><table id="borderless_table" style="text-align: justify"><tbody id="borderless_table"><tr id="borderless_table"><td id="borderless_table">';
                 string += json.feed.entry[i].gsx$finalcontent.$t;
