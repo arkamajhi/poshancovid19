@@ -74,6 +74,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </li>
 
           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">State Policy Analysis</a>
+            <div class="dropdown-menu" id="State_Policy_dropdown_menu">
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">State Resources</a>
             <div class="dropdown-menu" id="State_Resources_dropdown_menu">
             </div>
@@ -158,6 +164,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
               else if(json.feed.entry[0].gsx$type.$t=="StatePolicy")
               {
+
+                var StatePolicydroplist = document.createElement('a');
+                //droplist.id = json.feed.entry[i].gsx$states.$t;
+                StatePolicydroplist.innerHTML = '<a href="#'+json.feed.entry[0].gsx$b1.$t+'">'+json.feed.entry[0].gsx$b1.$t+'</a><br>'
+                                               +'<a href="#'+json.feed.entry[0].gsx$b1.$t+'">'+json.feed.entry[0].gsx$b2.$t+'</a><br>'
+                                               +'<a href="#'+json.feed.entry[0].gsx$b3.$t+'">'+json.feed.entry[0].gsx$b3.$t+'</a><br>'
+                                               +'<a href="#'+json.feed.entry[0].gsx$b4.$t+'">'+json.feed.entry[0].gsx$b4.$t+'</a><br>'
+                                               +'<a href="#'+json.feed.entry[0].gsx$b5.$t+'">'+json.feed.entry[0].gsx$b5.$t+'</a><br>'
+                                               +'<a href="#'+json.feed.entry[0].gsx$b6.$t+'">'+json.feed.entry[0].gsx$b6.$t+'</a><br>'
+                                               +'<a href="#'+json.feed.entry[0].gsx$b6.$t+'">'+json.feed.entry[0].gsx$b7.$t+'</a>';
+                StatePolicydroplist.className="dropdown-item";
+                var element = document.getElementById("State_Policy_dropdown_menu");
+                element.appendChild(StatePolicydroplist);
+
                 string = '<table class="table table-striped table-hover table-sm table-responsive ">'
                                 +'<thead>'
                                 +'<tr>'
@@ -176,7 +196,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 $(string).appendTo("#PS");
 
 
-                string = '<table class="table table-striped table-hover table-sm table-responsive text-center sticky-header">'
+                string = '<table id="'+json.feed.entry[0].gsx$b1.$t+'" class="table table-striped table-hover table-sm table-responsive text-center sticky-header">'
                                 +'<thead>'
                                 +'<tr>'
                                   +'<th rowspan="2">'+json.feed.entry[0].gsx$a1.$t+'</th>'
@@ -207,7 +227,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 string += '</tbody></table><br>';
                 $(string).appendTo("#PS");
 
-                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
+                string = '<table id="'+json.feed.entry[0].gsx$b3.$t+'" class="table table-striped table-hover table-sm table-responsive text-center">'
                                 +'<thead>'
                                 +'<col>'
                                 +'<colgroup span="2"></colgroup>'
@@ -257,7 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 $(string).appendTo("#PS");
 
 
-                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
+                string = '<table id="'+json.feed.entry[0].gsx$b4.$t+'" class="table table-striped table-hover table-sm table-responsive text-center">'
                                 +'<thead>'
                                 +'<col>'
                                 +'<colgroup span="2"></colgroup>'
@@ -308,7 +328,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 string += '</tbody></table><br>';
                 $(string).appendTo("#PS");
 
-                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
+                string = '<table id="'+json.feed.entry[0].gsx$b5.$t+'" class="table table-striped table-hover table-sm table-responsive text-center">'
                                 +'<thead>'
                                 +'<col>'
                                 +'<colgroup span="2"></colgroup>'
@@ -358,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 string += '</tbody></table><br>';
                 $(string).appendTo("#PS");
 
-                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
+                string = '<table id="'+json.feed.entry[0].gsx$b6.$t+'" class="table table-striped table-hover table-sm table-responsive text-center">'
                                 +'<thead>'
                                 +'<col>'
                                 +'<colgroup span="2"></colgroup>'
