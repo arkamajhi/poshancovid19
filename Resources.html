@@ -667,12 +667,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       +"<th>"+'<div class="container">'+json.feed.entry[j].gsx$category.$t+"</div>"+"</th>"
                       +"<td>"
                       +'<div class="container">'
-                      +"<a href='"+json.feed.entry[j].gsx$link.$t+"' target='_blank'>"+json.feed.entry[j].gsx$title.$t+"&nbsp;&nbsp;";
+                      +"<a href='"+json.feed.entry[j].gsx$link.$t+"' target='_blank'>"+json.feed.entry[j].gsx$title.$t+'</a>'+"&nbsp;&nbsp;";
 
                       string+=json.feed.entry[j].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'';
 
-                      string+='</a>'
-                      +'<div class="container">'+json.feed.entry[j].gsx$description.$t+"</div></div>"
+                      string+='<div class="container">'+json.feed.entry[j].gsx$description.$t+"</div></div>"
                       +'</tr>';
                       count++;
                     }
