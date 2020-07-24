@@ -796,7 +796,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   {
                     for(var i=0;i<len;i++)
                     {
-                      if(l4!=json.feed.entry[i].gsx$l4.$t)
+                      if(l4!=json.feed.entry[i].gsx$l4.$t && json.feed.entry[i].gsx$l4.$t!="")
                       {
                         l4=json.feed.entry[i].gsx$l4.$t;
                         var div = document.createElement('div');
