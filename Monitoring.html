@@ -135,7 +135,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4><br><br>Introduction</h4>
       </div>
 
-
+      <div id="Services" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black">
+        <h4><br><br>Latest updates on the Continuity of Services in different states</h4>
+        <div id="Services"></div>
+      </div>
 
       <div id="State Resources" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black">
         <h4><br><br>State Monitoring</h4>
@@ -182,16 +185,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           else if(json.feed.entry[0].gsx$type.$t=="COS")
           {
+            var tablebuffer="";
+            var tablesummaruservices="";
             console.log("Length of COS = "+len);
             for (var i=0; i<100; i++)
             {
               var tableCOS="";
               for (var j=0; j<len; j++)
               {
-                console.log("i = "+i+" ; j = "+j);
+                //console.log("i = "+i+" ; j = "+j);
                 if(json.feed.entry[j].gsx$state.$t==json.feed.entry[i].gsx$states.$t&&json.feed.entry[j].gsx$state.$t!="")
                 {
-                  tableCOS+='<tr>'
+                  tablebuffer='<tr>'
                   +"<th>"+'<div class="container">'+json.feed.entry[j].gsx$a2.$t+"</div>"+"</th>"
                   +json.feed.entry[j].gsx$a3.$t
                   +json.feed.entry[j].gsx$a4.$t
@@ -205,8 +210,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   +json.feed.entry[j].gsx$a12.$t
                   +json.feed.entry[j].gsx$a13.$t
                   +'</tr>';
+                  tableCOS+=tablebuffer;
                 }
               }
+              tablesummaruservices+=tablebuffer;
 
               var stringCOS='<center><h4>Continuity of services</h4></center><br>'
                               +'<table class="table_res table-striped table-hover table-sm table-responsive" id = json.feed.entry[i].gsx$states.$t+"_W4" ><thead>'
@@ -226,7 +233,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                               +'</tr></thead>'
                               +'<tbody>'+tableCOS+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_COS></div><br>';
               $(stringCOS).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
+
+              /*var stringsummaruservices='<center><h4>Summary of Continuity of services</h4></center><br>'
+                              +'<table class="table_res table-striped table-hover table-sm table-responsive" id = "COS_Summary"><thead>'
+                              +'<tr>'
+                                +'<th scope="col"><center>State</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[0].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[1].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[2].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[3].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[4].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[5].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[6].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[7].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[8].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[9].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[10].gsx$header.$t+'</center></th>'
+                                +'<th scope="col"><center>'+json.feed.entry[11].gsx$header.$t+'</center></th>'
+                              +'</tr></thead>'
+                              +'<tbody>'+tablesummaruservices+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_COS></div><br>';
+              $(stringsummaruservices).appendTo("#Services");*/
             }
+            var stringsummaruservices='<center><h4>Summary of Continuity of services</h4></center><br>'
+                            +'<table class="table_res table-striped table-hover table-sm table-responsive" id = "COS_Summary"><thead>'
+                            +'<tr>'
+                              +'<th scope="col"><center>State</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[0].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[1].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[2].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[3].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[4].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[5].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[6].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[7].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[8].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[9].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[10].gsx$header.$t+'</center></th>'
+                              +'<th scope="col"><center>'+json.feed.entry[11].gsx$header.$t+'</center></th>'
+                            +'</tr></thead>'
+                            +'<tbody>'+tablesummaruservices+'</tbody></table><div id="tablesummaruservices"></div><br>';
+            $(stringsummaruservices).appendTo("#Services");
+
           }
 
           else if(json.feed.entry[0].gsx$type.$t=="RP")
