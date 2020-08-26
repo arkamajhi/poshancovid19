@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Nutri-Garden</title>
+    <title>NutriGarden</title>
   </head>
   <body>
 
@@ -15,7 +15,7 @@
     </div>
 
     <div id="countdown" class="" style="padding-top:5%; padding-bottom:5%; border-bottom: 1px solid black">
-      <div class="h1 text-center">Webinar on - Promoting NutriGarden <br> Sept 8 at 5:00PM</div>
+      <div class="text-center" style="font-size:4vw; font-weight: bold;">Webinar on - Promoting NutriGarden <br> Sept 8 at 5:00PM</div>
       <br>
       <div class="container">
         <div class="row text-center">
@@ -108,7 +108,7 @@
     <div id="Organized By" class="" style="border-top: 3px solid black">
       <div class="h3 text-center" style="padding-top:5%; padding-bottom:5%">Organized By</div>
       <div class="row text-center">
-        <div class="col-lg-6 col-md-6 col-md-6 col-xs-6" style="padding-bottom:10%">
+        <div class="col-lg-6 col-md-6 col-md-6 col-xs-6" style="padding-bottom:10%;border-right: 1px solid black">
           <img src="CFNS.png" alt="CFNS logo" style="width:50%">
         </div>
         <div class="col-lg-6 col-md-6 col-md-6 col-xs-6" style="padding-bottom:10%">
@@ -134,21 +134,22 @@
       {
         var now=new Date();
         //var eventDate=new Date(year,month-1,date,h,m,s,ms);
-        var eventDate=new Date(2020,7,30);
+        var eventDate=new Date("Aug 27,2020 00:46:00");
 
         var currentTime=now.getTime();
         var eventTime=eventDate.getTime();
 
-        var remTime=eventTime-currentTime;
+        var diff=eventTime-currentTime;
 
-        var s=Math.floor(remTime/1000);
-        var m=Math.floor(s/60);
-        var h=Math.floor(m/60);
-        var d=Math.floor(h/60);
+        var d=Math.floor(diff/(1000*60*60*24));
+        var h=Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+        var m=Math.floor((diff % (1000*60*60))/(1000*60));
+        var s=Math.floor((diff % (1000*60))/(1000));
 
-        h%=24;
-        m%=60;
-        s%=60;
+        if(d<0)
+        {
+          d=h=m=s=0;
+        }
 
         h=(h < 10) ? "0" + h : h;
         m=(m < 10) ? "0" + m : m;
