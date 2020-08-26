@@ -2,25 +2,66 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>NutriGarden POSHAN Maah</title>
+    <title>Nutri-Garden</title>
   </head>
   <body>
+
     <div class="container">
-      <h2><span>Nutri-Garden Webinar</span></h2>
-      <div class="countdown">
-        <div id="day"></div>
-        <div id="hour"></div>
-        <div id="minute"></div>
-        <div id="second"></div>
-
+      <div class="row text-center">
+        <div class="col" id="days">99</div>
+        <div class="col" id="hours">99</div>
+        <div class="col" id="minutes">99</div>
+        <div class="col" id="seconds">99</div>
+        <div class="w-100"></div>
+        <div class="col">Days</div>
+        <div class="col">Hours</div>
+        <div class="col">Minutes</div>
+        <div class="col">Seconds</div>
       </div>
+    </div>
 
-      <style media="screen">
-        @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
-        *
-        {
-          font-family: 'Poppins', sans-serif;
-        }
-      </style>
+    <script type="text/javascript">
+      function countdown()
+      {
+        var now=new Date();
+        //var eventDate=new Date(year,month-1,date,h,m,s,ms);
+        var eventDate=new Date(2020,7,27);
+
+        var currentTime=now.getTime();
+        var eventTime=eventDate.getTime();
+
+        var remTime=eventTime-currentTime;
+
+        var s=Math.floor(remTime/1000);
+        var m=Math.floor(s/60);
+        var h=Math.floor(m/60);
+        var d=Math.floor(h/60);
+
+        h%=24;
+        m%=60;
+        s%=60;
+
+        h=(h < 10) ? "0" + h : h;
+        m=(m < 10) ? "0" + m : m;
+        s=(s < 10) ? "0" + s : s;
+
+        document.getElementById("days").textContent=d;
+        document.getElementById("hours").textContent=h;
+        document.getElementById("minutes").textContent=m;
+        document.getElementById("seconds").textContent=s;
+
+        setTimeout(countdown,1000);
+      }
+      countdown();
+    </script>
+
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
   </body>
 </html>
