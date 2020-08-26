@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Nutri-Garden</title>
+  </head>
+  <body>
+
+    <div class="cover">
+      <img src="cover.jpg" alt="Nutri Garden Cover Picture" class="img-fluid">
+    </div>
+
+    <div id="countdown" class="" style="padding-top:5%; padding-bottom:5%; border-bottom: 1px solid black">
+      <div class="h1 text-center">Webinar on - Promoting NutriGarden <br> Sept 8 at 5:00PM</div>
+      <br>
+      <div class="container">
+        <div class="row text-center">
+          <div class="col h1" id="days">99</div>
+          <div class="col h1" id="hours">99</div>
+          <div class="col h1" id="minutes">99</div>
+          <div class="col h1" id="seconds">99</div>
+          <div class="w-100"></div>
+          <div class="col h5" id="Days">A</div>
+          <div class="col h5" id="Hours">B</div>
+          <div class="col h5" id="Minutes">C</div>
+          <div class="col h5" id="Seconds">D</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" style="padding-top:5%; padding-bottom:5%">
+      <div class="h3" style="padding-bottom:5%">Glimpses of our previous webinar on NutriGarden</div>
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+          <div class="col">Column</div>
+          <div class="col">Column</div>
+          <div class="col">Column</div>
+          <div class="col">Column</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Organized By" class="" style="border-top: 3px solid black">
+      <div class="h3 text-center" style="padding-top:5%; padding-bottom:5%">Organized By</div>
+      <div class="row text-center">
+        <div class="col-lg-6 col-md-6 col-md-6 col-xs-6" style="padding-bottom:5%">
+          <img src="CFNS.png" alt="CFNS logo" style="width:50%">
+        </div>
+        <div class="col-lg-6 col-md-6 col-md-6 col-xs-6" style="padding-bottom:5%">
+          <img src="CTARA.jpg" alt="CTARA logo" style="width:50%">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-md-12 col-xs-12 fixed-bottom text-center" style="font-size: 10px;">
+      This page is under development and for review purpose only • Website designed and developed by <a href="https://bit.ly/arkaiitbn" target="_blank" style="color:orange">Arka Majhi</a>, IIT Bombay Nutrition Group
+      <style>
+        .fixed-bottom
+        {
+          background-color: #2E2D88;
+          color: white;
+          padding: 1%;
+        }
+      </style>
+    </div>
+
+    <script type="text/javascript">
+      function countdown()
+      {
+        var now=new Date();
+        //var eventDate=new Date(year,month-1,date,h,m,s,ms);
+        var eventDate=new Date(2020,7,30);
+
+        var currentTime=now.getTime();
+        var eventTime=eventDate.getTime();
+
+        var remTime=eventTime-currentTime;
+
+        var s=Math.floor(remTime/1000);
+        var m=Math.floor(s/60);
+        var h=Math.floor(m/60);
+        var d=Math.floor(h/60);
+
+        h%=24;
+        m%=60;
+        s%=60;
+
+        h=(h < 10) ? "0" + h : h;
+        m=(m < 10) ? "0" + m : m;
+        s=(s < 10) ? "0" + s : s;
+
+        document.getElementById("days").textContent=d;
+        document.getElementById("hours").textContent=h;
+        document.getElementById("minutes").textContent=m;
+        document.getElementById("seconds").textContent=s;
+
+        document.getElementById("Days").textContent="Days";
+        document.getElementById("Hours").textContent="Hours";
+        document.getElementById("Minutes").textContent="Minutes";
+        document.getElementById("Seconds").textContent="Seconds";
+
+        setTimeout(countdown,1000);
+      }
+      countdown();
+
+    </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+  </body>
+</html>
