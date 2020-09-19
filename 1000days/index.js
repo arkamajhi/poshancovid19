@@ -38,10 +38,10 @@ function signout() {
 auth.onAuthStateChanged(function(user) {
   if (user) {
     var email=user.email;
-    alert("Active user : "+email);
+    //alert("Active user : "+email);
     document.getElementById("email_field").style.display="none";
     document.getElementById("pass_field").style.display="none";
   } else {
-    alert("Please Log In");
+    //alert("Please Log In");
   }
 });
