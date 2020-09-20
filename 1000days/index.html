@@ -26,8 +26,6 @@
 
           <div class="" style="margin-top:10%;margin-left:10%">
 
-
-
             <div class="row">
               <div class="col-4 h6 bg-danger text-center">
                 Hb level
@@ -53,7 +51,7 @@
           </div>
         </div>
 
-        <div class="col-6 text-left" style="">
+        <div class="col-6" style="">
           <div class="text-center" style="font-size:2.5vw">
             You would need money to see this lockdown through. But you have no savings.
           </div><br>
@@ -61,26 +59,63 @@
             WHAT WILL YOU DO?
           </div>
 
-          <div class="card-deck text-center" style="margin-top:5%">
-            <div class="card option-card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <div class="">
+            <div class="card-deck text-center" style="margin-top:5%">
+              <div class="card option-card">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                </div>
+              </div>
+              <div class="card option-card">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+              </div>
+              <div class="card option-card" onclick="cardclick()">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                </div>
               </div>
             </div>
-            <div class="card option-card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
-            <div class="card option-card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-              </div>
-            </div>
+
           </div>
+
+          <style>
+            #textbox
+            {
+              background-color:red;
+              border-radius: 20px;
+              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+              position: absolute;
+              padding:5%;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
+              -ms-transform: translate(-50%,-50%);
+              font-size: 50px;
+              color: white;
+            }
+            .blur
+            {
+              filter: blur(1px);
+              -webkit-filter: blur(4px);
+            }
+          </style>
+
+          <!--div id="overlay">
+            <div id="textbox">Overlay Text</div>
+          </div-->
+
+          <script>
+            function cardclick()
+            {
+              alert("ABCD");
+            }
+          </script>
+
 
         </div>
 
