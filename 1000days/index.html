@@ -19,10 +19,12 @@
       <button onclick="signout()" type="button" name="button">Log Out</button>
     </div-->
 
+    <!-- Flexbox container for aligning the toasts -->
+
     <div class="d-none d-md-block"> <!--hide on screens smaller than md-->
       <div class="row" style="height: 98vh;">
 
-        <div class="col-3 bg-secondary">
+        <div class="col-3 bg-secondary" style="border-right: black 10px">
           <div class="row" style="margin-left:50%; transform: translate(-30%,0%);">
 
             <div class="progress progress-bar-vertical" style="">
@@ -139,8 +141,36 @@
         </div>
 
         <div class="col-3 bg-success text-white text-left" style="">
-          Left<br>Left<br>Left<br>Left<br>Left
+          <button onclick="OpenFullScreen()" type="button" name="button">Open FullScreen</button>
+          <button onclick="CloseFullScreen()" type="button" name="button">Close FullScreen</button>
         </div>
+
+        <script>
+          var elem = document.documentElement;
+          function OpenFullScreen() {
+            if (elem.requestFullscreen) {
+              elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+              elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+              elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+              elem.msRequestFullscreen();
+            }
+          }
+
+          function CloseFullScreen() {
+            if (document.exitFullscreen) {
+              document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+              document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+              document.msExitFullscreen();
+            }
+          }
+          </script>
 
       </div>
     </div>
@@ -171,6 +201,7 @@
       }
 
     </style>
+
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
