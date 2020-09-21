@@ -26,38 +26,45 @@
       <div id="mainwindow" class="row" style="height: 100vh;">
 
         <div class="col-3 bg-secondary" style="border-right: black 10px">
-          <div class="row" style="margin-left:50%; transform: translate(-30%,0%);">
+          <!--div class="row" style="">
 
             <div class="progress progress-bar-vertical" style="">
               <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height: 20%;">
                   <span class="sr-only">20% Complete</span>
               </div>
-              <div class="progress-bar bg-warning bg-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height: 40%;">
-                  <span class="sr-only">40% Complete</span>
-              </div>
-              <div class="progress-bar bg-success bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height: 30%;">
-                  <span class="sr-only">30% Complete</span>
-              </div>
             </div>
 
-            <div class="progress progress-bar-vertical" style="">
-              <div class="progress-bar bg-danger" role="progressbar" style="height: 20%;">
-                  <span class="sr-only">20% Complete</span>
-              </div>
-              <div class="progress-bar bg-warning" role="progressbar" style="height: 40%;">
-                  <span class="sr-only">40% Complete</span>
-              </div>
-              <div class="progress-bar bg-success" role="progressbar" style="height: 30%;">
-                  <span class="sr-only">30% Complete</span>
-              </div>
-            </div>
+          </div-->
 
-          </div>
+          <table class="table table-bordered ">
+  <tbody>
+    <tr>
+      <td>
+        <img src="images/fullscreen.png" alt="" style="width: 70px" >
+      </td>
+      <td>
+        <div class="progress progress-bar-vertical" style="">
+          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height: 20%;">
+          20</div>
+        </div>
+      </td>
+      <td>
+        <div class="progress progress-bar-vertical" style="">
+          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height: 20%;">
+          20</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td><td>Hb level</td><td>Weight</td>
+    </tr>
+  </tbody>
+</table>
 
         </div>
 
-        <div class="col-6" style="">
-          <div class="text-center" style="font-size:5vh">
+        <div class="col-6 jumbotron vertical-center">
+          <div class="text-left" style="font-size:5vh">
             You would need money to see this lockdown through. But you have no savings.
           </div><br>
           <div class="text-center" style="font-size:5vh; font-weight:bold">
@@ -96,12 +103,15 @@
           <style>
             .progress-bar-vertical
             {
-              width: 20%;
-              min-height: 75vh;
-              max-height: 80vh;
+              margin-left:;
+              width: 30px;
+              min-height: 50vh;
               border-radius: 20px !important;
               display: flex;
               flex-direction: column-reverse;
+              margin-left: auto;
+              margin-right: auto;
+              font-weight: bold;
             }
           </style>
 
@@ -142,8 +152,8 @@
         </div>
 
         <div class="col-3 bg-success text-white text-left" style="">
-          <button onclick="OpenFullScreen()" type="button" name="button">Open FullScreen</button>
-          <button onclick="CloseFullScreen()" type="button" name="button">Close FullScreen</button>
+          <!--button onclick="OpenFullScreen()" type="button" name="button">Open FullScreen</button>
+          <button onclick="CloseFullScreen()" type="button" name="button">Close FullScreen</button-->
         </div>
 
         <script>
