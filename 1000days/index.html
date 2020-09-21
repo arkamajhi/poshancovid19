@@ -21,16 +21,9 @@
 
     <!-- Flexbox container for aligning the toasts -->
 
-    <div class="d-none d-md-block"> <!--hide on screens smaller than md-->
-      <div id="enter-fullscreen" class="" style="height: 100vh; ">
-        <button onclick="OpenFullScreen()" class="" type="button" name="button" style="border: none; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%)">
-          <img src="images/fullscreen.png" alt="">
-          <div class="h2 text-center">
-            Click here to enter full-screen
-          </div>
-        </button>
-      </div>
-      <div class="row" style="height: 98vh;">
+    <div class="container d-none d-md-block"> <!--hide on screens smaller than md-->
+
+      <div id="mainwindow" class="row" style="height: 100vh;">
 
         <div class="col-3 bg-secondary" style="border-right: black 10px">
           <div class="row" style="margin-left:50%; transform: translate(-30%,0%);">
@@ -156,7 +149,6 @@
         <script>
           var elem = document.documentElement;
           function OpenFullScreen() {
-            document.getElementById("enter-fullscreen").style.display="none";
             if (elem.requestFullscreen) {
               elem.requestFullscreen();
             } else if (elem.mozRequestFullScreen) { /* Firefox */
