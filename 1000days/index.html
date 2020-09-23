@@ -165,17 +165,17 @@
         <tbody>
           <tr>
             <td style="padding-bottom: 25px;">
-              <div class="option-card vertical-center" data-toggle="modal" data-target="#myModal">
+              <div class="option-card" data-toggle="modal" data-target="#myModal">
                 Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
               </div>
             </td>
             <td>
-              <div class="option-card vertical-center" data-toggle="modal" data-target="#myModal">
+              <div class="option-card" data-toggle="modal" data-target="#myModal">
                 Pay a cargo Truck driver to let him go onboard. <br> (You would be lending Rs.500 to him)
               </div>
             </td>
             <td>
-              <div class="option-card vertical-center" data-toggle="modal" data-target="#myModal">
+              <div class="option-card" data-toggle="modal" data-target="#myModal">
                 Find unauthorized, dangerous ways to cross border
               </div>
             </td>
@@ -187,11 +187,6 @@
 
     <style>
     .vertical-center {
-  min-height: 50vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
     .table td, .table th, .table thead th
@@ -212,12 +207,17 @@
         padding: 14px 16px;
         font-size: 15px;
         height:200px;
+        min-height: 50vh;
         width: 100%;
         border-radius: 20px;
         margin-top: -50px;
         padding-top: 10px;
         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .option-card:hover
