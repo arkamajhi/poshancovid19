@@ -165,17 +165,17 @@
         <tbody>
           <tr>
             <td style="padding-bottom: 25px;">
-              <div class="option-card" data-toggle="modal" data-target="#myModal">
+              <div class="option-card vertical-center" data-toggle="modal" data-target="#myModal">
                 Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
               </div>
             </td>
             <td>
-              <div class="option-card" data-toggle="modal" data-target="#myModal">
+              <div class="option-card vertical-center" data-toggle="modal" data-target="#myModal">
                 Pay a cargo Truck driver to let him go onboard. <br> (You would be lending Rs.500 to him)
               </div>
             </td>
             <td>
-              <div class="option-card" data-toggle="modal" data-target="#myModal">
+              <div class="option-card vertical-center" data-toggle="modal" data-target="#myModal">
                 Find unauthorized, dangerous ways to cross border
               </div>
             </td>
@@ -186,11 +186,20 @@
     </div>
 
     <style>
-.table td, .table th, .table thead th
-{
-  border-top-color: transparent;
-  border-bottom-color: transparent;
+    .vertical-center {
+  min-height: 100%;
+  min-height: 20vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+    .table td, .table th, .table thead th
+    {
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+    }
 
 
       .option-card
