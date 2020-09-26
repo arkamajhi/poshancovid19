@@ -8,7 +8,7 @@
     <!-- JavaScript and dependencies -->
     <!--script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script-->
-    <meta http-equiv="refresh" content="30">
+    <meta http-equiv="refresh" content="300">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!--script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
@@ -77,8 +77,6 @@
           </div>
         </div>
       </div>
-
-
 
       <!--div class="container" style="padding-bottom: 3%;">
         <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
@@ -187,51 +185,59 @@
 
     <script type="text/javascript">
       var question_number=1;
-      function nextquestion(question_number)
+      function abcd()
       {
-        function display(json)
+
+      }
+      function nextquestion()
+      {
+        alert("Signed In");
+        //display();
+      }
+      function display(json)
+      {
+        var len = json.feed.entry.length;
+        console.log("Length = "+len);
+
+        question_number++;
+        /*
+        if(json.feed.entry[0].gsx$type.$t=="W4")
         {
-          var len = json.feed.entry.length;
-          console.log("Length = "+len);
-          /*
-          if(json.feed.entry[0].gsx$type.$t=="W4")
+          console.log("Length of W4 = "+len);
+
+          for (var i=0; i<100; i++)
           {
-            console.log("Length of W4 = "+len);
-
-            for (var i=0; i<100; i++)
+            var tableW4="";
+            for (var j=0; j<len; j++)
             {
-              var tableW4="";
-              for (var j=0; j<len; j++)
+              if(json.feed.entry[j].gsx$state.$t==json.feed.entry[i].gsx$states.$t&&json.feed.entry[j].gsx$state.$t!="")
               {
-                if(json.feed.entry[j].gsx$state.$t==json.feed.entry[i].gsx$states.$t&&json.feed.entry[j].gsx$state.$t!="")
-                {
-                  tableW4+='<tr>'
-                  +"<td>"+'<div class="container">'+json.feed.entry[j].gsx$who.$t+"</div>"+"</td>"
-                  +"<td>"+'<div class="container">'+json.feed.entry[j].gsx$what.$t+"</div>"+"</td>"
-                  +"<td>"+'<div class="container">'+json.feed.entry[j].gsx$where.$t+"</div>"+"</td>"
-                  +"<td>"+'<div class="container">'+json.feed.entry[j].gsx$when.$t+"</div>"+"</td>"
-                  +'</tr>';
-                }
+                tableW4+='<tr>'
+                +"<td>"+'<div class="container">'+json.feed.entry[j].gsx$who.$t+"</div>"+"</td>"
+                +"<td>"+'<div class="container">'+json.feed.entry[j].gsx$what.$t+"</div>"+"</td>"
+                +"<td>"+'<div class="container">'+json.feed.entry[j].gsx$where.$t+"</div>"+"</td>"
+                +"<td>"+'<div class="container">'+json.feed.entry[j].gsx$when.$t+"</div>"+"</td>"
+                +'</tr>';
               }
-
-              var stringW4='<center><h4>4W – Who does What, Where and When</h4></center><br>'
-                              +'<table class="table_res table-striped table-hover table-sm table-responsive" id = json.feed.entry[i].gsx$states.$t+"_W4" ><thead>'
-                              +'<tr>'
-                                +'<th scope="col"><center>'+"Who"+'</center></th>'
-                                +'<th scope="col"><center>'+"What"+'</center></th>'
-                                +'<th scope="col"><center>'+"Where"+'</center></th>'
-                                +'<th scope="col"><center>'+"When"+'</center></th>'
-                              +'</tr></thead>'
-                              +'<tbody>'+tableW4+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_W4></div><br>';
-              $(stringW4).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
             }
-          }*/
-        }
+
+            var stringW4='<center><h4>4W – Who does What, Where and When</h4></center><br>'
+                            +'<table class="table_res table-striped table-hover table-sm table-responsive" id = json.feed.entry[i].gsx$states.$t+"_W4" ><thead>'
+                            +'<tr>'
+                              +'<th scope="col"><center>'+"Who"+'</center></th>'
+                              +'<th scope="col"><center>'+"What"+'</center></th>'
+                              +'<th scope="col"><center>'+"Where"+'</center></th>'
+                              +'<th scope="col"><center>'+"When"+'</center></th>'
+                            +'</tr></thead>'
+                            +'<tbody>'+tableW4+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_W4></div><br>';
+            $(stringW4).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
+          }
+        }*/
       }
 
     </script>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script src="https://spreadsheets.google.com/feeds/list/1g2oVLFDNJ6C4PXhLyaiy8vdc9K1EV76aCpbAfn7ar-M/2/public/values?alt=json" type="text/javascript"></script>
+    <script src="https://spreadsheets.google.com/feeds/list/1Gwf9xzAAZY3gnXmgnCUSkvC5xZSJ7LQCZ3AvBk0tPEQ/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
 
     <style>
 
