@@ -1,3 +1,4 @@
+/*
 var firebaseConfig = {
   apiKey: "AIzaSyB9cJDhfddv6zk9cQ_1sfEmPpmuIoLAZXg",
   authDomain: "days-97456.firebaseapp.com",
@@ -45,3 +46,4 @@ auth.onAuthStateChanged(function(user) {
     //alert("Please Log In");
   }
 });
+*/
