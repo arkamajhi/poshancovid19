@@ -113,21 +113,14 @@
         </button-->
 
         <!-- The Modal -->
-        <div class="modal" id="myModal">
+        <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-
               <!-- Modal Header -->
               <div class="modal-header">
-                <h1 class="modal-title">Modal Heading</h1>
-                <button type="button" class="close" data-dismiss="modal">×</button>
               </div>
-
               <!-- Modal body -->
-              <div class="modal-body" id="result1">
-                <h3>Some text to enable scrolling..</h3>
-                <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
+              <div class="modal-body" id="modal-body">
               </div>
               <!-- Modal footer -->
               <div class="modal-footer">
@@ -140,8 +133,8 @@
 
       <div class="container">
         <div class="cardss">
-          <div class="container scenario h5 text-center" id="situation">
-            <div class="" style="padding-bottom: 2%; border-bottom: solid black 1px"></div>
+          <div class="container scenario h5 text-center">
+            <div id="situation" class="" style="padding-bottom: 2%; border-bottom: solid black 1px"></div>
           </div>
           <div class="container h3 text-center text-uppercase" style="" id="what_will_you_do">
           </div>
@@ -157,17 +150,17 @@
             <tbody>
               <tr>
                 <td id="option1" >
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option1_text">
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(1)" id="option1_text">
                     Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
                   </div>
                 </td>
                 <td id="option2">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option2_text">
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(2)" id="option2_text">
                     Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
                   </div>
                 </td>
                 <td id="option3">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option3_text">
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(3)" id="option3_text">
                     Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
                   </div>
                 </td>
@@ -207,10 +200,6 @@
       {
         nextquestion();
       });
-      //var proceed=0;
-      //$("#monthsday").hide();
-      //$("#monthsday").append('<button type="button" name="button" id="ab">fdgdfghfh</button>');
-      //$("#ab").click(function(){  $("#monthsday").hide();});
 
 
       var q_no=-1;
@@ -220,7 +209,7 @@
         if(q_no<google_json.length)
         {
           $("#monthsday").text(google_json[q_no].monthsday);
-          $("#situation").prepend(google_json[q_no].situation);
+          $("#situation").text(google_json[q_no].situation);
           $("#image").text(google_json[q_no].image);
           $("#option1_text").text(google_json[q_no].option1);
           $("#result1").text(google_json[q_no].result1);
@@ -243,6 +232,16 @@
         {
           alert("Over");
         }
+      }
+
+      function optionclick(option_number)
+      {
+        if(option_number==1)
+          $("#modal-body").text(google_json[q_no].result1);
+        else if(option_number==2)
+          $("#modal-body").text(google_json[q_no].result2);
+        else if(option_number==3)
+          $("#modal-body").text(google_json[q_no].result3);
       }
 
     </script>
