@@ -159,18 +159,18 @@
             </thead>
             <tbody>
               <tr>
-                <td style="">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option1">
+                <td style="" id="option1">
+                  <div class="option-card" data-toggle="modal" data-target="#myModal"
                     Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
                   </div>
                 </td>
-                <td>
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option2">
+                <td id="option2">
+                  <div class="option-card" data-toggle="modal" data-target="#myModal"
                     Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
                   </div>
                 </td>
-                <td>
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option3">
+                <td id="option3">
+                  <div class="option-card" data-toggle="modal" data-target="#myModal"
                     Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
                   </div>
                 </td>
@@ -232,12 +232,14 @@
           if(google_json[q_no].option3!="")
           {
             $("#option3").show();
+            $("#option_header3").show();
             $("#option3").text(google_json[q_no].option3);
             $("#result3").text(google_json[q_no].result3);
           }
           else
           {
-            $("#option3").hide();
+            $("#option3").remove();
+            $("#option_header3").remove();
           }
         }
         else
