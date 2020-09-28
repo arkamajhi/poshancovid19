@@ -141,12 +141,11 @@
       <div class="container">
         <div class="cardss">
           <div class="container scenario h5 text-center" id="situation">
-            Your brother has gone to a neighbouring state for a work opportunity.
-            Now that the government has issued a lockdown on its borders, you are worried about bringing him back home.
+
             <div class="" style="padding-bottom: 2%; border-bottom: solid black 1px">
             </div>
           </div>
-          <div class="container h3 text-center text-uppercase" style="">
+          <div class="container h3 text-center text-uppercase" style="" id="what_will_you_do">
             What will you do?
           </div>
 
@@ -198,6 +197,7 @@
             result3:json.feed.entry[i].gsx$result3.$t,
           });
         }
+        $("#what_will_you_do").text(json.feed.entry[0].gsx$uitexts.$t);
       }
       console.log(google_json);
       window.addEventListener('load', (event) =>
@@ -217,7 +217,7 @@
         if(q_no<google_json.length)
         {
           $("#monthsday").text(google_json[q_no].monthsday);
-          $("#situation").text(google_json[q_no].situation);
+          $("#situation").prepend(google_json[q_no].situation);
           $("#image").text(google_json[q_no].image);
           $("#option1").text(google_json[q_no].option1);
           $("#option2").text(google_json[q_no].option2);
