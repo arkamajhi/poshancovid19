@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title>HMIS Data-Visualization</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  
+
     <style>
         .bd-placeholder-img {
           font-size: 1.125rem;
@@ -17,7 +17,7 @@
           -ms-user-select: none;
           user-select: none;
         }
-  
+
         @media (min-width: 768px) {
           .bd-placeholder-img-lg {
             font-size: 3.5rem;
@@ -43,18 +43,18 @@
                     Select State <span class="sr-only">(current)</span>
                   </a>
                 </li>
-               </ul> 
-                <select id="state_select" multiple style="width: 200px;"> State </select>
+               </ul>
+                <select id="state_select" multiple style="width: 200px; height:70vh"> State </select>
                 <button id="selectAll" onclick="selectAll()">Select All</button>
-                <button id="submit" onclick="submitButton()">Submit</button>                   
+                <button id="submit" onclick="submitButton()">Submit</button>
             </div>
           </nav>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 class="h2">Child immunisation - Vitamin A Dose - 1</h1>
-            </div>      
+            </div>
 
-          <div><canvas id="Vitamin-A" height="500px" width=""></canvas></div> 
+          <div><canvas id="Vitamin-A" height="500px" width=""></canvas></div>
 
 <script>
   var data_from_sheets;
@@ -87,7 +87,7 @@
           ab.push({
             label: st[(2*n)+2], // Name the series
             data: st[(2*n)+1],
-            borderColor: [bcolor],          	
+            borderColor: [bcolor],
             borderWidth: 2,
             backgroundColor: ['rgb(0,0,0,0)',
                               'rgb(0,0,0,1)',
@@ -142,7 +142,7 @@
                 },
                legend :{
                  position: 'bottom'
-               },             
+               },
             }
         });
 
