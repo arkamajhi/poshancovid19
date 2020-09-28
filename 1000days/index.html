@@ -141,12 +141,9 @@
       <div class="container">
         <div class="cardss">
           <div class="container scenario h5 text-center" id="situation">
-
-            <div class="" style="padding-bottom: 2%; border-bottom: solid black 1px">
-            </div>
+            <div class="" style="padding-bottom: 2%; border-bottom: solid black 1px"></div>
           </div>
           <div class="container h3 text-center text-uppercase" style="" id="what_will_you_do">
-            What will you do?
           </div>
 
           <table id="options_table" class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
@@ -159,18 +156,18 @@
             </thead>
             <tbody>
               <tr>
-                <td style="" id="option1">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal"
+                <td id="option1" >
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option1_text">
                     Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
                   </div>
                 </td>
                 <td id="option2">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal"
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option2_text">
                     Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
                   </div>
                 </td>
                 <td id="option3">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal"
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option3_text">
                     Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
                   </div>
                 </td>
@@ -225,21 +222,21 @@
           $("#monthsday").text(google_json[q_no].monthsday);
           $("#situation").prepend(google_json[q_no].situation);
           $("#image").text(google_json[q_no].image);
-          $("#option1").text(google_json[q_no].option1);
+          $("#option1_text").text(google_json[q_no].option1);
           $("#result1").text(google_json[q_no].result1);
-          $("#option2").text(google_json[q_no].option2);
+          $("#option2_text").text(google_json[q_no].option2);
           $("#result2").text(google_json[q_no].result2);
           if(google_json[q_no].option3!="")
           {
             $("#option3").show();
             $("#option_header3").show();
-            $("#option3").text(google_json[q_no].option3);
+            $("#option3_text").text(google_json[q_no].option3);
             $("#result3").text(google_json[q_no].result3);
           }
           else
           {
-            $("#option3").remove();
-            $("#option_header3").remove();
+            $("#option3").hide();
+            $("#option_header3").hide();
           }
         }
         else
