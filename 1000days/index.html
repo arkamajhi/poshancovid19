@@ -149,22 +149,28 @@
             What will you do?
           </div>
 
-          <table class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
+          <table id="options_table" class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
             <thead >
               <tr>
-                <th scope="col">.............8.............</th>
-                <th scope="col">.............8.............</th>
+                <th scope="col" id="option_header1">.............8.............</th>
+                <th scope="col" id="option_header2">.............8.............</th>
+                <th scope="col" id="option_header3">.............8.............</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding-bottom: 10px;">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="">
+                <td style="">
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option1">
                     Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
                   </div>
                 </td>
                 <td>
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="">
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option2">
+                    Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
+                  </div>
+                </td>
+                <td>
+                  <div class="option-card" data-toggle="modal" data-target="#myModal" id="option3">
                     Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
                   </div>
                 </td>
@@ -220,11 +226,19 @@
           $("#situation").prepend(google_json[q_no].situation);
           $("#image").text(google_json[q_no].image);
           $("#option1").text(google_json[q_no].option1);
-          $("#option2").text(google_json[q_no].option2);
-          $("#option3").text(google_json[q_no].option3);
           $("#result1").text(google_json[q_no].result1);
+          $("#option2").text(google_json[q_no].option2);
           $("#result2").text(google_json[q_no].result2);
-          $("#result3").text(google_json[q_no].result3);
+          if(google_json[q_no].option3!="")
+          {
+            $("#option3").show();
+            $("#option3").text(google_json[q_no].option3);
+            $("#result3").text(google_json[q_no].result3);
+          }
+          else
+          {
+            $("#option3").hide();
+          }
         }
         else
         {
@@ -242,6 +256,10 @@
     {
       border-top-color: transparent;
       border-bottom-color: transparent;
+    }
+    .table td
+    {
+      padding-bottom: 10px;
     }
     .cardss
     {
