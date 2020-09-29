@@ -170,7 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
               }
 
-              var stringW4='<center><h4>4W – Who does What, Where and When : '+json.feed.entry[j].gsx$state.$t+'</h4></center><br>'
+              var stringW4='<center><h4>4W – Who does What, Where and When : '+json.feed.entry[i].gsx$statecode.$t+'</h4></center><br>'
                               +'<table class="table_res table-striped table-hover table-sm table-responsive" id = json.feed.entry[i].gsx$states.$t+"_W4" ><thead>'
                               +'<tr>'
                                 +'<th scope="col"><center>'+"Who"+'</center></th>'
@@ -215,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               }
               tablesummaruservices+=tablebuffer;
 
-              var stringCOS='<center><h4>Continuity of services</h4></center><br>'
+              var stringCOS='<center><h4>Continuity of services : '+json.feed.entry[i].gsx$statecode.$t+'</h4></center><br>'
                               +'<table class="table_res table-striped table-hover table-sm table-responsive" id = json.feed.entry[i].gsx$states.$t+"_W4" ><thead>'
                               +'<tr>'
                                 +'<th scope="col"><center>'+json.feed.entry[0].gsx$header.$t+'</center></th>'
@@ -297,7 +297,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             for(var i=0;i<(len/44);i++)
             {
               console.log(json.feed.entry[(i*44)+0].gsx$state.$t);
-              stringRP="<center><h4>Risk Profiles</h4></center><br>";
+              stringRP='<center><h4>Risk Profiles : '+json.feed.entry[i].gsx$statecode.$t+'</h4></center><br>';
               stringRP += '<table class="table table-striped table-hover table-sm table-responsive text-center">'
                               +'<tbody>';
 
