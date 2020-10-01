@@ -44,7 +44,7 @@
                   </a>
                 </li>
                </ul> 
-                <select id="state_select" multiple style="width: 200px;"> State </select>
+                <select id="state_select" multiple style="width: 200px; height:70vh"> State </select>
                 <button id="selectAll" onclick="selectAll()">Select All</button>
                 <button id="submit" onclick="submitButton()">Submit</button>                   
             </div>
@@ -53,7 +53,7 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 class="h2">% of Child immunisation - Vitamin A Dose - 1</h1>
             </div>      
-          <div><canvas id="Vitamin-A" height="500px" width=""></canvas></div> 
+          <div id="canvas_div"><canvas id="Vitamin-A" height="500px" width=""></canvas></div> 
 
 <script>
   var data_from_sheets;
@@ -73,7 +73,6 @@
   function BuildChart(st, st_filter)
 {
         var ab=[];
-        debugger;
         for(n=0;n<=st.length/2-1;n++)
         {
           if (st_filter.indexOf(st[(2*n)+2]) == -1) {
@@ -117,6 +116,15 @@
         };
 
 
+        var oldcanv = document.getElementById("Vitamin-A");
+        var canvas_div = document.getElementById("canvas_div");
+        canvas_div.removeChild(oldcanv)
+
+        var canv = document.createElement("canvas");
+        canv.id = "Vitamin-A";
+        canv.height = 500;
+        canvas_div.appendChild(canv);
+
         var ctx = document.getElementById("Vitamin-A").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -128,7 +136,7 @@
                     xAxes: [{
                             scaleLabel: {
                             display: true,
-                            labelString: 'Child immunisation - Vitamin A Dose - 1'
+                            labelString: 'Month-Year'
                         }
                     }],
                     yAxes: [{
