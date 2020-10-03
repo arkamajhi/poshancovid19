@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!--meta http-equiv="refresh" content="5"-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <title>HMIS Data-Visualization</title>
+  </head>
+  <body>
+    <div class="">
+      <canvas id="Vitamin-A" height="500px" width=""></canvas>
+    </div>
+
+
+<script>
+function BuildChart(st)
+{
+        var ab=[];
+        for(n=0;n<=st.length/2-1;n++)
+        {
+          ab[n]={
+            label: st[(2*n)+2], // Name the series
+            data: st[(2*n)+1],
+            borderColor: ['rgba(0,0,0,1)'],
+            borderWidth: 1,
+            backgroundColor: ['rgb(0,0,0,0)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              'rgb(0,0,0,1)',
+                              ],
+          };
+        }
+
+        var data =
+        {
+            labels: st[0],
+            datasets: ab
+        };
+
+
+
+        var ctx = document.getElementById("Vitamin-A").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true, // Instruct chart js to respond nicely.
+                maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+                scales: {
+                    xAxes: [{
+                            scaleLabel: {
+                            display: true,
+                            labelString: 'Child immunisation - Vitamin A Dose - 1'
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            stacked: true,
+                            display: true,
+                            labelString: 'Total number of children'
+                        }
+                    }]
+                },
+            }
+        });
+
+        return myChart;
+    }
+
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function()
+    {
+      if (this.readyState == 4 && this.status == 200)
+      {
+        var json = JSON.parse(this.response);
+        console.log(json);
+        var states=["All India","A & N Islands","Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chandigarh","Chhattisgarh","Dadra & Nagar Haveli","Daman & Diu","Delhi",	"Goa",	"Gujarat",	"Haryana",	"Himachal Pradesh",	"Jammu & Kashmir",	"Jharkhand",	"Karnataka",	"Kerala",	"Lakshadweep",	"Madhya Pradesh",	"Maharashtra",	"Manipur",	"Meghalaya",	"Mizoram",	"Nagaland",	"Odisha",	"Puducherry",	"Punjab",	"Rajasthan",	"Sikkim",	"Tamil Nadu",	"Telangana",	"Tripura",	"Uttar Pradesh", "Uttarakhand", "West Bengal"];
+        var statecode=[];
+        for(a=0;a<states.length;a++)
+        {
+          strArray = states[a].toLowerCase();
+          stringBuffer = "";
+           for (i = 0; i < strArray.length; i++)
+           {
+               if ((strArray[i] != ' ') && (strArray[i] != '\t'))
+               {
+                   stringBuffer+=strArray[i];
+               }
+           }
+           noSpaceStr2 = stringBuffer.toString();
+           statecode[a]=noSpaceStr2;
+           console.log(noSpaceStr2+" , ");
+        }
+        var vitA=[
+        json.feed.entry.map(function (e) {return e.gsx$month.$t;}),
+        json.feed.entry.map(function (e) {return e.gsx$a0.$t;}),states[0],
+        json.feed.entry.map(function (e) {return e.gsx$a1.$t;}),states[1],
+        json.feed.entry.map(function (e) {return e.gsx$a2.$t;}),states[2],
+        json.feed.entry.map(function (e) {return e.gsx$a3.$t;}),states[3],
+        json.feed.entry.map(function (e) {return e.gsx$a4.$t;}),states[4],
+        json.feed.entry.map(function (e) {return e.gsx$a5.$t;}),states[5],
+        json.feed.entry.map(function (e) {return e.gsx$a6.$t;}),states[6],
+        json.feed.entry.map(function (e) {return e.gsx$a7.$t;}),states[7],
+        json.feed.entry.map(function (e) {return e.gsx$a8.$t;}),states[8],
+        json.feed.entry.map(function (e) {return e.gsx$a9.$t;}),states[9],
+        json.feed.entry.map(function (e) {return e.gsx$a10.$t;}),states[10],
+        json.feed.entry.map(function (e) {return e.gsx$a11.$t;}),states[11],
+        json.feed.entry.map(function (e) {return e.gsx$a12.$t;}),states[12],
+        json.feed.entry.map(function (e) {return e.gsx$a13.$t;}),states[13],
+        json.feed.entry.map(function (e) {return e.gsx$a14.$t;}),states[14],
+        json.feed.entry.map(function (e) {return e.gsx$a15.$t;}),states[15],
+        json.feed.entry.map(function (e) {return e.gsx$a16.$t;}),states[16],
+        json.feed.entry.map(function (e) {return e.gsx$a17.$t;}),states[17],
+        json.feed.entry.map(function (e) {return e.gsx$a18.$t;}),states[18],
+        json.feed.entry.map(function (e) {return e.gsx$a19.$t;}),states[19],
+        json.feed.entry.map(function (e) {return e.gsx$a20.$t;}),states[20],
+        json.feed.entry.map(function (e) {return e.gsx$a21.$t;}),states[21],
+        json.feed.entry.map(function (e) {return e.gsx$a22.$t;}),states[22],
+        json.feed.entry.map(function (e) {return e.gsx$a23.$t;}),states[23],
+        json.feed.entry.map(function (e) {return e.gsx$a24.$t;}),states[24],
+        json.feed.entry.map(function (e) {return e.gsx$a25.$t;}),states[25],
+        json.feed.entry.map(function (e) {return e.gsx$a26.$t;}),states[26],
+        json.feed.entry.map(function (e) {return e.gsx$a27.$t;}),states[27],
+        json.feed.entry.map(function (e) {return e.gsx$a28.$t;}),states[28],
+        json.feed.entry.map(function (e) {return e.gsx$a29.$t;}),states[29],
+        json.feed.entry.map(function (e) {return e.gsx$a30.$t;}),states[30],
+        json.feed.entry.map(function (e) {return e.gsx$a31.$t;}),states[31],
+        json.feed.entry.map(function (e) {return e.gsx$a32.$t;}),states[32],
+        json.feed.entry.map(function (e) {return e.gsx$a33.$t;}),states[33],
+        json.feed.entry.map(function (e) {return e.gsx$a34.$t;}),states[34],
+        json.feed.entry.map(function (e) {return e.gsx$a35.$t;}),states[35],
+        json.feed.entry.map(function (e) {return e.gsx$a36.$t;}),states[36]
+        ];
+        BuildChart(vitA);
+        /*var vitB=[
+        json.feed.entry.map(function (e) {return e.gsx$month.$t;}),
+        json.feed.entry.map(function (e) {return e.gsx$b0.$t;}),states[0],
+        json.feed.entry.map(function (e) {return e.gsx$b1.$t;}),states[1],
+        json.feed.entry.map(function (e) {return e.gsx$b2.$t;}),states[2],
+        json.feed.entry.map(function (e) {return e.gsx$b3.$t;}),states[3],
+        json.feed.entry.map(function (e) {return e.gsx$b4.$t;}),states[4],
+        json.feed.entry.map(function (e) {return e.gsx$b5.$t;}),states[5],
+        json.feed.entry.map(function (e) {return e.gsx$b6.$t;}),states[6],
+        json.feed.entry.map(function (e) {return e.gsx$b7.$t;}),states[7],
+        json.feed.entry.map(function (e) {return e.gsx$b8.$t;}),states[8],
+        json.feed.entry.map(function (e) {return e.gsx$b9.$t;}),states[9],
+        json.feed.entry.map(function (e) {return e.gsx$b10.$t;}),states[10],
+        json.feed.entry.map(function (e) {return e.gsx$b11.$t;}),states[11],
+        json.feed.entry.map(function (e) {return e.gsx$b12.$t;}),states[12],
+        json.feed.entry.map(function (e) {return e.gsx$b13.$t;}),states[13],
+        json.feed.entry.map(function (e) {return e.gsx$b14.$t;}),states[14],
+        json.feed.entry.map(function (e) {return e.gsx$b15.$t;}),states[15],
+        json.feed.entry.map(function (e) {return e.gsx$b16.$t;}),states[16],
+        json.feed.entry.map(function (e) {return e.gsx$b17.$t;}),states[17],
+        json.feed.entry.map(function (e) {return e.gsx$b18.$t;}),states[18],
+        json.feed.entry.map(function (e) {return e.gsx$b19.$t;}),states[19],
+        json.feed.entry.map(function (e) {return e.gsx$b20.$t;}),states[20],
+        json.feed.entry.map(function (e) {return e.gsx$b21.$t;}),states[21],
+        json.feed.entry.map(function (e) {return e.gsx$b22.$t;}),states[22],
+        json.feed.entry.map(function (e) {return e.gsx$b23.$t;}),states[23],
+        json.feed.entry.map(function (e) {return e.gsx$b24.$t;}),states[24],
+        json.feed.entry.map(function (e) {return e.gsx$b25.$t;}),states[25],
+        json.feed.entry.map(function (e) {return e.gsx$b26.$t;}),states[26],
+        json.feed.entry.map(function (e) {return e.gsx$b27.$t;}),states[27],
+        json.feed.entry.map(function (e) {return e.gsx$b28.$t;}),states[28],
+        json.feed.entry.map(function (e) {return e.gsx$b29.$t;}),states[29],
+        json.feed.entry.map(function (e) {return e.gsx$b30.$t;}),states[30],
+        json.feed.entry.map(function (e) {return e.gsx$b31.$t;}),states[31],
+        json.feed.entry.map(function (e) {return e.gsx$b32.$t;}),states[32],
+        json.feed.entry.map(function (e) {return e.gsx$b33.$t;}),states[33],
+        json.feed.entry.map(function (e) {return e.gsx$b34.$t;}),states[34],
+        json.feed.entry.map(function (e) {return e.gsx$b35.$t;}),states[35],
+        json.feed.entry.map(function (e) {return e.gsx$b36.$t;}),states[36]
+        ];
+        BuildChart(vitB);*/
+      }
+    };
+    xhttp.open("GET", "https://spreadsheets.google.com/feeds/list/1IotKAZd1P533bipKASkZM6hsdM5erLXhXP6l5-TLeLc/od6/public/full?alt=json", false);
+    xhttp.send();
+  	</script>
+  </body>
+</html>
