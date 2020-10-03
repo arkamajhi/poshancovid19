@@ -33,63 +33,128 @@
 
     </div>
 
-    <div class=""> <!-- d-md-none hide on screens starting from md-->
+    <div class="row"> <!-- d-md-none hide on screens starting from md-->
 
+      <div class="col-lg-8 col-md-8 col-xs-12">
 
-      <div class="container text-right h7 font-weight-bold" style="padding-bottom: 2%;padding-top: 2%;">
-        <div class="cardss" style="">
-          <div class="container">
-            <div class="text-center h4" id="monthsday">
-              1234
+        <div class="container text-right h7 font-weight-bold" style="padding-bottom: 2%;padding-top: 2%;">
+          <div class="cardss" style="">
+            <div class="container">
+              <div class="text-center h4" id="monthsday">
+                1234
+              </div>
+              <div class=""style="padding-bottom: 1%;border-bottom: solid black 1px"></div>
             </div>
-            <div class=""style="padding-bottom: 1%;border-bottom: solid black 1px"></div>
+
+            <div class="" style="padding-top: 2%;">
+              <div class="row">
+                <div class="col-5">
+                  Hb level (mg/dL)
+                </div>
+                <div class="col-6">
+                  <div class="progress">
+                    <div id="hb-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5">
+                  Weight (kg)
+                </div>
+                <div class="col-6">
+                  <div class="progress">
+                    <div id="wt-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5">
+                  Money (₹)
+                </div>
+                <div class="col-6">
+                  <div class="progress">
+                    <div id="mo-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="padding-bottom: 3%;">
+                <div class="col-5">
+                  Health Points
+                </div>
+                <div class="col-6">
+                  <div class="progress">
+                    <div id="hp-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="container">
+          <!-- The Modal -->
+          <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body" id="modal-body">
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <center><button onclick="nextquestion()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button></center>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div class="" style="padding-top: 2%;">
-            <div class="row">
-              <div class="col-5">
-                Hb level (mg/dL)
-              </div>
-              <div class="col-6">
-                <div class="progress">
-                  <div id="hb-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
-                </div>
-              </div>
+        <div class="" style="padding-top: 3%;">
+          <div class="cardss">
+            <div class="container scenario h5 text-center">
+              <div id="situation" class="" style="padding-bottom: 2%; border-bottom: solid black 1px"></div>
             </div>
-            <div class="row">
-              <div class="col-5">
-                Weight (kg)
-              </div>
-              <div class="col-6">
-                <div class="progress">
-                  <div id="wt-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
-                </div>
-              </div>
+            <div class="container h3 text-center text-uppercase" style="" id="what_will_you_do">
             </div>
-            <div class="row">
-              <div class="col-5">
-                Money (₹)
-              </div>
-              <div class="col-6">
-                <div class="progress">
-                  <div id="mo-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
-                </div>
-              </div>
-            </div>
-            <div class="row" style="padding-bottom: 3%;">
-              <div class="col-5">
-                Health Points
-              </div>
-              <div class="col-6">
-                <div class="progress">
-                  <div id="hp-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                </div>
-              </div>
-            </div>
+
+            <table id="options_table" class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
+              <thead >
+                <tr>
+                  <th scope="col" id="option_header1">.............8.............</th>
+                  <th scope="col" id="option_header2">.............8.............</th>
+                  <th scope="col" id="option_header3">.............8.............</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="option1" >
+                    <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(1)" id="option1_text">
+                      Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
+                    </div>
+                  </td>
+                  <td id="option2">
+                    <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(2)" id="option2_text">
+                      Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
+                    </div>
+                  </td>
+                  <td id="option3">
+                    <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(3)" id="option3_text">
+                      Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+        </div>
+
       </div>
 
-      <!--div class="container" style="padding-bottom: 3%;">
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-xs-12">
+      <div class="container" style="padding-bottom: 3%;">
         <button class="tablink" onclick="openPage('Home', this, 'red')" id="defaultOpen">Home</button>
         <button class="tablink" onclick="openPage('News', this, 'green')">News</button>
         <button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
@@ -115,66 +180,9 @@
           <p>Who we are and what we do.</p>
         </div>
 
-      </div-->
-
-      <div class="container">
-        <!-- The Modal -->
-        <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <!-- Modal Header -->
-              <div class="modal-header">
-              </div>
-              <!-- Modal body -->
-              <div class="modal-body" id="modal-body">
-              </div>
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <center><button onclick="nextquestion()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button></center>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <div class="" style="padding-top: 3%;">
-        <div class="cardss">
-          <div class="container scenario h5 text-center">
-            <div id="situation" class="" style="padding-bottom: 2%; border-bottom: solid black 1px"></div>
-          </div>
-          <div class="container h3 text-center text-uppercase" style="" id="what_will_you_do">
-          </div>
-
-          <table id="options_table" class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
-            <thead >
-              <tr>
-                <th scope="col" id="option_header1">.............8.............</th>
-                <th scope="col" id="option_header2">.............8.............</th>
-                <th scope="col" id="option_header3">.............8.............</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td id="option1" >
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(1)" id="option1_text">
-                    Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
-                  </div>
-                </td>
-                <td id="option2">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(2)" id="option2_text">
-                    Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
-                  </div>
-                </td>
-                <td id="option3">
-                  <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(3)" id="option3_text">
-                    Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+    </div>
 
     </div>
 
@@ -308,6 +316,27 @@
         $("#hp-bar").text(hp);
       }
 
+      function openPage(pageName, elmnt, color)
+      {
+        // Hide all elements with class="tabcontent" by default */
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        // Remove the background color of all tablinks/buttons
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+        }
+        // Show the specific tab content
+        document.getElementById(pageName).style.display = "block";
+        // Add the specific color to the button used to open the tab content
+        elmnt.style.backgroundColor = color;
+      }
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+
     </script>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script src="https://spreadsheets.google.com/feeds/list/1Gwf9xzAAZY3gnXmgnCUSkvC5xZSJ7LQCZ3AvBk0tPEQ/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
@@ -404,7 +433,6 @@
       /* Style the tab content (and add height:100% for full page content) */
       .tabcontent {
         color: white;
-        display: none;
         padding: 20px 20px;
         height: 100%;
         border-bottom-left-radius: 20px;
