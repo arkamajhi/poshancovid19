@@ -45,47 +45,48 @@
             <div class=""style="padding-bottom: 1%;border-bottom: solid black 1px"></div>
           </div>
 
-          <div class="row" style="padding-top: 2%;">
-            <div class="col-5">
-              Hb level (mg/dL)
+          <div class="" style="padding-top: 2%;">
+            <div class="row">
+              <div class="col-5">
+                Hb level (mg/dL)
+              </div>
+              <div class="col-6">
+                <div class="progress">
+                  <div id="hb-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
+                </div>
+              </div>
             </div>
-            <div class="col-6">
-              <div class="progress">
-                <div id="hb-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;"25%</div>
+            <div class="row">
+              <div class="col-5">
+                Weight (kg)
+              </div>
+              <div class="col-6">
+                <div class="progress">
+                  <div id="wt-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5">
+                Money (₹)
+              </div>
+              <div class="col-6">
+                <div class="progress">
+                  <div id="mo-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding-bottom: 3%;">
+              <div class="col-5">
+                Health Points
+              </div>
+              <div class="col-6">
+                <div class="progress">
+                  <div id="hp-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-5">
-              Weight (kg)
-            </div>
-            <div class="col-6">
-              <div class="progress">
-                <div id="wt-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-5">
-              Money (₹)
-            </div>
-            <div class="col-6">
-              <div class="progress">
-                <div id="mo-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;">25%</div>
-              </div>
-            </div>
-          </div>
-          <div class="row" style="padding-bottom: 3%;">
-            <div class="col-5">
-              Health Points
-            </div>
-            <div class="col-6">
-              <div class="progress">
-                <div id="hp-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!--div class="container" style="padding-bottom: 3%;">
@@ -117,11 +118,6 @@
       </div-->
 
       <div class="container">
-        <!-- Button to Open the Modal -->
-        <!--button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-          Open modal
-        </button-->
-
         <!-- The Modal -->
         <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
           <div class="modal-dialog modal-dialog-centered">
@@ -141,7 +137,7 @@
         </div>
       </div>
 
-      <div class="container">
+      <div class="" style="padding-top: 3%;">
         <div class="cardss">
           <div class="container scenario h5 text-center">
             <div id="situation" class="" style="padding-bottom: 2%; border-bottom: solid black 1px"></div>
@@ -219,11 +215,11 @@
       }
       console.log(google_json);
 
-      var hb=11; var wt=0; var mo=0; var hp=0;
+      var hb=0; var wt=0; var mo=0; var hp=0;
+      var option_no=0;
       window.addEventListener('load', (event) =>
       {
         nextquestion();
-        update_scores(hb,wt,mo,hp);
       });
 
 
@@ -231,6 +227,19 @@
       function nextquestion()
       {
         q_no++;
+        if (q_no>0)
+        {
+          if (option_no==1)
+            update_scores(google_json[q_no-1].hb1,google_json[q_no-1].wt1,google_json[q_no-1].mo1,google_json[q_no-1].hp1);
+          else if (option_no==2)
+            update_scores(google_json[q_no-1].hb2,google_json[q_no-1].wt2,google_json[q_no-1].mo2,google_json[q_no-1].hp2);
+          else if (option_no==3)
+            update_scores(google_json[q_no-1].hb3,google_json[q_no-1].wt3,google_json[q_no-1].mo3,google_json[q_no-1].hp3);
+        }
+        else
+        {
+          update_scores(7,40,5000,12);
+        }
         if(q_no<google_json.length)
         {
           $("#monthsday").text(google_json[q_no].monthsday);
@@ -261,20 +270,18 @@
 
       function optionclick(option_number)
       {
+        option_no=option_number;
         if(option_number==1)
         {
           $("#modal-body").text(google_json[q_no].result1);
-          update_scores(google_json[q_no].hb1,google_json[q_no].wt1,google_json[q_no].mo1,google_json[q_no].hp1);
         }
         else if(option_number==2)
         {
           $("#modal-body").text(google_json[q_no].result2);
-          update_scores(google_json[q_no].hb2,google_json[q_no].wt2,google_json[q_no].mo2,google_json[q_no].hp2);
         }
         else if(option_number==3)
         {
           $("#modal-body").text(google_json[q_no].result3);
-          update_scores(google_json[q_no].hb3,google_json[q_no].wt3,google_json[q_no].mo3,google_json[q_no].hp3);
         }
       }
 
@@ -285,17 +292,16 @@
 
       function update_scores(new_hb,new_wt,new_mo,new_hp)
       {
-        hb+= parseInt(new_hb);
-        wt+= parseInt(new_wt);
-        mo+= parseInt(new_mo);
-        hp+= parseInt(new_hp);
-        //alert(" hb = "+hb+" ,"+" wt = "+wt+" ,"+" mo = "+mo+" ,"+" hp = "+hp);
-        $("#hb-bar").css("width", (Integer.toString((hb-hb_min)*100/(hb_max-hb_min))+"%"));
-        console.log(Integer.toString(((hb-hb_min)*100)/(hb_max-hb_min))+"%");
-        /*(hb-hb_min)*100/(hb_max-hb_min);
-        (wt-wt_min)*100/(wt_max-wt_min);
-        (mo-mo_min)*100/(mo_max-mo_min);
-        (hp-hp_min)*100/(hp_max-hp_min);*/
+        hb = (((hb+parseFloat(new_hb))>hb_max)?(hb_max):(hb+parseFloat(new_hb)));
+        wt = (((wt+parseFloat(new_wt))>wt_max)?(wt_max):(wt+parseFloat(new_wt)));
+        mo = (((mo+parseFloat(new_mo))>mo_max)?(mo_max):(mo+parseFloat(new_mo)));
+        hp = (((hp+parseFloat(new_hp))>hp_max)?(hp_max):(hp+parseFloat(new_hp)));
+
+        $("#hb-bar").css("width", ((((hb-hb_min)*100)/(hb_max-hb_min)).toString()+"%"));
+        $("#wt-bar").css("width", ((((wt-wt_min)*100)/(wt_max-wt_min)).toString()+"%"));
+        $("#mo-bar").css("width", ((((mo-mo_min)*100)/(mo_max-mo_min)).toString()+"%"));
+        $("#hp-bar").css("width", ((((hp-hp_min)*100)/(hp_max-hp_min)).toString()+"%"));
+
         $("#hb-bar").text(hb);
         $("#wt-bar").text(wt);
         $("#mo-bar").text(mo);
