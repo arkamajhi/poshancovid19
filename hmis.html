@@ -34,10 +34,13 @@
           <li class="nav-item text-nowrap">
             <label for="data" style="color:rgb(255, 255, 255)">Choose an Indicator:</label>
             <select id="data_choose" onchange="chartOptionChanged()">
-              <option value="vitad">Child immunisation - Vitamin A Dose - 1</option>
-              <option value="vitadp">% of Child immunisation - Vitamin A Dose - 1</option>
-              <option value="bf1">Number of Newborns breast fed within 1 hour of birth</option>
-              <option value="bf1p">% of of Newborns breast fed within 1 hour of birth</option>
+              <option value="vitad">Count of vitamin A 1st dose (6-11 months)</option>
+              <option value="bf1">Count of newborns initiating breastfeeding in 1st hour after birth</option>
+              <option value="vitadp">Percent of vitamin A 1st dose over population (6-11 months)</option>
+              <option value="bf1p">Percent of newborns initiating breastfeeding in 1st hour after birth over life births</option>
+              <option value="csam">Admissions to community based management of SAM</option>
+              <option value="fsam">Admissions to facility based management of SAM</option>
+              <option value="tsam">Total admissions community and facility based management of SAM</option>
           </select>
           </li>
         </ul>      
@@ -61,7 +64,7 @@
           </nav>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <h1 id= "chart_heading" class="h2">Child immunisation - Vitamin A Dose - 1</h1>
+              <h1 id= "chart_heading" class="h3">Child immunisation - Vitamin A Dose - 1</h1>
             </div>      
           <div id="canvas_div"><canvas id="chart_canvas" height="500px" width=""></canvas></div> 
 
@@ -91,10 +94,11 @@
           json.feed.entry.map(function (e) {return e.gsx$month.$t;}),
         ];
         var sheet_column_to_option_mapping = {
-          "vitad" : "a", "vitadp" : "b", "bf1" : "c", "bf1p" : "d"
+          "vitad" : "a", "bf1" : "b", "vitadp" : "c", "bf1p" : "d", "csam" : "e", "fsam" : "f", "tsam" : "g",
         };
         var lb = {
-          "vitad" : "number of children", "vitadp" : "% of total number of children", "bf1" : "Number of newborns breast fed within 1 hour of birth", "bf1p" : "% of number of newborns breast fed within 1 hour of birth"
+          "vitad" : "Count of vitamin A 1st dose", "bf1" : "Count of newborns initiating breastfeeding in 1st hour after birth", "vitadp" : "Percent of vitamin A 1st dose over population (6-11 months)",  "bf1p" : "% of newborns initiating breastfeeding in 1st hour after birth",
+          "csam": "Admissions to community based management of SAM", "fsam": "Admissions to facility based management of SAM", "tsam": "Admissions community and facility based management of SAM"
         };
         var option_selected = document.getElementById("data_choose");
         for (var i = 0; i < 36; i++) {
