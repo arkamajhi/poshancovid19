@@ -41,6 +41,12 @@
               <option value="csam">Admissions to community based management of SAM</option>
               <option value="fsam">Admissions to facility based management of SAM</option>
               <option value="tsam">Total admissions community and facility based management of SAM</option>
+              <option value="cifa">Count of children 6-59 months provided 8-10 doses (1ml) of Iron and Folic Acid (IFA) syrup (Bi weekly)</option>
+              <option value="gifa">Count of girls (6-12 class) provided 4 Iron and Folic Acid (IFA) tablets in schools</option>
+              <option value="pifa">Count of pregnant women (PW) given 180 Iron and Folic Acid (IFA) tablets</option>
+              <option value="cifap">Percent of children 6-59 months provided 8-10 doses (1ml) of Iron and Folic Acid (IFA) syrup (Bi weekly)</option>
+              <option value="gifap">Percent of girls (6-12 class) provided 4 Iron and Folic Acid (IFA) tablets in schools</option>
+              <option value="pifap">Percent of pregnant women (PW) given 180 Iron and Folic Acid (IFA) tablets</option>
           </select>
           </li>
         </ul>      
@@ -94,11 +100,14 @@
           json.feed.entry.map(function (e) {return e.gsx$month.$t;}),
         ];
         var sheet_column_to_option_mapping = {
-          "vitad" : "a", "bf1" : "b", "vitadp" : "c", "bf1p" : "d", "csam" : "e", "fsam" : "f", "tsam" : "g",
+          "vitad" : "a", "bf1" : "b", "vitadp" : "c", "bf1p" : "d", "csam" : "e", "fsam" : "f", "tsam" : "g", "cifa" : "h", "gifa" : "i", "pifa" : "j",
+          "cifap" : "k", "gifap" : "l", "pifap" : "m"
         };
         var lb = {
           "vitad" : "Count of vitamin A 1st dose", "bf1" : "Count of newborns initiating breastfeeding in 1st hour after birth", "vitadp" : "Percent of vitamin A 1st dose over population (6-11 months)",  "bf1p" : "% of newborns initiating breastfeeding in 1st hour after birth",
-          "csam": "Admissions to community based management of SAM", "fsam": "Admissions to facility based management of SAM", "tsam": "Admissions community and facility based management of SAM"
+          "csam": "Admissions to community based management of SAM", "fsam": "Admissions to facility based management of SAM", "tsam": "Admissions community and facility based management of SAM",
+          "cifa": "Count of children 6-59 months provided 8-10 doses (1ml) of IFA", "gifa": "Count of girls (6-12 class) provided 4 Iron and Folic Acid (IFA)", "pifa": "Count of pregnant women (PW) given 180 Iron and Folic Acid",
+          "cifap": "% of children 6-59 months provided 8-10 doses (1ml) of IFA", "gifap": "% of girls (6-12 class) provided 4 Iron and Folic Acid (IFA)", "pifap": "% of pregnant women (PW) given 180 Iron and Folic Acid"
         };
         var option_selected = document.getElementById("data_choose");
         for (var i = 0; i < 36; i++) {
