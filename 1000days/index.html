@@ -99,7 +99,8 @@
                 <div class="modal-header">
                 </div>
                 <!-- Modal body -->
-                <div class="modal-body" id="modal-body">
+                <div class="modal-body" >
+                  <center><div id="modal-body"></div></center>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -202,9 +203,12 @@
             option1:json.feed.entry[i].gsx$option1.$t,
             option2:json.feed.entry[i].gsx$option2.$t,
             option3:json.feed.entry[i].gsx$option3.$t,
-            result1:json.feed.entry[i].gsx$result1.$t,
-            result2:json.feed.entry[i].gsx$result2.$t,
-            result3:json.feed.entry[i].gsx$result3.$t,
+            result1body:json.feed.entry[i].gsx$result1body.$t,
+            result2body:json.feed.entry[i].gsx$result2body.$t,
+            result3body:json.feed.entry[i].gsx$result3body.$t,
+            result1scoretext:json.feed.entry[i].gsx$result1scoretext.$t,
+            result2scoretext:json.feed.entry[i].gsx$result2scoretext.$t,
+            result3scoretext:json.feed.entry[i].gsx$result3scoretext.$t,
             hb1:json.feed.entry[i].gsx$hb1.$t,
             hb2:json.feed.entry[i].gsx$hb2.$t,
             hb3:json.feed.entry[i].gsx$hb3.$t,
@@ -254,15 +258,15 @@
           $("#situation").text(google_json[q_no].situation);
           $("#image").text(google_json[q_no].image);
           $("#option1_text").text(google_json[q_no].option1);
-          $("#result1").text(google_json[q_no].result1);
+          $("#result1body").text(google_json[q_no].result1body);
           $("#option2_text").text(google_json[q_no].option2);
-          $("#result2").text(google_json[q_no].result2);
+          $("#result2body").text(google_json[q_no].result2body);
           if(google_json[q_no].option3!="")
           {
             $("#option3").show();
             $("#option_header3").show();
             $("#option3_text").text(google_json[q_no].option3);
-            $("#result3").text(google_json[q_no].result3);
+            $("#result3body").text(google_json[q_no].result3body);
           }
           else
           {
@@ -281,15 +285,15 @@
         option_no=option_number;
         if(option_number==1)
         {
-          $("#modal-body").text(google_json[q_no].result1);
+          $("#modal-body").append(google_json[q_no].result1body);
         }
         else if(option_number==2)
         {
-          $("#modal-body").text(google_json[q_no].result2);
+          $("#modal-body").append(google_json[q_no].result2body);
         }
         else if(option_number==3)
         {
-          $("#modal-body").text(google_json[q_no].result3);
+          $("#modal-body").append(google_json[q_no].result3body);
         }
       }
 
