@@ -103,8 +103,10 @@
                   <center><div id="modal-body"></div></center>
                 </div>
                 <!-- Modal footer -->
-                <div class="modal-footer">
-                  <center><button onclick="nextquestion()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button></center>
+                <div class="modal-footer d-block">
+                  <div class="text-center">
+                    <button onclick="nextquestion()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -258,15 +260,13 @@
           $("#situation").text(google_json[q_no].situation);
           $("#image").text(google_json[q_no].image);
           $("#option1_text").text(google_json[q_no].option1);
-          $("#result1body").text(google_json[q_no].result1body);
-          $("#option2_text").text(google_json[q_no].option2);
-          $("#result2body").text(google_json[q_no].result2body);
+          $("#option2_text").text(google_json[q_no].option2);;
+
           if(google_json[q_no].option3!="")
           {
             $("#option3").show();
             $("#option_header3").show();
             $("#option3_text").text(google_json[q_no].option3);
-            $("#result3body").text(google_json[q_no].result3body);
           }
           else
           {
@@ -285,15 +285,15 @@
         option_no=option_number;
         if(option_number==1)
         {
-          $("#modal-body").append(google_json[q_no].result1body);
+          $("#modal-body").html(google_json[q_no].result1body+"<br><br>"+google_json[q_no].result1scoretext);
         }
         else if(option_number==2)
         {
-          $("#modal-body").append(google_json[q_no].result2body);
+          $("#modal-body").html(google_json[q_no].result2body+"<br><br>"+google_json[q_no].result2scoretext);
         }
         else if(option_number==3)
         {
-          $("#modal-body").append(google_json[q_no].result3body);
+          $("#modal-body").html(google_json[q_no].result3body+"<br><br>"+google_json[q_no].result3scoretext);
         }
       }
 
