@@ -118,7 +118,7 @@
             <div class="container scenario h5 text-center">
               <div id="situation" class="" style="padding-bottom: 2%; border-bottom: solid black 1px"></div>
             </div>
-            <div class="container h3 text-center text-uppercase" style="" id="what_will_you_do">
+            <div class="container h3 text-center text-uppercase" style="" id="question_text">
             </div>
 
             <table id="options_table" class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
@@ -223,9 +223,9 @@
             hp1:json.feed.entry[i].gsx$hp1.$t,
             hp2:json.feed.entry[i].gsx$hp2.$t,
             hp3:json.feed.entry[i].gsx$hp3.$t,
+            question_text:json.feed.entry[i].gsx$questiontext.$t
           });
         }
-        $("#what_will_you_do").text(json.feed.entry[0].gsx$uitexts.$t);
       }
       console.log(google_json);
 
@@ -258,9 +258,10 @@
         {
           $("#monthsday").text(google_json[q_no].monthsday);
           $("#situation").text(google_json[q_no].situation);
+          $("#question_text").text(google_json[q_no].question_text);
           $("#image").text(google_json[q_no].image);
           $("#option1_text").text(google_json[q_no].option1);
-          $("#option2_text").text(google_json[q_no].option2);;
+          $("#option2_text").text(google_json[q_no].option2);
 
           if(google_json[q_no].option3!="")
           {
