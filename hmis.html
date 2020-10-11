@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta charset="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
     <title>HMIS Data-Visualization</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   
@@ -159,7 +160,7 @@
             labels: st[0],
             datasets: ab
         };
-
+		
         var oldcanv = document.getElementById("chart_canvas");
         var canvas_div = document.getElementById("canvas_div");
         canvas_div.removeChild(oldcanv)
@@ -168,6 +169,7 @@
         canv.id = "chart_canvas";
         canv.height = 500;
         canvas_div.appendChild(canv);
+		console.log(data , "data"); 
 
         var ctx = document.getElementById("chart_canvas").getContext('2d');
         var myChart = new Chart(ctx, {
@@ -176,6 +178,18 @@
             options: {
                 responsive: true, // Instruct chart js to respond nicely.
                 maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+				 tooltips: {
+					callbacks: {
+					label: function(tooltipItem, data) {
+					
+                    var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					value = value.replace(/(\d)(?=(\d\d)+\d$)/g, "$1,");
+					//value =  value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                     return data.datasets[tooltipItem.datasetIndex].label + ' : ' + value;
+                           
+						}
+					} // end callbacks:
+					},
                 scales: {
                     xAxes: [{
                             scaleLabel: {
@@ -193,7 +207,17 @@
                 },
                legend :{
                  position: 'bottom'
-               },             
+               }, 
+			annotation: {
+				annotations: [{
+					type: 'line',
+					mode: 'horizontal',
+					scaleID: 'y-axis-0',
+					value: '100',
+					borderColor: 'red',
+					borderWidth: 2
+				}]
+			}
             }
         });
 
