@@ -40,13 +40,13 @@
       <div class="collapse navbar-collapse " id="navbarNavDropdown">
         <ul class="nav nav-pills ml-auto justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="monitoring.html#Methods">Methods</a>
+            <a class="nav-link" href="Monitoring.html#Methods">Methods</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="monitoring.html#Introduction">Introduction</a>
+            <a class="nav-link" href="Monitoring.html#Introduction">Introduction</a>
           </li>
           <li class="nav-item dropdown" style="z-index: 100;">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="monitoring.html#" role="button" aria-haspopup="true" aria-expanded="false">State Monitoring</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="Monitoring.html#" role="button" aria-haspopup="true" aria-expanded="false">State Monitoring</a>
             <div class="dropdown-menu" id="State_Monitoring_dropdown_menu">
             </div>
           </li>
@@ -54,7 +54,7 @@
             <a class="nav-link" href="hmis.html">HMIS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="monitoring.html#Feedback">Feedback</a>
+            <a class="nav-link" href="Monitoring.html#Feedback">Feedback</a>
           </li>
         </ul>
       </div>
@@ -300,7 +300,7 @@
       {
         if(json.feed.entry[i].gsx$states.$t!="")
         {
-          var droplist = '<a class="dropdown-item" href="monitoring.html#'+json.feed.entry[i].gsx$statecode.$t+'">'+json.feed.entry[i].gsx$states.$t+'</a>';
+          var droplist = '<a class="dropdown-item" href="Monitoring.html#'+json.feed.entry[i].gsx$statecode.$t+'">'+json.feed.entry[i].gsx$states.$t+'</a>';
           $(droplist).appendTo("#State_Monitoring_dropdown_menu");
         }
       }
