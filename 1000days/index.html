@@ -193,7 +193,8 @@
             hp2:json.feed.entry[i].gsx$hp2.$t,
             hp3:json.feed.entry[i].gsx$hp3.$t,
             question_text:json.feed.entry[i].gsx$questiontext.$t,
-            condition:json.feed.entry[i].gsx$condition.$t
+            condition:json.feed.entry[i].gsx$condition.$t,
+            skip:json.feed.entry[i].gsx$skip.$t
           });
         }
       }
@@ -211,6 +212,14 @@
       function nextquestion()
       {
         q_no++;
+        if(google_json[q_no].skip=="")
+        {          
+        }
+        else
+        {
+            q_no=parseInt(google_json[q_no].skip);
+        }
+
         if (q_no>0)
         {
           if (option_no==1)
