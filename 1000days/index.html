@@ -133,17 +133,17 @@
                 <tr>
                   <td id="option1" >
                     <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(1)" id="option1_text">
-                      Rush to the nearest bus depot which is heavily crowded and try to find an inter-state bus
+                      Option1
                     </div>
                   </td>
                   <td id="option2">
                     <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(2)" id="option2_text">
-                      Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
+                      Option2
                     </div>
                   </td>
                   <td id="option3">
                     <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(3)" id="option3_text">
-                      Pay a cargo Truck driver to let him go onboard. (You would be lending Rs.500 to him)
+                      Option3
                     </div>
                   </td>
                 </tr>
@@ -192,7 +192,8 @@
             hp1:json.feed.entry[i].gsx$hp1.$t,
             hp2:json.feed.entry[i].gsx$hp2.$t,
             hp3:json.feed.entry[i].gsx$hp3.$t,
-            question_text:json.feed.entry[i].gsx$questiontext.$t
+            question_text:json.feed.entry[i].gsx$questiontext.$t,
+            condition:json.feed.entry[i].gsx$condition.$t
           });
         }
       }
@@ -253,18 +254,26 @@
       function optionclick(option_number)
       {
         option_no=option_number;
-        if(option_number==1)
+        if(google_json[q_no].condition=="")
         {
-          $("#modal-body").html(google_json[q_no].result1body+"<br><br>"+google_json[q_no].result1scoretext);
+          if(option_number==1)
+          {
+            $("#modal-body").html(google_json[q_no].result1body+"<br><br>"+google_json[q_no].result1scoretext);
+          }
+          else if(option_number==2)
+          {
+            $("#modal-body").html(google_json[q_no].result2body+"<br><br>"+google_json[q_no].result2scoretext);
+          }
+          else if(option_number==3)
+          {
+            $("#modal-body").html(google_json[q_no].result3body+"<br><br>"+google_json[q_no].result3scoretext);
+          }
         }
-        else if(option_number==2)
+        else
         {
-          $("#modal-body").html(google_json[q_no].result2body+"<br><br>"+google_json[q_no].result2scoretext);
+
         }
-        else if(option_number==3)
-        {
-          $("#modal-body").html(google_json[q_no].result3body+"<br><br>"+google_json[q_no].result3scoretext);
-        }
+
       }
 
       var hb_min=5;var hb_max=12;
