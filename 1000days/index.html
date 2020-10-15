@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- JavaScript and dependencies -->
-    <!--script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script-->
-    <meta http-equiv="refresh" content="3000">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!--script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
     <script src="index.js"></script-->
+    <meta http-equiv="refresh" content="3000">
     <meta charset="utf-8">
     <title>1000-Days</title>
   </head>
@@ -87,7 +84,7 @@
                 </div>
               </div>
               <div class="col-12" style="padding-bottom: 3%;padding-top: 3%;">
-                <center><button type="button" class="btn btn-primary btn-sm" style="border-radius: 10px;">Exchange Health Points for Hb, Weight and Money</button></center>
+                <center><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ExchangeModal" style="border-radius: 10px;">Exchange Health Points for Hb, Weight and Money</button></center>
               </div>
             </div>
         </div>
@@ -125,7 +122,15 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body" >
-                  <center><div id="modal-body"></div></center>
+                  <center>
+                    <div id="modal-body">
+                      <button onclick="" type="button" class="btn btn-danger" data-dismiss="">Exchange</button>
+                      <button class="btn btn-primary">
+                        <span class="spinner-border spinner-border-sm"></span>
+                        Loading..
+                      </button>
+                    </div>
+                  </center>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer d-block">
@@ -334,7 +339,6 @@
       }
 
     </script>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script src="https://spreadsheets.google.com/feeds/list/1Gwf9xzAAZY3gnXmgnCUSkvC5xZSJ7LQCZ3AvBk0tPEQ/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
 
     <style>
