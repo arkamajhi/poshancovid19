@@ -77,7 +77,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row" style="padding-bottom: 3%;">
+              <div class="row">
                 <div class="col-5">
                   Health Points
                 </div>
@@ -87,12 +87,15 @@
                   </div>
                 </div>
               </div>
+              <div class="col-12" style="padding-bottom: 1%;padding-top: 1%;">
+                <center><button type="button" class="btn btn-primary btn-lg">Exchange</button></center>
+              </div>
             </div>
         </div>
 
         <div class="container">
           <!-- The Modal -->
-          <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+          <div class="modal" id="ResultModal" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <!-- Modal Header -->
@@ -106,6 +109,29 @@
                 <div class="modal-footer d-block">
                   <div class="text-center">
                     <button onclick="nextquestion()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <!-- The Modal -->
+          <div class="modal" id="ExchangeModal" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body" >
+                  <center><div id="modal-body"></div></center>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer d-block">
+                  <div class="text-center">
+                    <button onclick="" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                   </div>
                 </div>
               </div>
@@ -132,17 +158,17 @@
               <tbody>
                 <tr>
                   <td id="option1" >
-                    <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(1)" id="option1_text">
+                    <div class="option-card" data-toggle="modal" data-target="#ResultModal" onclick="optionclick(1)" id="option1_text">
                       Option1
                     </div>
                   </td>
                   <td id="option2">
-                    <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(2)" id="option2_text">
+                    <div class="option-card" data-toggle="modal" data-target="#ResultModal" onclick="optionclick(2)" id="option2_text">
                       Option2
                     </div>
                   </td>
                   <td id="option3">
-                    <div class="option-card" data-toggle="modal" data-target="#myModal" onclick="optionclick(3)" id="option3_text">
+                    <div class="option-card" data-toggle="modal" data-target="#ResultModal" onclick="optionclick(3)" id="option3_text">
                       Option3
                     </div>
                   </td>
@@ -213,7 +239,7 @@
       {
         q_no++;
         if(google_json[q_no].skip=="")
-        {          
+        {
         }
         else
         {
