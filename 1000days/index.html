@@ -126,8 +126,8 @@
                   <center>
                     <div id="modal-body">
 
-                      <div class="" style="padding-bottom:2%">
-                        <button onclick='show("Hb_loading")' type="button" class="btn btn-primary" data-dismiss="">
+                      <div id="Hb_exchange" class="" style="padding-bottom:2%">
+                        <button type="button" class="btn btn-primary" data-dismiss="">
                           <div class="container">
                             <div class="">1 Health Point = 1 Hb level (mg/dL)</div>
                             <div class="spinner-border spinner-border-sm" id = "Hb_loading" style="display:none"></div>
@@ -135,8 +135,8 @@
                         </button>
                       </div>
 
-                      <div class="" style="padding-bottom:2%">
-                        <button onclick='show("Wt_loading")' type="button" class="btn btn-primary" data-dismiss="">
+                      <div id="Wt_exchange" class="" style="padding-bottom:2%">
+                        <button type="button" class="btn btn-primary" data-dismiss="">
                           <div class="container">
                             <div class="">1 Health Point = 1kg (Weight)</div>
                             <div class="spinner-border spinner-border-sm" id = "Wt_loading" style="display:none"></div>
@@ -144,16 +144,35 @@
                         </button>
                       </div>
 
-                      <div class="" style="padding-bottom:2%">
-                        <button onclick='show("Money_loading")' type="button" class="btn btn-primary" data-dismiss="">
+                      <div id="Mo_exchange" class="" style="padding-bottom:2%">
+                        <button type="button" class="btn btn-primary" data-dismiss="">
                           <div class="container">
                             <div class="">1 Health Point = ₹ 100 (Money)</div>
-                            <div class="spinner-border spinner-border-sm" id = "Money_loading" style="display:none"></div>
+                            <div class="spinner-border spinner-border-sm" id = "Mo_loading" style="display:none"></div>
                           </div>
                         </button>
                       </div>
 
+                      <div class="" id="HP_left">
+                      </div>
+
                       <script type = "text/javascript">
+                      $("#Hb_exchange").bind("click", function() {
+                        show("Hb_loading");
+                        if(hb<hb_max&&hp>0)
+                          update_scores(1,0,0,-1); //update_scores(new_hb,new_wt,new_mo,new_hp)
+                      });
+                      $("#Wt_exchange").bind("click", function() {
+                        show("Wt_loading");
+                        if(wt<wt_max&&hp>0)
+                          update_scores(0,1,0,-1); //update_scores(new_hb,new_wt,new_mo,new_hp)
+                      });
+                      $("#Mo_exchange").bind("click", function() {
+                        show("Mo_loading");
+                        if(mo<mo_max&&hp>0)
+                          update_scores(0,0,100,-1); //update_scores(new_hb,new_wt,new_mo,new_hp)
+                      });
+
                       var spin;
                       function show(a) {
                           spin=document.getElementById(a);
@@ -372,6 +391,8 @@
         $("#wt-bar").text(wt);
         $("#mo-bar").text(mo);
         $("#hp-bar").text(hp);
+
+        $("#HP_left").text(hp + " Health Points Left");
       }
 
     </script>
