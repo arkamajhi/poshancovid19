@@ -376,12 +376,12 @@
         $("#mo-bar").css("width", ((((mo-mo_min)*100)/(mo_max-mo_min)).toString()+"%"));
         $("#hp-bar").css("width", ((((hp-hp_min)*100)/(hp_max-hp_min)).toString()+"%"));
 
-        $("#hb-bar").text(hb);
-        $("#wt-bar").text(wt);
-        $("#mo-bar").text(mo);
-        $("#hp-bar").text(hp);
+        $("#hb-bar").html(hb);
+        $("#wt-bar").html(wt);
+        $("#mo-bar").html(mo);
+        $("#hp-bar").html(hp);
 
-        $("#HP_left").text(hp + " Health Points Left");
+        $("#HP_left").html(hp + " Health Points Left");
       }
 
     </script>
