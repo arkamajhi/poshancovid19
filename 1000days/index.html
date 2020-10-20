@@ -342,7 +342,7 @@
       function optionclick(option_number)
       {
         option_no=option_number;
-        if(google_json[q_no].condition=="")
+        if(google_json[q_no-1].condition=="")
         {
           if(option_number==1)
           {
@@ -357,9 +357,31 @@
             $("#modal-body").html(google_json[q_no-1].result3body+"<br><br>"+google_json[q_no-1].result3scoretext);
           }
         }
+        else if(google_json[q_no-1].condition=="hb")
+        {
+          var body="<table><thead><tr><td>Hemoglobin Level</td><td>Anemia Severity</td></tr></thead><tbody><tr><td>More than 12</td><td>Anemia free</td></tr><tr><td>11-12</td><td>Mild Anemia</td></tr><tr><td>10-11</td><td>Medium Anemia</td></tr><tr><td>9 and less</td><td>Severe Anemia</td></tr></tbody></table>";
+          body+="Your current hemoglobin level is : "+hb+"<br>";
+          if(option_number==1)
+          {
+            body+=(hb>=12?"Right Answer <br> 1 Health Point increased":"Wrong Answer <br> 1 Health Point decreased");
+          }
+          else if(option_number==2)
+          {
+            body+=(hb>=11&&hb<12?"Right Answer <br> 1 Health Point increased":"Wrong Answer <br> 1 Health Point decreased");
+          }
+          else if(option_number==3)
+          {
+            body+=(hb>=10&&hb<11?"Right Answer <br> 1 Health Point increased":"Wrong Answer <br> 1 Health Point decreased");
+          }
+          else if(option_number==4)
+          {
+            body+=(hb<10?"Right Answer <br> 1 Health Point increased":"Wrong Answer <br> 1 Health Point decreased");
+          }
+          $("#modal-body").html(body);
+        }
       }
 
-      var hb_min=5;var hb_max=12;
+      var hb_min=5;var hb_max=13;
       var wt_min=0;var wt_max=100;
       var mo_min=0;var mo_max=6000;
       var hp_min=0;var hp_max=10;
