@@ -8,7 +8,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
     <title>HMIS Data-Visualization</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+  
     <style>
         .bd-placeholder-img {
           font-size: 1.125rem;
@@ -18,7 +18,7 @@
           -ms-user-select: none;
           user-select: none;
         }
-
+  
         @media (min-width: 768px) {
           .bd-placeholder-img-lg {
             font-size: 3.5rem;
@@ -26,40 +26,9 @@
         }
       </style>
       <!-- Custom styles for this template -->
-      <!--link href="dashboard.css" rel="stylesheet"-->
+      <link href="dashboard.css" rel="stylesheet">
     </head>
   <body>
-    <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-header navbar-inverse navbar-light bg-light sticky-top " >
-      <a class="nav-link" href="Monitoring.html#">POSHAN COVID-19</a>
-      <a class="navbar-brand badge  badge-secondary" href="https://poshancovid19.in/Resources.html"><h6 style="color:white; padding-left:5px;padding-right:5px;">Resources</h6></a>
-      <a class="navbar-brand badge  badge-primary" href="Monitoring.html#"><h6 style="color:white; padding-left:5px;padding-right:5px;">Monitoring</h6></a>
-
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse " id="navbarNavDropdown">
-        <ul class="nav nav-pills ml-auto justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link" href="Monitoring.html#Methods">Methods</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Monitoring.html#Introduction">Introduction</a>
-          </li>
-          <li class="nav-item dropdown" style="z-index: 100;">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="Monitoring.html#" role="button" aria-haspopup="true" aria-expanded="false">State Monitoring</a>
-            <div class="dropdown-menu" id="State_Monitoring_dropdown_menu">
-            </div>
-          </li>
-          <li class="nav-item">
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            <a class="nav-link" href="hmis.html">HMIS<i class="material-icons" style="font-size:25px;color:red">&#xe05e;</i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Monitoring.html#Feedback">Feedback</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
     <nav class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 h1" href="#">HMIS Data</a>
         <ul class="navbar-nav px-3">
@@ -81,7 +50,7 @@
               <option value="pifap">Percent of pregnant women (PW) given 180 Iron and Folic Acid (IFA) tablets</option>
           </select>
           </li>
-        </ul>
+        </ul>  		
     </nav>
       <div class="container-fluid">
         <div class="row">
@@ -94,17 +63,17 @@
                     Select State <span class="sr-only">(current)</span>
                   </a>
                 </li>
-               </ul>
+               </ul> 
                 <select id="state_select" multiple style="width: 200px; height:70vh;"> State </select>
                 <button id="selectAll" onclick="selectAll()">Select All</button>
-                <button id="submit" onclick="submitButton()">Submit</button>
+                <button id="submit" onclick="submitButton()">Submit</button>                   
             </div>
           </nav>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 id= "chart_heading" class="h3">Child immunisation - Vitamin A Dose - 1</h1>
-            </div>
-          <div id="canvas_div"><canvas id="chart_canvas" height="500px" width=""></canvas></div>
+            </div>      
+          <div id="canvas_div"><canvas id="chart_canvas" height="500px" width=""></canvas></div> 
 
   <script>
     var data_from_sheets;
@@ -162,7 +131,7 @@
           ab.push({
             label: st[(2*n)+2], // Name the series
             data: st[(2*n)+1],
-            borderColor: [bcolor],
+            borderColor: [bcolor],          	
             borderWidth: 2,
             backgroundColor: ['rgb(0,0,0,0)',
                               'rgb(0,0,0,1)',
@@ -191,7 +160,7 @@
             labels: st[0],
             datasets: ab
         };
-
+		
         var oldcanv = document.getElementById("chart_canvas");
         var canvas_div = document.getElementById("canvas_div");
         canvas_div.removeChild(oldcanv)
@@ -200,24 +169,24 @@
         canv.id = "chart_canvas";
         canv.height = 500;
         canvas_div.appendChild(canv);
-		console.log(data , "data");
-
-        var ctx = document.getElementById("chart_canvas").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: data,
-            options: {
+		console.log(data , "data123"); 
+		var percentOptions = ["vitadp","bf1p","cifap","gifap","pifap"];
+		var checkVal = percentOptions.includes(option_selected.value);
+		var options;
+		if(checkVal)
+		{
+		options ={
                 responsive: true, // Instruct chart js to respond nicely.
                 maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
 				 tooltips: {
 					callbacks: {
 					label: function(tooltipItem, data) {
-
+					
                     var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
 					value = value.replace(/(\d)(?=(\d\d)+\d$)/g, "$1,");
 					//value =  value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                      return data.datasets[tooltipItem.datasetIndex].label + ' : ' + value;
-
+                           
 						}
 					} // end callbacks:
 					},
@@ -238,9 +207,11 @@
                 },
                legend :{
                  position: 'bottom'
-               },
+               }, 
+			
 			annotation: {
-				annotations: [{
+				annotations:			
+				[{	
 					type: 'line',
 					mode: 'horizontal',
 					scaleID: 'y-axis-0',
@@ -249,12 +220,62 @@
 					borderWidth: 2
 				}]
 			}
-            }
-        });
+			
+			}
+		}
+		else{
+		options ={
+                responsive: true, // Instruct chart js to respond nicely.
+                maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height
+				 tooltips: {
+					callbacks: {
+					label: function(tooltipItem, data) {
+					
+                    var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+					value = value.replace(/(\d)(?=(\d\d)+\d$)/g, "$1,");
+					//value =  value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                     return data.datasets[tooltipItem.datasetIndex].label + ' : ' + value;
+                           
+						}
+					} // end callbacks:
+					},
+                scales: {
+                    xAxes: [{
+                            scaleLabel: {
+                            display: true,
+                            labelString: 'Month-Year'
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            stacked: true,
+                            display: true,
+                            labelString: lb[option_selected.value.trim()]
+                        }
+                    }]
+                },
+               legend :{
+                 position: 'bottom'
+               }
+			
+			}
+		
+		
+		}
 
-        return myChart;
+        var ctx = document.getElementById("chart_canvas").getContext('2d');
+		console.log("ctx", ctx.dataIndex);
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: options
+			});
+             return myChart;     
+  
     }
 
+
+	
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
@@ -291,28 +312,9 @@
     xhttp.open("GET", "https://spreadsheets.google.com/feeds/list/1IotKAZd1P533bipKASkZM6hsdM5erLXhXP6l5-TLeLc/od6/public/full?alt=json", false);
     xhttp.send();
   </script>
-
-  <script type="text/javascript">
-  function display(json)
-  {
-    if(json.feed.entry[0].gsx$type.$t=="RP")
-    {
-      for (var i=0; i<100; i++)
-      {
-        if(json.feed.entry[i].gsx$states.$t!="")
-        {
-          var droplist = '<a class="dropdown-item" href="Monitoring.html#'+json.feed.entry[i].gsx$statecode.$t+'">'+json.feed.entry[i].gsx$states.$t+'</a>';
-          $(droplist).appendTo("#State_Monitoring_dropdown_menu");
-        }
-      }
-    }
-  }
-  </script>
-
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
-    <script src="https://spreadsheets.google.com/feeds/list/1g2oVLFDNJ6C4PXhLyaiy8vdc9K1EV76aCpbAfn7ar-M/2/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
   </body>
 </html>
