@@ -10,21 +10,31 @@
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
     <script src="index.js"></script-->
-    <meta http-equiv="refresh" content="3000">
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <!--meta http-equiv="refresh" content="3000"-->
     <meta charset="utf-8">
     <title>1000-Days</title>
   </head>
   <body>
 
-    <!--div class="">
-      <input id="email_field" type="email" placeholder="Email.." name="" value="">
-      <input id="pass_field" type="password" placeholder="Password.." name="" value="">
-      <button onclick="signup()" type="button" name="button">Sign Up</button>
-      <button onclick="signin()" type="button" name="button">Log In</button>
-      <button onclick="signout()" type="button" name="button">Log Out</button>
-    </div-->
-
-    <!-- Flexbox container for aligning the toasts -->
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCBKceXhch9H69RUxsoCHzwq3uia7bme2o",
+        authDomain: "test-adab6.firebaseapp.com",
+        databaseURL: "https://test-adab6.firebaseio.com",
+        projectId: "test-adab6",
+        storageBucket: "test-adab6.appspot.com",
+        messagingSenderId: "1017082139799",
+        appId: "1:1017082139799:web:8247b5e8d36d8e6f3745d2",
+        measurementId: "G-1XZM5HKBLL"
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      console.log(firebase);
+    </script>
 
     <div class=""> <!--d-none d-md-block hide on screens smaller than md-->
 
@@ -33,6 +43,195 @@
     <div class="row"> <!-- d-md-none hide on screens starting from md-->
 
       <div class="col-lg-12 col-md-12 col-xs-12">
+
+        <div class="container">
+          <!-- The Modal -->
+          <div class="modal" id="LoginModal" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  Welcome to the 1000 days game
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body" >
+                  <div id="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="exampleInputName">Enter your Name</label>
+                        <input type="name" class="form-control" id="InputName" placeholder="Your Name">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Enter your mobile number</label>
+                        <input type="email" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Your mobile number">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your mobile number with anyone else.</small>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer d-block">
+                  <div class="text-center">
+                    <button onclick="save_name_number()" type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          var name,number,myref,connectref,reqref;
+          var request=[];
+          function save_name_number()
+          {
+            name=document.getElementById('InputName').value;
+            number=document.getElementById('InputNumber').value;
+            //alert(name+","+number);
+            $("#ConnectModal").modal("show");
+            myref=firebase.database().ref(number);
+          }
+
+          function OpenCreateRoom()
+          {
+            $("#CreateRoomModal").modal("show");
+            myref.update({Name:name, Number:number, Source:1, Searching:1, Connected:0, RequestName:"", RequestNumber:0, ConnectNumber:0});
+          }
+
+          function OpenConnectRoom()
+          {
+            $("#ConnectRoomModal").modal("show");
+            myref.update({Name:name, Number:number, Source:0, Searching:1, Connected:0, RequestName:"", RequestNumber:0, ConnectNumber:0});
+            firebase.database().ref().on('value',GotData,ErrorData);
+          }
+
+          function GotData(data)
+          {
+            var PlayersObject=data.val();
+            var Players=Object.keys(PlayersObject);
+            //console.log(Players);
+            var AvailablePlayers="";
+            for(var i = 0; i<Players.length; i++)
+            {
+              LoopPlayer=PlayersObject[Players[i]];
+              if(LoopPlayer.Source==1&&LoopPlayer.Searching==1&&LoopPlayer.Connected==0)
+              {
+                AvailablePlayers+='<br><button onclick="RequestRoom('+LoopPlayer.Number+')" type="button" class="btn btn-danger">'+LoopPlayer.Name+'</button><br>';
+                //console.log(LoopPlayer.Number);
+              }
+            }
+            $("#Players_Join_Buttons").html(AvailablePlayers);
+
+
+          }
+
+          function RequestRoom(Number)
+          {
+            reqref=firebase.database().ref(Number)
+            reqref.update({RequestNumber:number, RequestName:name});
+            request.push(Number);
+            //console.log(request);
+          }
+          function ConnectRoom(Number)
+          {
+            myref.update({ConnectNumber:Number, Searching:0, Connected:1});
+            connectref=firebase.database().ref(Number);
+            connectref.update({ConnectNumber:number, ConnectName:name, Searching:0, Connected:1});
+            $('#CreateRoomModal').modal('hide');
+          }
+          function ErrorData(err)
+          {
+            console.log("Error");
+            console.log(err);
+          }
+
+          firebase.database().ref().on('value',UpdatedSomething);
+          function UpdatedSomething()
+          {
+            //alert("Something Updated");
+            myref.on('value',function(snapshot){
+              var connected=snapshot.val().Connected;
+              if(connected==1)
+              {
+                myref.update({RequestNumber:0, RequestName:""});
+                $("#Accept_Player").html("");
+                for(var i=0;i<request.length;i++)
+                {
+                  firebase.database().ref(request[i]).update({RequestNumber:0, RequestName:""});
+                }
+                request=[];
+                $('#ConnectRoomModal').modal('hide');
+              }
+
+              var reqno=snapshot.val().RequestNumber;
+              var reqname=snapshot.val().RequestName;
+
+              if(reqno>0)
+              {
+                $("#Accept_Player").html("<br>"+reqname+" sent you a play request <br>");
+                $("#Accept_Player").append('<button onclick="ConnectRoom('+reqno+')" type="button" class="btn btn-danger">Join</button>');
+              }
+              else
+              {
+                  $("#Accept_Player").html("");
+              }
+            },ErrorData);
+          }
+        </script>
+
+        <div class="container">
+          <!-- The Modal -->
+          <div class="modal" id="ConnectModal" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-footer d-block">
+                  <div class="text-center">
+                    <button onclick="OpenCreateRoom()" type="button" class="btn btn-danger" data-dismiss="modal">Create a new room</button>
+                    <button onclick="OpenConnectRoom()" type="button" class="btn btn-danger" data-dismiss="modal">Connect to a room</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="container">
+          <!-- The Modal -->
+          <div class="modal" id="CreateRoomModal" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-footer d-block">
+                  <div class="text-center">
+                    Waiting for a player to join
+                    <div class="container" id="Accept_Player">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <!-- The Modal -->
+          <div class="modal" id="ConnectRoomModal" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-footer d-block">
+                  <div class="text-center">
+                    Click on the player to join
+                    <div class="container" id="Players_Join_Buttons">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="container text-right h7 font-weight-bold" style="padding-bottom: 2%;padding-top: 2%;">
           <div class="cardss" style="">
@@ -289,6 +488,7 @@
       var option_no=0;
       window.addEventListener('load', (event) =>
       {
+        $("#LoginModal").modal("show");
         nextquestion();
       });
 
