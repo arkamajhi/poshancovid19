@@ -132,15 +132,14 @@
             reqref=firebase.database().ref(Number)
             reqref.update({RequestNumber:number, RequestName:name});
             request.push(Number);
-            console.log(request);
+            //console.log(request);
           }
-          var connectednumber;
           function ConnectRoom(Number)
           {
             myref.update({ConnectNumber:Number, Searching:0, Connected:1});
             connectref=firebase.database().ref(Number);
             connectref.update({ConnectNumber:number, ConnectName:name, Searching:0, Connected:1});
-            connectednumber=Number;
+            $('#CreateRoomModal').modal('hide');
           }
           function ErrorData(err)
           {
@@ -163,6 +162,7 @@
                   firebase.database().ref(request[i]).update({RequestNumber:0, RequestName:""});
                 }
                 request=[];
+                $('#ConnectRoomModal').modal('hide');
               }
 
               var reqno=snapshot.val().RequestNumber;
@@ -177,7 +177,6 @@
               {
                   $("#Accept_Player").html("");
               }
-
             },ErrorData);
           }
         </script>
