@@ -130,7 +130,7 @@
           function RequestRoom(Number)
           {
             reqref=firebase.database().ref(Number)
-            reqref.update({RequestNumber:number, RequestName:name});
+            reqref.update({RequestNumber:number, RequestName:name, ConnectName:name});
             request.push(Number);
             //console.log(request);
           }
@@ -140,10 +140,11 @@
             connectref=firebase.database().ref(Number);
             connectref.update({ConnectNumber:number, ConnectName:name, Searching:0, Connected:1});
             $('#CreateRoomModal').modal('hide');
+            nextquestion();
           }
-          function LeaveRoom(Number)
+          function LeaveRoom()
           {
-            myref.update({RequestNumber:0, RequestName:""});
+            myref.update({RequestNumber:0, RequestName:"", ConnectName:""});
           }
           function ErrorData(err)
           {
@@ -155,8 +156,10 @@
           function UpdatedSomething()
           {
             //alert("Something Updated");
-            myref.on('value',function(snapshot){
-              var connected=snapshot.val().Connected;
+            myref.on('value',function(P1snapshot)
+            {
+              $("#Player1Name").html(P1snapshot.val().Name);
+              var connected=P1snapshot.val().Connected;
               if(connected==1)
               {
                 myref.update({RequestNumber:0, RequestName:""});
@@ -169,18 +172,28 @@
                 $('#ConnectRoomModal').modal('hide');
               }
 
-              var reqno=snapshot.val().RequestNumber;
-              var reqname=snapshot.val().RequestName;
+              var reqno=P1snapshot.val().RequestNumber;
+              var reqname=P1snapshot.val().RequestName;
 
               if(reqno>0)
               {
                 $("#Accept_Player").html("<br>"+reqname+" sent you a play request <br><br>");
                 $("#Accept_Player").append('<button onclick="ConnectRoom('+reqno+')" type="button" class="btn btn-danger">Join</button> &nbsp;&nbsp;&nbsp;&nbsp;');
-                $("#Accept_Player").append('<button onclick="LeaveRoom('+reqno+')" type="button" class="btn btn-danger">Leave</button>');
+                $("#Accept_Player").append('<button onclick="LeaveRoom()" type="button" class="btn btn-danger">Leave</button>');
               }
               else
               {
                   $("#Accept_Player").html("");
+              }
+            },ErrorData);
+
+            connectref.on('value',function(P2snapshot)
+            {
+              var connected=P2snapshot.val().Connected;
+              if(connected==1)
+              {
+                $("#Player2Name").html(P2snapshot.val().Name);
+                update_scoresP2(P2snapshot.val().hb,P2snapshot.val().wt,P2snapshot.val().mo,P2snapshot.val().hp);
               }
             },ErrorData);
           }
@@ -250,10 +263,10 @@
               <div class="row">
                 <div class="col-5">
                 </div>
-                <div class="col-3 text-center playertext">
+                <div id="Player1Name" class="col-3 text-center playertext">
                   Player 1
                 </div>
-                <div class="col-3 text-center playertext">
+                <div id="Player2Name" class="col-3 text-center playertext">
                   Player 2
                 </div>
               </div>
@@ -263,12 +276,12 @@
                 </div>
                 <div class="col-3">
                   <div class="progress">
-                    <div id="hb-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
+                    <div id="hb-barP1" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
                   </div>
                 </div>
                 <div class="col-3">
                   <div class="progress">
-                    <div id="hb-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
+                    <div id="hb-barP2" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
                   </div>
                 </div>
               </div>
@@ -278,12 +291,12 @@
                 </div>
                 <div class="col-3">
                   <div class="progress">
-                    <div id="wt-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
+                    <div id="wt-barP1" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
                   </div>
                 </div>
                 <div class="col-3">
                   <div class="progress">
-                    <div id="wt-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
+                    <div id="wt-barP2" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
                   </div>
                 </div>
               </div>
@@ -293,12 +306,12 @@
                 </div>
                 <div class="col-3">
                   <div class="progress">
-                    <div id="mo-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
+                    <div id="mo-barP1" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
                   </div>
                 </div>
                 <div class="col-3">
                   <div class="progress">
-                    <div id="mo-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
+                    <div id="mo-barP2" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;"></div>
                   </div>
                 </div>
               </div>
@@ -308,12 +321,12 @@
                 </div>
                 <div class="col-3">
                   <div class="progress">
-                    <div id="hp-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id="hp-barP1" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
                 <div class="col-3">
                   <div class="progress">
-                    <div id="hp-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div id="hp-barP2" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
@@ -394,17 +407,17 @@
                       $("#Hb_exchange").bind("click", function() {
                         show("Hb_loading");
                         if(hb<hb_max&&hp>0)
-                          update_scores(1,0,0,-1); //update_scores(new_hb,new_wt,new_mo,new_hp)
+                          update_scoresP1(1,0,0,-1); //update_scoresP1(new_hb,new_wt,new_mo,new_hp)
                       });
                       $("#Wt_exchange").bind("click", function() {
                         show("Wt_loading");
                         if(wt<wt_max&&hp>0)
-                          update_scores(0,1,0,-1); //update_scores(new_hb,new_wt,new_mo,new_hp)
+                          update_scoresP1(0,1,0,-1); //update_scoresP1(new_hb,new_wt,new_mo,new_hp)
                       });
                       $("#Mo_exchange").bind("click", function() {
                         show("Mo_loading");
                         if(mo<mo_max&&hp>0)
-                          update_scores(0,0,100,-1); //update_scores(new_hb,new_wt,new_mo,new_hp)
+                          update_scoresP1(0,0,100,-1); //update_scoresP1(new_hb,new_wt,new_mo,new_hp)
                       });
 
                       var spin;
@@ -524,7 +537,6 @@
       window.addEventListener('load', (event) =>
       {
         $("#LoginModal").modal("show");
-        nextquestion();
       });
 
 
@@ -534,15 +546,15 @@
         if (q_no>0)
         {
           if (option_no==1)
-            update_scores(google_json[q_no-1].hb1,google_json[q_no-1].wt1,google_json[q_no-1].mo1,google_json[q_no-1].hp1);
+            update_scoresP1(google_json[q_no-1].hb1,google_json[q_no-1].wt1,google_json[q_no-1].mo1,google_json[q_no-1].hp1);
           else if (option_no==2)
-            update_scores(google_json[q_no-1].hb2,google_json[q_no-1].wt2,google_json[q_no-1].mo2,google_json[q_no-1].hp2);
+            update_scoresP1(google_json[q_no-1].hb2,google_json[q_no-1].wt2,google_json[q_no-1].mo2,google_json[q_no-1].hp2);
           else if (option_no==3)
-            update_scores(google_json[q_no-1].hb3,google_json[q_no-1].wt3,google_json[q_no-1].mo3,google_json[q_no-1].hp3);
+            update_scoresP1(google_json[q_no-1].hb3,google_json[q_no-1].wt3,google_json[q_no-1].mo3,google_json[q_no-1].hp3);
         }
         else if (q_no==0)
         {
-          update_scores(10,40,1000,5); //update_scores(new_hb,new_wt,new_mo,new_hp)
+          update_scoresP1(10,40,1000,5); //update_scoresP1(new_hb,new_wt,new_mo,new_hp)
         }
 
         if(q_no<google_json.length)
@@ -621,24 +633,41 @@
       var mo_min=0;var mo_max=6000;
       var hp_min=0;var hp_max=10;
 
-      function update_scores(new_hb,new_wt,new_mo,new_hp)
+      function update_scoresP1(new_hb,new_wt,new_mo,new_hp)
       {
         hb = (((hb+parseFloat(new_hb))>hb_max)?(hb_max):(hb+parseFloat(new_hb)));
         wt = (((wt+parseFloat(new_wt))>wt_max)?(wt_max):(wt+parseFloat(new_wt)));
         mo = (((mo+parseFloat(new_mo))>mo_max)?(mo_max):(mo+parseFloat(new_mo)));
         hp = (((hp+parseFloat(new_hp))>hp_max)?(hp_max):(hp+parseFloat(new_hp)));
 
-        $("#hb-bar").css("width", ((((hb-hb_min)*100)/(hb_max-hb_min)).toString()+"%"));
-        $("#wt-bar").css("width", ((((wt-wt_min)*100)/(wt_max-wt_min)).toString()+"%"));
-        $("#mo-bar").css("width", ((((mo-mo_min)*100)/(mo_max-mo_min)).toString()+"%"));
-        $("#hp-bar").css("width", ((((hp-hp_min)*100)/(hp_max-hp_min)).toString()+"%"));
+        $("#hb-barP1").css("width", ((((hb-hb_min)*100)/(hb_max-hb_min)).toString()+"%"));
+        $("#wt-barP1").css("width", ((((wt-wt_min)*100)/(wt_max-wt_min)).toString()+"%"));
+        $("#mo-barP1").css("width", ((((mo-mo_min)*100)/(mo_max-mo_min)).toString()+"%"));
+        $("#hp-barP1").css("width", ((((hp-hp_min)*100)/(hp_max-hp_min)).toString()+"%"));
 
-        $("#hb-bar").html(hb);
-        $("#wt-bar").html(wt);
-        $("#mo-bar").html(mo);
-        $("#hp-bar").html(hp);
+        $("#hb-barP1").html(hb);
+        $("#wt-barP1").html(wt);
+        $("#mo-barP1").html(mo);
+        $("#hp-barP1").html(hp);
 
         $("#HP_left").html(hp + " Health Points Left");
+
+        try {
+          myref.update({hb:hb, wt:wt, mo:mo, hp:hp});
+        } catch (e) {}
+      }
+
+      function update_scoresP2(hbP2,wtP2,moP2,hpP2)
+      {
+        $("#hb-barP2").css("width", ((((hbP2-hb_min)*100)/(hb_max-hb_min)).toString()+"%"));
+        $("#wt-barP2").css("width", ((((wtP2-wt_min)*100)/(wt_max-wt_min)).toString()+"%"));
+        $("#mo-barP2").css("width", ((((moP2-mo_min)*100)/(mo_max-mo_min)).toString()+"%"));
+        $("#hp-barP2").css("width", ((((hpP2-hp_min)*100)/(hp_max-hp_min)).toString()+"%"));
+
+        $("#hb-barP2").html(hbP2);
+        $("#wt-barP2").html(wtP2);
+        $("#mo-barP2").html(moP2);
+        $("#hp-barP2").html(hpP2);
       }
 
     </script>
