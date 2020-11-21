@@ -131,8 +131,10 @@
           {
             reqref=firebase.database().ref(Number)
             reqref.update({RequestNumber:number, RequestName:name, ConnectName:name});
-            //request.push(Number);
+            request.push(Number); //Add the server number to the array of requests
             //console.log(request);
+             // There is a probability that this will be connected
+            connectref=firebase.database().ref(Number);
           }
 
           function ConnectRoom(Number)//Server Side. Update server and client
@@ -153,7 +155,9 @@
             console.log(err);
           }
 
-          firebase.database().ref().on('value',UpdatedSomething);
+           //****************This acts both on server and client side************************
+           firebase.database().ref().on('value',UpdatedSomething);
+           var count=0;
           function UpdatedSomething()
           {
             //alert("Something Updated");
@@ -169,8 +173,13 @@
                 {
                   firebase.database().ref(request[i]).update({RequestNumber:0, RequestName:""});
                 }
-                request=[];
+                request=[]; // Clear the array of server requests
                 $('#ConnectRoomModal').modal('hide');
+
+                if(count==0)
+                {
+                  nextquestion(); count++;
+                }
               }
 
               var reqno=P1snapshot.val().RequestNumber;
@@ -190,6 +199,7 @@
 
             connectref.on('value',function(P2snapshot)
             {
+              //alert("On client side");
               var connected=P2snapshot.val().Connected;
               if(connected==1)
               {
@@ -544,6 +554,7 @@
       var q_no=0;
       function nextquestion()
       {
+        //alert("Next Question triggered");
         if (q_no>0)
         {
           if (option_no==1)
@@ -556,6 +567,7 @@
         else if (q_no==0)
         {
           update_scoresP1(10,40,1000,5); //update_scoresP1(new_hb,new_wt,new_mo,new_hp)
+          alert("Score initialized");
         }
 
         if(q_no<google_json.length)
