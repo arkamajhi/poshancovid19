@@ -85,29 +85,31 @@
         <script>
           var name,number,myref,connectref,reqref;
           var request=[];
-          function save_name_number()
+
+          function save_name_number()//Save name and number in firebase
           {
             name=document.getElementById('InputName').value;
             number=document.getElementById('InputNumber').value;
             //alert(name+","+number);
             $("#ConnectModal").modal("show");
             myref=firebase.database().ref(number);
+            myref.update({Name:name, Number:number, Searching:1, Connected:0, RequestName:"", RequestNumber:0, ConnectNumber:0});
           }
 
-          function OpenCreateRoom()
+          function OpenCreateRoom()//For server
           {
             $("#CreateRoomModal").modal("show");
-            myref.update({Name:name, Number:number, Source:1, Searching:1, Connected:0, RequestName:"", RequestNumber:0, ConnectNumber:0});
+            myref.update({Source:1});
           }
 
-          function OpenConnectRoom()
+          function OpenConnectRoom()//For client Side
           {
             $("#ConnectRoomModal").modal("show");
-            myref.update({Name:name, Number:number, Source:0, Searching:1, Connected:0, RequestName:"", RequestNumber:0, ConnectNumber:0});
-            firebase.database().ref().on('value',GotData,ErrorData);
+            myref.update({Source:0});
+            firebase.database().ref().on('value',SearchServers,ErrorData);
           }
 
-          function GotData(data)
+          function SearchServers(data)//For client Side
           {
             var PlayersObject=data.val();
             var Players=Object.keys(PlayersObject);
@@ -123,24 +125,23 @@
               }
             }
             $("#Players_Join_Buttons").html(AvailablePlayers);
-
-
           }
 
-          function RequestRoom(Number)
+          function RequestRoom(Number)//Client side. Poke server to join
           {
             reqref=firebase.database().ref(Number)
             reqref.update({RequestNumber:number, RequestName:name, ConnectName:name});
-            request.push(Number);
+            //request.push(Number);
             //console.log(request);
           }
-          function ConnectRoom(Number)
+
+          function ConnectRoom(Number)//Server Side. Update server and client
           {
             myref.update({ConnectNumber:Number, Searching:0, Connected:1});
             connectref=firebase.database().ref(Number);
             connectref.update({ConnectNumber:number, ConnectName:name, Searching:0, Connected:1});
             $('#CreateRoomModal').modal('hide');
-            nextquestion();
+            //nextquestion();
           }
           function LeaveRoom()
           {
