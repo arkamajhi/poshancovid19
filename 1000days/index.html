@@ -165,7 +165,8 @@
             {
               $("#Player1Name").html(P1snapshot.val().Name);
               var connected=P1snapshot.val().Connected;
-              if(connected==1)
+              var source=P1snapshot.val().Source;
+              if(connected==1) //Only for client
               {
                 myref.update({RequestNumber:0, RequestName:""});
                 $("#Accept_Player").html("");
@@ -178,8 +179,19 @@
 
                 if(count==0)
                 {
-                  nextquestion(); count++;
+                  alert("count = 0");
+
                 }
+              }
+
+              if(source==0)
+              {
+                //nextquestion(); count++;
+              }
+
+              if(source==1)
+              {
+                //nextquestion(); count++;
               }
 
               var reqno=P1snapshot.val().RequestNumber;
@@ -554,7 +566,7 @@
       var q_no=0;
       function nextquestion()
       {
-        //alert("Next Question triggered");
+        alert("Next Question triggered");
         if (q_no>0)
         {
           if (option_no==1)
@@ -566,8 +578,8 @@
         }
         else if (q_no==0)
         {
-          update_scoresP1(10,40,1000,5); //update_scoresP1(new_hb,new_wt,new_mo,new_hp)
           alert("Score initialized");
+          update_scoresP1(10,40,1000,5); //update_scoresP1(new_hb,new_wt,new_mo,new_hp)
         }
 
         if(q_no<google_json.length)
