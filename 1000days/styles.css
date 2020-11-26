@@ -47,9 +47,7 @@
 
   .option-card:hover
   {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    background-color: #777;
-    color: white;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 
   .option-card-clicked
