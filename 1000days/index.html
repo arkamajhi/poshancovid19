@@ -32,9 +32,11 @@
       firebase.analytics();
       //console.log(firebase);
     </script>
+    <script src="connect.js"></script>
     <script src="index.js"></script>
     <script src="questions_load.js"></script>
     <script src="https://spreadsheets.google.com/feeds/list/1Gwf9xzAAZY3gnXmgnCUSkvC5xZSJ7LQCZ3AvBk0tPEQ/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+    <script src="exchange_points.js"></script>
     <title>1000 Days</title>
   </head>
   <body>
@@ -203,137 +205,136 @@
                 <center><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ExchangeModal" style="border-radius: 10px;">Exchange Health Points for Hb, Weight and Money</button></center>
               </div>
             </div>
-        </div>
+          </div>
 
-        <div id="Result_Modal" class="container"><!--Result Modal-->
-          <!-- The Modal -->
-          <div class="modal" id="ResultModal" data-backdrop="static" data-keyboard="false">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body" >
-                  <center><div id="modal-body"></div></center>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer d-block">
-                  <div class="text-center">
-                    <button onclick="nextquestion()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <div id="Result_Modal" class="container"><!--Result Modal-->
+            <div class="modal" id="ResultModal" data-backdrop="static" data-keyboard="false">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body" >
+                    <center><div id="modal-body"></div></center>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer d-block">
+                    <div class="text-center">
+                      <button onclick="nextquestion()" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div id="Exchange_Points_Modal" class="container"><!--Exchange Points Modal-->
-          <div class="modal" id="ExchangeModal" data-backdrop="static" data-keyboard="false">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <center>Click on the buttons to exchange</center>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body" >
-                  <center>
-                    <div id="modal-body">
+          <div id="Exchange_Points_Modal" class="container"><!--Exchange Points Modal-->
+            <div class="modal" id="ExchangeModal" data-backdrop="static" data-keyboard="false">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <center>Click on the buttons to exchange</center>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body" >
+                    <center>
+                      <div id="modal-body">
 
-                      <div id="Hb_exchange" class="" style="padding-bottom:2%">
-                        <button type="button" class="btn btn-primary" data-dismiss="">
-                          <div class="container">
-                            <div class="">1 Health Point = 1 Hb level (mg/dL)</div>
-                            <div class="spinner-border spinner-border-sm" id = "Hb_loading" style="display:none"></div>
-                          </div>
-                        </button>
+                        <div id="Hb_exchange" class="" style="padding-bottom:2%">
+                          <button type="button" class="btn btn-primary" data-dismiss="">
+                            <div class="container">
+                              <div class="">1 Health Point = 1 Hb level (mg/dL)</div>
+                              <div class="spinner-border spinner-border-sm" id = "Hb_loading" style="display:none"></div>
+                            </div>
+                          </button>
+                        </div>
+
+                        <div id="Wt_exchange" class="" style="padding-bottom:2%">
+                          <button type="button" class="btn btn-primary" data-dismiss="">
+                            <div class="container">
+                              <div class="">1 Health Point = 1kg (Weight)</div>
+                              <div class="spinner-border spinner-border-sm" id = "Wt_loading" style="display:none"></div>
+                            </div>
+                          </button>
+                        </div>
+
+                        <div id="Mo_exchange" class="" style="padding-bottom:2%">
+                          <button type="button" class="btn btn-primary" data-dismiss="">
+                            <div class="container">
+                              <div class="">1 Health Point = ₹ 100 (Money)</div>
+                              <div class="spinner-border spinner-border-sm" id = "Mo_loading" style="display:none"></div>
+                            </div>
+                          </button>
+                        </div>
+
+                        <div class="" id="HP_left"></div>
+
                       </div>
-
-                      <div id="Wt_exchange" class="" style="padding-bottom:2%">
-                        <button type="button" class="btn btn-primary" data-dismiss="">
-                          <div class="container">
-                            <div class="">1 Health Point = 1kg (Weight)</div>
-                            <div class="spinner-border spinner-border-sm" id = "Wt_loading" style="display:none"></div>
-                          </div>
-                        </button>
-                      </div>
-
-                      <div id="Mo_exchange" class="" style="padding-bottom:2%">
-                        <button type="button" class="btn btn-primary" data-dismiss="">
-                          <div class="container">
-                            <div class="">1 Health Point = ₹ 100 (Money)</div>
-                            <div class="spinner-border spinner-border-sm" id = "Mo_loading" style="display:none"></div>
-                          </div>
-                        </button>
-                      </div>
-
-                      <div class="" id="HP_left"></div>
-
+                    </center>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer d-block">
+                    <div class="text-center">
+                      <button onclick="" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
-                  </center>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer d-block">
-                  <div class="text-center">
-                    <button onclick="" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div id="Question_and_Answer_cards" style="padding-top: 3%;">
-          <div class="cardss">
-            <div class="container scenario h5 text-center">
-              <div id="situation" class="" style="padding-bottom: 2%; border-bottom: solid black 1px">Situation</div>
-            </div>
-            <div class="container h3 text-center text-uppercase" style="" id="question_text">Question
-            </div>
+          <div id="Question_and_Answer_cards" style="padding-top: 3%;">
+            <div class="cardss">
+              <div class="container scenario h5 text-center">
+                <div id="situation" class="" style="padding-bottom: 2%; border-bottom: solid black 1px">Situation</div>
+              </div>
+              <div class="container h3 text-center text-uppercase" style="" id="question_text">Question
+              </div>
 
-            <table id="options_table" class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
-              <thead >
-                <tr>
-                  <th scope="col" id="option_header1">...............8...............</th>
-                  <th scope="col" id="option_header2">...............8...............</th>
-                  <th scope="col" id="option_header3">...............8...............</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td  >
-                    <div class="option-card" data-toggle="modal" onclick="optionclick(1)" id="option1_text">
-                      Option1
-                    </div>
-                  </td>
-                  <td >
-                    <div class="option-card" data-toggle="modal" onclick="optionclick(2)" id="option2_text">
-                      Option2
-                    </div>
-                  </td>
-                  <td >
-                    <div class="option-card" data-toggle="modal" onclick="optionclick(3)" id="option3_text">
-                      Option3
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="container" style="padding-bottom: 2%">
-              <div class="row">
-                <div class="col">
-                  <button onclick="" type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
-                </div>
-                <div class="col" style="text-align:left">
-                  Waiting for Player A <br> 30 seconds left
+              <table id="options_table" class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
+                <thead >
+                  <tr>
+                    <th scope="col" id="option_header1">...............8...............</th>
+                    <th scope="col" id="option_header2">...............8...............</th>
+                    <th scope="col" id="option_header3">...............8...............</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td  >
+                      <div class="option-card" data-toggle="modal" onclick="optionclick(1)" id="option1_text">
+                        Option1
+                      </div>
+                    </td>
+                    <td >
+                      <div class="option-card" data-toggle="modal" onclick="optionclick(2)" id="option2_text">
+                        Option2
+                      </div>
+                    </td>
+                    <td >
+                      <div class="option-card" data-toggle="modal" onclick="optionclick(3)" id="option3_text">
+                        Option3
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="container" style="padding-bottom: 2%">
+                <div class="row">
+                  <div class="col">
+                    <button onclick="" type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+                  </div>
+                  <div class="col" style="text-align:left">
+                    Waiting for Player A <br> 30 seconds left
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-      </div>
+        </div>
 
       </div>
     </div>
