@@ -70,3 +70,59 @@ function ErrorData(err)
 }
 
 //****************This acts both on server and client side************************
+firebase.database().ref().on('value',UpdatedSomething);
+var count=0;
+function UpdatedSomething()
+{
+  //alert("Something Updated");
+  myref.on('value',function(P1snapshot)
+  {
+    $("#Player1Name").html(P1snapshot.val().Name);
+    var connected=P1snapshot.val().Connected;
+    var source=P1snapshot.val().Source;
+    var question_counter=P1snapshot.val().question_counter;
+    if(connected==1&&count==0) //Only for client
+    {
+      myref.update({RequestNumber:0, RequestName:""});
+      $("#Accept_Player").html("");
+      alert("Request Length : "+request.length);
+      for(var i=0;i<request.length;i++)
+      {
+        firebase.database().ref(request[i]).update({RequestNumber:0, RequestName:""});
+      }
+      request=[]; // Clear the array of server requests
+      $('#ConnectRoomModal').modal('hide');
+      //initialize_score();
+      //question_counter++;
+      //myref.update({question_counter:1});
+      //alert("Connected");
+      count=1;
+      //alert("Count : "+count);
+    }
+
+    var reqno=P1snapshot.val().RequestNumber;
+    var reqname=P1snapshot.val().RequestName;
+
+    if(reqno>0)
+    {
+      $("#Accept_Player").html("<br>"+reqname+" sent you a play request <br><br>");
+      $("#Accept_Player").append('<button onclick="ConnectRoom('+reqno+')" type="button" class="btn btn-danger">Join</button> &nbsp;&nbsp;&nbsp;&nbsp;');
+      $("#Accept_Player").append('<button onclick="LeaveRoom()" type="button" class="btn btn-danger">Leave</button>');
+    }
+    else
+    {
+        $("#Accept_Player").html("");
+    }
+  },ErrorData);
+
+  connectref.on('value',function(P2snapshot)
+  {
+    //alert("On client side");
+    var connected=P2snapshot.val().Connected;
+    if(connected==1)
+    {
+      $("#Player2Name").html(P2snapshot.val().Name);
+      //update_scoresP2(P2snapshot.val().hb,P2snapshot.val().wt,P2snapshot.val().mo,P2snapshot.val().hp);
+    }
+  },ErrorData);
+}
