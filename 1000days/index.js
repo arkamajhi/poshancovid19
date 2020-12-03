@@ -1,7 +1,7 @@
 window.addEventListener('load', (event) =>
 {
   $("#LoginModal").modal("show");
-  document.getElementById("Main_Section").style.visibility = "hidden";
+  //document.getElementById("Main_Section").style.visibility = "hidden";
 });
 
 var selected_option=0;
