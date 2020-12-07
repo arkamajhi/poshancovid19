@@ -6,6 +6,8 @@ function start_quiz()
   myref.update({P1_Score:{hb:0,wt:0,mo:0,hp:0},P2_Score:{hb:0,wt:0,mo:0,hp:0}});
   myref.update({P1_Score:{hb:10,wt:40,mo:1000,hp:5},P2_Score:{hb:10,wt:40,mo:1000,hp:5}});
   //update_scoresP1(10,40,1000,5); //update_scoresP1(new_hb,new_wt,new_mo,new_hp)
+  myref.update({QuestionNo:0});
+  //nextquestion();
 }
 
 var hb_min=5;var hb_max=13;
@@ -16,7 +18,8 @@ var hp_min=0;var hp_max=10;
 firebase.database().ref().on('value',UpdateScoreDashboard);
 function UpdateScoreDashboard()
 {
-  try {
+  try
+  {
     P1ref.on('value',function(snapshot)
     {
       var P1Score=snapshot.val();
