@@ -32,12 +32,13 @@
       firebase.analytics();
       //console.log(firebase);
     </script>
-    <script src="consolelog.js"></script>
+    <!--script src="consolelog.js"></script-->
     <script src="connect.js"></script>
     <script src="score.js"></script>
     <script src="index.js"></script>
     <script src="questions_load.js"></script>
     <script src="questions_display.js"></script>
+    <script src="questions_answering.js"></script>
     <script src="https://spreadsheets.google.com/feeds/list/1Gwf9xzAAZY3gnXmgnCUSkvC5xZSJ7LQCZ3AvBk0tPEQ/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
     <script src="exchange_points.js"></script>
     <title>1000 Days</title>
@@ -297,7 +298,7 @@
               </div>
 
               <table id="options_table" class="table table-borderless table-responsive table-small text-center font-weight-bold" style="color:transparent">
-                <thead >
+                <thead>
                   <tr>
                     <th scope="col" id="option_header1">...............8...............</th>
                     <th scope="col" id="option_header2">...............8...............</th>
@@ -324,6 +325,21 @@
                   </tr>
                 </tbody>
               </table>
+
+              <div id="pilldivs" class="container text-center" style="margin-top:-32px; padding-bottom:1%">
+                <div class="row">
+                  <div class="col">
+                    <span id="option_pill1" class="badge badge-pill badge-primary">1</span>
+                  </div>
+                  <div class="col">
+                    <span id="option_pill2" class="badge badge-pill badge-primary">2</span>
+                  </div>
+                  <div class="col">
+                    <span id="option_pill3" class="badge badge-pill badge-primary">3</span>
+                  </div>
+                </div>
+              </div>
+
               <div class="container" style="padding-bottom: 2%">
                 <div class="row">
                   <div class="col">
