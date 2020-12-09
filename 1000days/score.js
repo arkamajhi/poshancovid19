@@ -49,5 +49,5 @@ function UpdateScoreDashboard()
 
       //$("#HP_left").html(P1Score.hp + " Health Points Left");
     });
-  } catch (e) {console.log("Cannot initialize score");}
+  } catch (e) {}
 }
