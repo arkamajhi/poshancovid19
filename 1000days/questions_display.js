@@ -39,5 +39,5 @@ function UpdateQuestion()
         }
       }
     });
-  } catch (e) {console.log("Next Question");}
+  } catch (e) {}
 }
