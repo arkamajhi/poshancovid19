@@ -1,4 +1,4 @@
-var name,number,myref,connectref,reqref,P1ref,P2ref;
+var name,number,myref,connectref,reqref,P1ref,P2ref,Player_Number;
 var request=[];
 
 function save_name_number()//Save name and number in firebase
@@ -14,6 +14,7 @@ function OpenCreateRoom()//For server
 {
   $("#CreateRoomModal").modal("show");
   myref.update({P1_Name:name, P1_Number:number, Connected:0, QuestionNo:-1 ,P2_Name:"", P2_Number:0});
+  myref.update({P1_Select:0, P2_Select:0});
   console.log("Room Created");
   firebase.database().ref().on('value',UpdatedSomething);
   function UpdatedSomething()
@@ -63,6 +64,7 @@ function SearchServers(data)//For client Side
       if(LoopPlayer.Connected==1&&LoopPlayer.P2_Number==number&&connect_check==0)
       {
         connect_check=1;
+        Player_Number=2;
         $("#Player1Name").html(LoopPlayer.P1_Name);
         $("#Player2Name").html(LoopPlayer.P2_Name);
         $('#ConnectRoomModal').modal('hide');
@@ -97,6 +99,7 @@ function ConnectRoom(Number)//Server Side. Update server and client
       var connected=snapshot.val().Connected;
       if(connected==1&&init==0)
       {
+        Player_Number=1;
         $("#Player1Name").html(snapshot.val().P1_Name);
         $("#Player2Name").html(snapshot.val().P2_Name);
         $('#CreateRoomModal').modal('hide');
