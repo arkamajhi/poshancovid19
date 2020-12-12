@@ -89,7 +89,7 @@ function UpdateOptionPill()
   } catch (e) {}
 }
 
-var timeLeft = 30;
+var timeLeft = 45;
 var timerId = setInterval(countdown, 1000);
 function countdown()
 {
