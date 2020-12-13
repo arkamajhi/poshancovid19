@@ -32,6 +32,7 @@ function UpdateQuestion()
             $("#option3").hide();
             $("#option_header3").hide();
           }
+          startcountdown(60);
         }
         else if (q_no==google_json.length)
         {
