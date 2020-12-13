@@ -89,19 +89,21 @@ function UpdateOptionPill()
   } catch (e) {}
 }
 
-var timeLeft = 45;
-var timerId = setInterval(countdown, 1000);
-function countdown()
+function startcountdown(timeleft)
 {
-  if (timeLeft == -1)
+  var timerId = setInterval(countdown, 1000);
+  function countdown()
   {
-    clearTimeout(timerId);
-    //doSomething();
-  }
-  else
-  {
-    document.getElementById('Waiting_Time_Left').innerHTML = timeLeft + ' seconds remaining';
-    timeLeft--;
+    if (timeLeft == -1)
+    {
+      clearTimeout(timerId);
+      //doSomething();
+    }
+    else
+    {
+      document.getElementById('Waiting_Time_Left').innerHTML = timeLeft + ' seconds remaining';
+      timeLeft--;
+    }
   }
 }
 
