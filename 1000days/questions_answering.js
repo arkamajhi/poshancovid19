@@ -89,7 +89,7 @@ function UpdateOptionPill()
   } catch (e) {}
 }
 
-function startcountdown(timeleft)
+function startcountdown(timeLeft)
 {
   var timerId = setInterval(countdown, 1000);
   function countdown()
@@ -97,7 +97,7 @@ function startcountdown(timeleft)
     if (timeLeft == -1)
     {
       clearTimeout(timerId);
-      //doSomething();
+      CountDown_Over();
     }
     else
     {
@@ -107,16 +107,21 @@ function startcountdown(timeleft)
   }
 }
 
-
+function CountDown_Over()
+{
+  selected_option=4;
+  ok_after_option();
+}
 
 function ok_after_option()
 {
-  if(selected_option==0)
+  if(Player_Number==1)
   {
-    //Please select
+    myref.update({P1_Answer:selected_option});
   }
-  else
+  else if(Player_Number==2)
   {
-
+    myref.update({P2_Answer:selected_option});
   }
+  selected_option=0;
 }
