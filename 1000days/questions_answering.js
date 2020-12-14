@@ -109,7 +109,6 @@ function startcountdown(timeLeft)
 
 function CountDown_Over()
 {
-  selected_option=4;
   ok_after_option();
 }
 
@@ -118,10 +117,57 @@ function ok_after_option()
   if(Player_Number==1)
   {
     myref.update({P1_Answer:selected_option});
+    evaluate(selected_option);
   }
   else if(Player_Number==2)
   {
     myref.update({P2_Answer:selected_option});
+    evaluate(selected_option);
   }
   selected_option=0;
+}
+
+function evaluate(option_number)
+{
+  console.log("Question number : "+q_no);
+  console.log("Option : "+option_number);
+  $("#Result_modal_header").text(name);
+  if(google_json[q_no].condition=="")
+  {
+    if(option_number==1)
+    {
+      $("#modal-body").html(google_json[q_no].result1body+"<br><br>"+google_json[q_no].result1scoretext);
+    }
+    else if(option_number==2)
+    {
+      $("#modal-body").html(google_json[q_no].result2body+"<br><br>"+google_json[q_no].result2scoretext);
+    }
+    else if(option_number==3)
+    {
+      $("#modal-body").html(google_json[q_no].result3body+"<br><br>"+google_json[q_no].result3scoretext);
+    }
+  }
+  else if(google_json[q_no].condition=="hb")
+  {
+    var body="<table><thead><tr><td>Hemoglobin Level</td><td>Anemia Severity</td></tr></thead><tbody><tr><td>More than 12</td><td>Anemia free</td></tr><tr><td>11-12</td><td>Mild Anemia</td></tr><tr><td>10-11</td><td>Medium Anemia</td></tr><tr><td>9 and less</td><td>Severe Anemia</td></tr></tbody></table>";
+    body+="Your current hemoglobin level is : "+hb+"<br>";
+    if(option_number==1)
+    {
+      body+=(hb>=12?"Right Answer <br> 1 Health Point increased":"Wrong Answer <br> 1 Health Point decreased");
+    }
+    else if(option_number==2)
+    {
+      body+=(hb>=11&&hb<12?"Right Answer <br> 1 Health Point increased":"Wrong Answer <br> 1 Health Point decreased");
+    }
+    else if(option_number==3)
+    {
+      body+=(hb>=10&&hb<11?"Right Answer <br> 1 Health Point increased":"Wrong Answer <br> 1 Health Point decreased");
+    }
+    else if(option_number==4)
+    {
+      body+=(hb<10?"Right Answer <br> 1 Health Point increased":"Wrong Answer <br> 1 Health Point decreased");
+    }
+    $("#modal-body").html(body);
+  }
+  $("#ResultModal").modal("show");
 }
