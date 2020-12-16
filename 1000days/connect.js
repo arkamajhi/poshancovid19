@@ -14,7 +14,7 @@ function OpenCreateRoom()//For server
 {
   $("#CreateRoomModal").modal("show");
   myref.update({P1_Name:name, P1_Number:number, Connected:0, QuestionNo:-1 ,P2_Name:"", P2_Number:0});
-  myref.update({P1_Select:0, P2_Select:0});
+  myref.update({P1_Select:0, P2_Select:0, P1_Answer:0, P2_Answer:0, Count_Next:0});
   console.log("Room Created");
   firebase.database().ref().on('value',UpdatedSomething);
   function UpdatedSomething()
@@ -72,6 +72,7 @@ function SearchServers(data)//For client Side
         myref=firebase.database().ref(LoopPlayer.P1_Number);
         P1ref=firebase.database().ref(LoopPlayer.P1_Number+'/P1_Score');
         P2ref=firebase.database().ref(LoopPlayer.P1_Number+'/P2_Score');
+        document.getElementById("Main_Section").style.visibility = "visible";
       }
     }
     $("#Players_Join_Buttons").html(AvailablePlayers);
@@ -107,6 +108,7 @@ function ConnectRoom(Number)//Server Side. Update server and client
         P1ref=firebase.database().ref(snapshot.val().P1_Number+'/P1_Score');
         P2ref=firebase.database().ref(snapshot.val().P1_Number+'/P2_Score');
         start_quiz();
+        document.getElementById("Main_Section").style.visibility = "visible";
       }
     });
   }
