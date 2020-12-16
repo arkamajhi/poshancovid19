@@ -1,14 +1,17 @@
 var q_no=-1;
-var DisplayCount=1;
+var DisplayCount=0;
 firebase.database().ref().on('value',UpdateQuestion);
 function UpdateQuestion()
 {
+  console.log("Attempt to check next question update");
+  console.log("DisplayCount : "+DisplayCount);
   try
   {
     myref.on('value',function(snapshot)
     {
-      if(snapshot.val().QuestionNo>q_no&&DisplayCount==1)
+      if(snapshot.val().QuestionNo>q_no&&DisplayCount==0)
       {
+        console.log("Attempt to display next question");
         DisplayCount++;
         q_no=snapshot.val().QuestionNo;
         if(q_no<google_json.length&&q_no>=0)
@@ -32,7 +35,7 @@ function UpdateQuestion()
             $("#option3").hide();
             $("#option_header3").hide();
           }
-          startcountdown(60);
+          //startcountdown(60);
         }
         else if (q_no==google_json.length)
         {
