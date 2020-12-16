@@ -1,27 +1,31 @@
 var selected_option=0;
+var Answered_OK=0;
 function optionclick(option_number)
 {
-  if(document.getElementById("option"+option_number+"_text").className == "option-card option-card-clicked")
+  if(Answered_OK==0)
   {
-    document.getElementById("option"+option_number+"_text").className = "option-card";
-    selected_option=0;
-  }
-  else
-  {
-    for (var a=1;a<=3;a++)
+    if(document.getElementById("option"+option_number+"_text").className == "option-card option-card-clicked")
     {
-      if(a==option_number)
+      document.getElementById("option"+option_number+"_text").className = "option-card";
+      selected_option=0;
+    }
+    else
+    {
+      for (var a=1;a<=3;a++)
       {
-        document.getElementById("option"+a+"_text").className = "option-card option-card-clicked";
-        selected_option=option_number;
-      }
-      else
-      {
-        document.getElementById("option"+a+"_text").className = "option-card";
+        if(a==option_number)
+        {
+          document.getElementById("option"+a+"_text").className = "option-card option-card-clicked";
+          selected_option=option_number;
+        }
+        else
+        {
+          document.getElementById("option"+a+"_text").className = "option-card";
+        }
       }
     }
+    option_update(selected_option);
   }
-  option_update(selected_option)
 }
 
 function option_update(Option)
@@ -89,7 +93,7 @@ function UpdateOptionPill()
   } catch (e) {}
 }
 
-function startcountdown(timeLeft)
+/*function startcountdown(timeLeft)
 {
   var timerId = setInterval(countdown, 1000);
   function countdown()
@@ -106,11 +110,12 @@ function startcountdown(timeLeft)
     }
   }
 }
-
+var timeout=0;
 function CountDown_Over()
 {
+  timeout=1;
   ok_after_option();
-}
+}*/
 
 function ok_after_option()
 {
@@ -121,14 +126,25 @@ function ok_after_option()
   }
   else if(Player_Number==2)
   {
+    /*if(timeout==1)
+    {
+        myref.update({TimeOut:1});
+    }
+    else
+    {
+        myref.update({TimeOut:0});
+    }*/
     myref.update({P2_Answer:selected_option});
     evaluate(selected_option);
   }
-  selected_option=0;
+  //selected_option=0;
 }
+
+
 
 function evaluate(option_number)
 {
+  Answered_OK=1;
   console.log("Question number : "+q_no);
   console.log("Option : "+option_number);
   $("#Result_modal_header").text(name);
@@ -169,5 +185,67 @@ function evaluate(option_number)
     }
     $("#modal-body").html(body);
   }
-  $("#ResultModal").modal("show");
+}
+
+try
+{
+  firebase.database().ref().on('value',ShowResultModal);
+  function ShowResultModal()
+  {
+    try
+    {
+      myref.on('value',function(snapshot)
+      {
+        if(snapshot.val().P1_Answer>0&&snapshot.val().P2_Answer>0)
+        {
+          console.log("Attempt to show Results");
+          $("#ResultModal").modal("show");
+        }
+      });
+    } catch (e) {}
+  }
+} catch (e) {}
+
+function Close_and_Open_NextQuestion()
+{
+  if(Player_Number==1)
+  {
+    myref.update({P1_Next:1});
+  }
+  else if(Player_Number==2)
+  {
+    myref.update({P2_Next:1});
+  }
+}
+
+firebase.database().ref().on('value',HideResultModal);
+function HideResultModal()
+{
+  //console.log("Attempt to hide Results");
+  try
+  {
+    myref.on('value',function(snapshot)
+    {
+      if(snapshot.val().P1_Next==1&&snapshot.val().P2_Next==1)
+      {
+        //close ResultModal
+        $("#ResultModal").modal("hide");
+        if(Player_Number==1)
+        {
+          //Initialize the variables
+          myref.update({P1_Answer:0,P2_Answer:0,P1_Next:0,P2_Next:0});
+          //Load Next Question
+          myref.update({QuestionNo:q_no+1});
+          //myref.update({P1_Select:0,P2_Select:0});
+        }
+        DisplayCount=0; Answered_OK=0;
+        console.log("DisplayCount updated at both = 1: "+DisplayCount);
+        for (var a=1;a<=3;a++)
+        {
+          document.getElementById("option"+a+"_text").className = "option-card";
+        }
+        selected_option=0;
+      }
+    });
+  } catch (e) {}
 }
