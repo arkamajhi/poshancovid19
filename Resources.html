@@ -152,7 +152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div id="State Policy Analysis" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black">
-        <h4><br><br>State Policy Analysis</h4>
+        <h4><br><br>State Policy Analysis - Analysis until October 2020</h4>
         <div id="PS"></div>
         </div>
       </div>
@@ -680,7 +680,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   {
                     var div = document.createElement('div');
                     div.id = json.feed.entry[i].gsx$states.$t;
-                    div.innerHTML = '<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+'</h4>';
+                    div.innerHTML = '<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+((json.feed.entry[i].gsx$states.$t!="Bihar"&&json.feed.entry[i].gsx$states.$t!="Uttar Pradesh")?' - Updated until October 2020':'')+'</h4>';
                     div.innerHTML += '<div class="container my-4">';
                     div.innerHTML += '<div id="'+json.feed.entry[i].gsx$states.$t+'_linkstable"></div></div>';
                     div.className="col-lg-12 col-md-12 col-md-12 col-xs-12";
