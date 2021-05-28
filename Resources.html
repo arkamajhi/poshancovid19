@@ -737,7 +737,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         l2=json.feed.entry[i].gsx$l2.$t;
                         var div = document.createElement('div');
                         div.id = json.feed.entry[i].gsx$l2.$t;
-                        div.innerHTML = "<div>"+"<h4>"+l2+"</h4>"+"</div>";
+                        div.innerHTML = "<div><h4>"+l2+"</h4></div>";
                         div.className="container";
                         div.style="";
 
@@ -775,7 +775,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         div.id = json.feed.entry[i].gsx$l3.$t;
                         if(json.feed.entry[i].gsx$l4.$t==""&&json.feed.entry[i].gsx$l5.$t=="")
                         {
-                          div.innerHTML = "<div>"+"<ul><li><h5>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l3+"</a>"+"</h5>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
+                          div.innerHTML = "<div>"+"<ul><li><h5>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l3+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h5>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
                         }
                         else
                         {
@@ -802,7 +802,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         div.id = json.feed.entry[i].gsx$l4.$t;
                         if(json.feed.entry[i].gsx$l5.$t=="")
                         {
-                          div.innerHTML = "<div>"+"<ul><li><h6>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l4+"</a>"+"</h6>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
+                          div.innerHTML = "<div>"+"<ul><li><h6>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l4+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h6>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
                         }
                         else
                         {
@@ -828,7 +828,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         {
                           var div = document.createElement('div');
                           div.id = json.feed.entry[i].gsx$l5.$t;
-                          div.innerHTML = "<div>"+"<ul><li><h7>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l5+"</a>"+"</h7>"+"<br>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
+                          div.innerHTML = "<div>"+"<ul><li><h7>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l5+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h7>"+"<br>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
                           div.className="container l5";
                           div.style="";
 
@@ -903,10 +903,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       </style>
 
-      <script src="https://spreadsheets.google.com/feeds/list/1a0ao00WZkllRnvLcnrqe02vuMywyPl8H2RdRqBKpJkY/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
-      <script src="https://spreadsheets.google.com/feeds/list/16jNwjcA5mLBGxBr_gsF8cC0AFA3JYhDNeKO_Rp9gC0Y/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
-      <script src="https://spreadsheets.google.com/feeds/list/18iODqIoE0FyU85fdTUj0gZ-fS3nmNqfiBbs61e6lhiw/2/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
-      <script src="https://spreadsheets.google.com/feeds/list/18iODqIoE0FyU85fdTUj0gZ-fS3nmNqfiBbs61e6lhiw/3/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+      <script src="https://spreadsheets.google.com/feeds/list/1_9C_Ja2FMyCplZew2MZ90XWv4nqNHXULX5BxZF6qtQU/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+      <script src="https://spreadsheets.google.com/feeds/list/1VYwJ-6uTdSncDF-eu9BlBfPabFHFFfXdK0O_FbfcLaI/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+      <script src="https://spreadsheets.google.com/feeds/list/1mjIA2Mci9AI8rFNFqxFkOwlaQW5zbH5KgFc86BScBGk/2/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+      <script src="https://spreadsheets.google.com/feeds/list/1mjIA2Mci9AI8rFNFqxFkOwlaQW5zbH5KgFc86BScBGk/3/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
