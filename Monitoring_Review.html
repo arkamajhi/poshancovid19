@@ -172,6 +172,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4><br><br>Methods</h4>
       </div>
 
+
+      <div id="State Resources" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="">
+        <h4><br><br>State and Central Resources</h4>
+        <div id="States"></div>
+      </div>
+
       <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
       <script type="text/javascript">
         function display(json)
@@ -848,6 +854,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           }
 
+          else if(json.feed.entry[0].gsx$type.$t=="StateResources")
+          {
+            for (var i=0; i<8; i++)
+            {
+              var string="";
+              var count=0;
+              for (var j=0; j<len; j++)
+              {
+                if(json.feed.entry[j].gsx$state.$t==json.feed.entry[i].gsx$states.$t&&json.feed.entry[j].gsx$state.$t!="")
+                {
+                  string+='<tr>'
+                  +"<th>"+'<div class="container">'+json.feed.entry[j].gsx$date.$t+"</div>"+"</th>"
+                  +"<th>"+'<div class="container">'+json.feed.entry[j].gsx$category.$t+"</div>"+"</th>"
+                  +"<td>"
+                  +'<div class="container">'
+                  +"<a href='"+json.feed.entry[j].gsx$link.$t+"' target='_blank'>"+json.feed.entry[j].gsx$title.$t+'</a>'+"&nbsp;&nbsp;";
+
+                  string+=json.feed.entry[j].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'';
+
+                  string+='<div class="container">'+json.feed.entry[j].gsx$description.$t+"</div></div>"
+                  +'</tr>';
+                  count++;
+                }
+              }
+              if(count>0)
+              {
+                var div = document.createElement('div');
+                div.id = json.feed.entry[i].gsx$states.$t;
+                div.innerHTML = '<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+((json.feed.entry[i].gsx$states.$t!="Bihar"&&json.feed.entry[i].gsx$states.$t!="Uttar Pradesh")?' - Updated until October 2020':'')+'</h4>';
+                div.innerHTML += '<div class="container my-4">';
+                div.innerHTML += '<div id="'+json.feed.entry[i].gsx$states.$t+'_linkstable"></div></div>';
+                div.className="col-lg-12 col-md-12 col-md-12 col-xs-12";
+                div.style="padding-bottom:5%;border-bottom: 1px solid black";
+                var element = document.getElementById("States");
+                element.appendChild(div);
+
+
+                /*var droplist = document.createElement('a');
+                //droplist.id = json.feed.entry[i].gsx$states.$t;
+                droplist.innerHTML = '<a href="#'+json.feed.entry[i].gsx$states.$t+'">'+json.feed.entry[i].gsx$states.$t+'</a>';
+                droplist.className="dropdown-item";
+                var element = document.getElementById("State_Resources_dropdown_menu");
+                element.appendChild(droplist);*/
+
+                var final_string='<thead>'
+                                +'<tr>'
+                                  +'<th scope="col"><center>'+"Date"+'</center></th>'
+                                  +'<th scope="col"><center>'+"Type of Resource"+'</center></th>'
+                                  +'<th scope="col"><center>'+"Document Title<br>(Click on the titles below in bold to open the linked report)"+'</center></th>'
+                                +'</tr></thead>'
+                                +'<tbody>'+string+'</tbody>';
+
+                var divheading = document.createElement('div');
+                divheading.id = json.feed.entry[i].gsx$states.$t+"heading";
+                divheading.innerHTML = '<center><h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>List of Assessments : '+json.feed.entry[i].gsx$states.$t+'<br><br></h4></center>';
+                divheading.className="col-lg-12 col-md-12 col-md-12 col-xs-12";
+                //divheading.style="padding-bottom:5%;";
+                var State_head_element = document.getElementById(json.feed.entry[i].gsx$states.$t);
+                State_head_element.appendChild(divheading);
+
+                var resource_table = document.createElement('table');
+                resource_table.id = json.feed.entry[i].gsx$states.$t;
+                resource_table.innerHTML = final_string;
+                resource_table.className="table_res  table-striped table-hover table-sm table-responsive";
+                //resource_table.style="";
+                var element = document.getElementById(json.feed.entry[i].gsx$states.$t+"heading");
+                element.appendChild(resource_table);
+
+              }
+            }
+          }
+
         }
       </script>
 
@@ -916,10 +994,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <script src="https://spreadsheets.google.com/feeds/list/1YV7lSf7jG_UwRZl9JHLdEtYZY0R3YyPELYxNDBUM6NA/2/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
       <!--COS-->
       <script src="https://spreadsheets.google.com/feeds/list/1YV7lSf7jG_UwRZl9JHLdEtYZY0R3YyPELYxNDBUM6NA/3/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
-      <!--W4-->
+      <!--W4 is temporarily disabled-->
       <!--script src="https://spreadsheets.google.com/feeds/list/1YV7lSf7jG_UwRZl9JHLdEtYZY0R3YyPELYxNDBUM6NA/4/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script-->
       <!--Content-->
       <script src="https://spreadsheets.google.com/feeds/list/1YV7lSf7jG_UwRZl9JHLdEtYZY0R3YyPELYxNDBUM6NA/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+
+      <!--Assessment List-->
+      <script src="https://spreadsheets.google.com/feeds/list/1YV7lSf7jG_UwRZl9JHLdEtYZY0R3YyPELYxNDBUM6NA/6/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
 
       <!--State Policy Analysis-->
       <script src="https://spreadsheets.google.com/feeds/list/1a5kOe07ppnHCLWqGAo-LDhPSnpH9hPy0JnKdU6WiTPE/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
