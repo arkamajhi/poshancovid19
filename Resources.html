@@ -314,7 +314,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               else if(json.feed.entry[0].gsx$type.$t=="StatePolicy")
               {
 
-                var StatePolicydroplist = document.createElement('a');
+                /*var StatePolicydroplist = document.createElement('a');
                 //droplist.id = json.feed.entry[i].gsx$states.$t;
                 StatePolicydroplist.innerHTML = '<a href="#'+json.feed.entry[0].gsx$b1.$t+'">'+json.feed.entry[0].gsx$b1.$t+'</a><br>'
                                                +'<a href="#'+json.feed.entry[0].gsx$b1.$t+'">'+json.feed.entry[0].gsx$b2.$t+'</a><br>'
@@ -325,7 +325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                +'<a href="#'+json.feed.entry[0].gsx$b6.$t+'">'+json.feed.entry[0].gsx$b7.$t+'</a>';
                 StatePolicydroplist.className="dropdown-item";
                 var element = document.getElementById("State_Policy_dropdown_menu");
-                element.appendChild(StatePolicydroplist);
+                element.appendChild(StatePolicydroplist);*/
 
                 string = '<table class="table table-striped table-hover table-sm">'
                                 +'<thead>'
@@ -852,6 +852,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               else if(json.feed.entry[0].gsx$type.$t=="National_International_Resources")
               {
 
+                ul = document.getElementById("myUL");
+                for (var i =0; i < len; i++)
+                {
+                    var li = document.createElement("li");
+                    li.innerHTML = '<a href="'+json.feed.entry[i].gsx$link.$t+'" target="_blank">'+json.feed.entry[i].gsx$title.$t+'</a>';
+                    ul.appendChild(li);
+                }
 
 
                 //var string="";
