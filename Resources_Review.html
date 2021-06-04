@@ -86,10 +86,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="navbar-brand badge  badge-secondary" href="https://poshancovid19.in/Monitoring.html"><h6 style="color:white; padding-left:5px;padding-right:5px;">Monitoring</h6></a>
 
 
-      <form class="d-flex form-floating mb-3" style="padding-top: 20px;">
+      <!--form class="d-flex form-floating mb-3" style="padding-top: 20px;">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form-->
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Search Resources in Page
+      </button>
+
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -199,6 +205,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="Global Guidelines and Materials on COVID-19" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black">
         <h4><br><br>Global Guidelines and Materials on COVID-19</h4>
       </div>
+
+      <!-- Search Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+
+              <input type="text" class="form-control" id="myInput" onkeyup="searchinpage()" placeholder="Search Resources in Page">
+              <ul id="myUL">
+                <li><a href="">Arka Majhi</a></li>
+                <li><a href="">Aparajita</a></li>
+                <li><a href="">Priya Ray</a></li>
+                <li><a href="">Sumanta Majhi</a></li>
+                <li><a href="">Swapna Majhi</a></li>
+                <li><a href="">Abhijit</a></li>
+                <li><a href="">Satish Agnihotri</a></li>
+                <li><a href="">Anita Agnihotri</a></li>
+              </ul>
+
+              <script>
+                const searchinpage = () =>{
+                  let filter=document.getElementById('myInput').value.toUpperCase();
+                  let ul=document.getElementById('myUL');
+                  let li=ul.getElementsByTagName('li');
+
+                  for (var i = 0; i < li.length; i++) {
+                    let a=li[i].getElementsByTagName('a')[0];
+                    let textValue=a.textContent || a.innerHTML;
+
+                    if (textValue.toUpperCase().indexOf(filter)>-1) {
+                      li[i].style.display='';
+                    }
+                    else {
+                      li[i].style.display='none';
+                    }
+                  }
+                }
+
+              </script>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
       <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
@@ -948,5 +1003,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
     <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+
   </body>
 </html>
