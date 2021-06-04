@@ -212,68 +212,104 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="modal-content">
             <div class="modal-body">
 
-              <input type="text" class="form-control" id="myInput" onkeyup="searchinpage()" placeholder="Search Resources in Page">
-              <ul id="myUL">
-                <li><a href="">Arka Majhi</a></li>
-                <li><a href="">Aparajita</a></li>
-                <li><a href="">Priya Ray</a></li>
-                <li><a href="">Sumanta Majhi</a></li>
-                <li><a href="">Swapna Majhi</a></li>
-                <li><a href="">Abhijit</a></li>
-                <li><a href="">Satish Agnihotri</a></li>
-                <li><a href="">Anita Agnihotri</a></li>
-              </ul>
-
-              <script>
-                const searchinpage = () =>{
-                  let filter=document.getElementById('myInput').value.toUpperCase();
-                  let ul=document.getElementById('myUL');
-                  let li=ul.getElementsByTagName('li');
-
-                  for (var i = 0; i < li.length; i++) {
-                    let a=li[i].getElementsByTagName('a')[0];
-                    let textValue=a.textContent || a.innerHTML;
-
-                    if (textValue.toUpperCase().indexOf(filter)>-1) {
-                      li[i].style.display='';
-                    }
-                    else {
-                      li[i].style.display='none';
-                    }
-                  }
+              <style>
+                * {
+                  box-sizing: border-box;
                 }
 
-              </script>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-
-      <script type="text/javascript">
-        function display(json)
-        {
-          var len = json.feed.entry.length;
-          //console.log("Length = "+len);
-              if(json.feed.entry[0].gsx$type.$t=="Single")
-              {
-                var len = json.feed.entry.length;
-                console.log("Length of single = "+len);
-                for(i=0;i<len;i++)
+                #myInput
                 {
-                  var string = '<center><table id="borderless_table" style="text-align: justify"><tbody id="borderless_table"><tr id="borderless_table"><td id="borderless_table">';
-                  string += json.feed.entry[i].gsx$content.$t;
-                  string += "</td></tr></tbody></table></center><br>";
-                  $(string).appendTo(json.feed.entry[i].gsx$tag.$t);
+                  background-image: url('/css/searchicon.png');
+                  background-position: 10px 12px;
+                  background-repeat: no-repeat;
+                  width: 100%;
+                  font-size: 16px;
+                  padding: 12px 20px 12px 40px;
+                  border: 1px solid #ddd;
+                  margin-bottom: 12px;
                 }
-              }
+
+                #myUL
+                {
+                  list-style-type: none;
+                  padding: 0;
+                  margin: 0;
+                }
+
+                #myUL li a
+                {
+                  border: 1px solid #ddd;
+                  margin-top: -1px; /* Prevent double borders */
+                  background-color: #f6f6f6;
+                  padding: 12px;
+                  text-decoration: none;
+                  font-size: 18px;
+                  color: black;
+                  display: block
+                }
+
+                #myUL li a:hover:not(.header)
+                {
+                  background-color: #eee;
+                }
+              </style>
+
+
+                <center><h4>Search Resources in Page</h4></center>
+
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for State/National/International Resources">
+
+                <ul id="myUL">
+                </ul>
+
+                <script>
+                function myFunction() {
+                    var input, filter, ul, li, a, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    ul = document.getElementById("myUL");
+                    li = ul.getElementsByTagName("li");
+                    for (i = 0; i < li.length; i++) {
+                        a = li[i].getElementsByTagName("a")[0];
+                        txtValue = a.textContent || a.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            li[i].style.display = "";
+                        } else {
+                            li[i].style.display = "none";
+                        }
+                    }
+                }
+                </script>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+                      <script type="text/javascript">
+                        function display(json)
+                        {
+                          var len = json.feed.entry.length;
+                          //console.log("Length = "+len);
+                              if(json.feed.entry[0].gsx$type.$t=="Single")
+                              {
+                                var len = json.feed.entry.length;
+                                console.log("Length of single = "+len);
+                                for(i=0;i<len;i++)
+                                {
+                                  var string = '<center><table id="borderless_table" style="text-align: justify"><tbody id="borderless_table"><tr id="borderless_table"><td id="borderless_table">';
+                                  string += json.feed.entry[i].gsx$content.$t;
+                                  string += "</td></tr></tbody></table></center><br>";
+                                  $(string).appendTo(json.feed.entry[i].gsx$tag.$t);
+                                }
+                              }
 
               else if(json.feed.entry[0].gsx$type.$t=="StatePolicy")
               {
@@ -742,6 +778,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
               else if(json.feed.entry[0].gsx$type.$t=="StateResources")
               {
+
+                ul = document.getElementById("myUL");
+                for (var i =0; i < len; i++)
+                {
+                    var li = document.createElement("li");
+                    li.innerHTML = '<a href="'+json.feed.entry[i].gsx$link.$t+'" target="_blank">'+json.feed.entry[i].gsx$title.$t+'<p><br>'+'Date : '+json.feed.entry[i].gsx$date.$t+'&emsp;<span class="badge badge-secondary">'+json.feed.entry[i].gsx$category.$t+'</span>&emsp;<span class="badge badge-secondary">'+json.feed.entry[i].gsx$state.$t+'</span></p></a>';
+                    ul.appendChild(li);
+                }
+
                 for (var i=0; i<38; i++)
                 {
                   var string="";
@@ -806,6 +851,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
               else if(json.feed.entry[0].gsx$type.$t=="National_International_Resources")
               {
+
+
+
                 //var string="";
                 var l2="",l3="",l4="",l5="";
 
