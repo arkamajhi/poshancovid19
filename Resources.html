@@ -79,15 +79,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-header navbar-inverse navbar-light bg-light sticky-top " >
+    <nav id="navbar-example2" class="navbar nav-fill navbar-header navbar-inverse navbar-light bg-light sticky-top " > <!--navbar-expand-lg This expands the hamburger for large screen-->
       <a class="nav-link" href="">POSHAN COVID-19</a>
+
       <a class="navbar-brand badge  badge-primary" href="#"><h6 style="color:white; padding-left:5px;padding-right:5px;" >Resources</h6></a>
       <a class="navbar-brand badge  badge-secondary" href="https://poshancovid19.in/Monitoring.html"><h6 style="color:white; padding-left:5px;padding-right:5px;">Monitoring</h6></a>
+
+
+      <!--form class="d-flex form-floating mb-3" style="padding-top: 20px;">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form-->
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Search Resources in Page
+      </button>
+
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse " id="navbarNavDropdown">
         <ul class="nav nav-pills ml-auto justify-content-end">
+
+          <!--li class="nav-item dropdown">
+            <div class="ms-SearchBox">
+              <input class="ms-SearchBox-field" type="text" value="">
+              <label class="ms-SearchBox-label">
+                <i class="ms-SearchBox-icon ms-Icon ms-Icon--Search"></i>
+                <span class="ms-SearchBox-text">Search</span>
+              </label>
+              <div class="ms-CommandButton ms-SearchBox-clear ms-CommandButton--noLabel">
+                <button class="ms-CommandButton-button">
+                  <span class="ms-CommandButton-icon"><i class="ms-Icon ms-Icon--Clear"></i></span>
+                  <span class="ms-CommandButton-label"></span>
+                </button>
+              </div>
+            </div>
+            <script type="text/javascript">
+              var SearchBoxElements = document.querySelectorAll(".ms-SearchBox");
+              for (var i = 0; i < SearchBoxElements.length; i++) {
+                new fabric['SearchBox'](SearchBoxElements[i]);
+              }
+            </script>
+          </li-->
+
+
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">National Resources</a>
@@ -95,11 +134,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </li>
 
-          <li class="nav-item dropdown">
+          <!--li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">State Policy Analysis</a>
             <div class="dropdown-menu" id="State_Policy_dropdown_menu">
             </div>
-          </li>
+          </li-->
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">State and Central Resources</a>
@@ -151,11 +190,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4><br><br>National Resources</h4>
       </div>
 
-      <div id="State Policy Analysis" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black">
+      <!--div id="State Policy Analysis" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black">
         <h4><br><br>State Policy Analysis - Analysis until October 2020</h4>
         <div id="PS"></div>
         </div>
-      </div>
+      </div-->
 
 
       <div id="State Resources" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="">
@@ -167,25 +206,110 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4><br><br>Global Guidelines and Materials on COVID-19</h4>
       </div>
 
-      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+      <!-- Search Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
 
-      <script type="text/javascript">
-        function display(json)
-        {
-          var len = json.feed.entry.length;
-          //console.log("Length = "+len);
-              if(json.feed.entry[0].gsx$type.$t=="Single")
-              {
-                var len = json.feed.entry.length;
-                console.log("Length of single = "+len);
-                for(i=0;i<len;i++)
-                {
-                  var string = '<center><table id="borderless_table" style="text-align: justify"><tbody id="borderless_table"><tr id="borderless_table"><td id="borderless_table">';
-                  string += json.feed.entry[i].gsx$content.$t;
-                  string += "</td></tr></tbody></table></center><br>";
-                  $(string).appendTo(json.feed.entry[i].gsx$tag.$t);
+              <style>
+                * {
+                  box-sizing: border-box;
                 }
-              }
+
+                #myInput
+                {
+                  background-image: url('/css/searchicon.png');
+                  background-position: 10px 12px;
+                  background-repeat: no-repeat;
+                  width: 100%;
+                  font-size: 16px;
+                  padding: 12px 20px 12px 40px;
+                  border: 1px solid #ddd;
+                  margin-bottom: 12px;
+                }
+
+                #myUL
+                {
+                  list-style-type: none;
+                  padding: 0;
+                  margin: 0;
+                }
+
+                #myUL li a
+                {
+                  border: 1px solid #ddd;
+                  margin-top: -1px; /* Prevent double borders */
+                  background-color: #f6f6f6;
+                  padding: 12px;
+                  text-decoration: none;
+                  font-size: 18px;
+                  color: black;
+                  display: block
+                }
+
+                #myUL li a:hover:not(.header)
+                {
+                  background-color: #eee;
+                }
+              </style>
+
+
+                <center><h4>Search Resources in Page</h4></center>
+
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for State/National/International Resources">
+
+                <ul id="myUL">
+                </ul>
+
+                <script>
+                function myFunction() {
+                    var input, filter, ul, li, a, i, txtValue;
+                    input = document.getElementById("myInput");
+                    filter = input.value.toUpperCase();
+                    ul = document.getElementById("myUL");
+                    li = ul.getElementsByTagName("li");
+                    for (i = 0; i < li.length; i++) {
+                        a = li[i].getElementsByTagName("a")[0];
+                        txtValue = a.textContent || a.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            li[i].style.display = "";
+                        } else {
+                            li[i].style.display = "none";
+                        }
+                    }
+                }
+                </script>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+
+                      <script type="text/javascript">
+                        function display(json)
+                        {
+                          var len = json.feed.entry.length;
+                          //console.log("Length = "+len);
+                              if(json.feed.entry[0].gsx$type.$t=="Single")
+                              {
+                                var len = json.feed.entry.length;
+                                console.log("Length of single = "+len);
+                                for(i=0;i<len;i++)
+                                {
+                                  var string = '<center><table id="borderless_table" style="text-align: justify"><tbody id="borderless_table"><tr id="borderless_table"><td id="borderless_table">';
+                                  string += json.feed.entry[i].gsx$content.$t;
+                                  string += "</td></tr></tbody></table></center><br>";
+                                  $(string).appendTo(json.feed.entry[i].gsx$tag.$t);
+                                }
+                              }
 
               else if(json.feed.entry[0].gsx$type.$t=="StatePolicy")
               {
@@ -654,6 +778,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
               else if(json.feed.entry[0].gsx$type.$t=="StateResources")
               {
+
+                ul = document.getElementById("myUL");
+                for (var i =0; i < len; i++)
+                {
+                    var li = document.createElement("li");
+                    li.innerHTML = '<a href="'+json.feed.entry[i].gsx$link.$t+'" target="_blank">'+json.feed.entry[i].gsx$title.$t+'<p><br>'+'Date : '+json.feed.entry[i].gsx$date.$t+'&emsp;<span class="badge badge-secondary">'+json.feed.entry[i].gsx$category.$t+'</span>&emsp;<span class="badge badge-secondary">'+json.feed.entry[i].gsx$state.$t+'</span></p></a>';
+                    ul.appendChild(li);
+                }
+
                 for (var i=0; i<38; i++)
                 {
                   var string="";
@@ -718,6 +851,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
               else if(json.feed.entry[0].gsx$type.$t=="National_International_Resources")
               {
+
+
+
                 //var string="";
                 var l2="",l3="",l4="",l5="";
 
@@ -915,5 +1051,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
     <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+
   </body>
 </html>
