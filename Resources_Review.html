@@ -208,7 +208,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Search Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-body">
 
@@ -314,7 +314,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               else if(json.feed.entry[0].gsx$type.$t=="StatePolicy")
               {
 
-                var StatePolicydroplist = document.createElement('a');
+                /*var StatePolicydroplist = document.createElement('a');
                 //droplist.id = json.feed.entry[i].gsx$states.$t;
                 StatePolicydroplist.innerHTML = '<a href="#'+json.feed.entry[0].gsx$b1.$t+'">'+json.feed.entry[0].gsx$b1.$t+'</a><br>'
                                                +'<a href="#'+json.feed.entry[0].gsx$b1.$t+'">'+json.feed.entry[0].gsx$b2.$t+'</a><br>'
@@ -325,7 +325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                +'<a href="#'+json.feed.entry[0].gsx$b6.$t+'">'+json.feed.entry[0].gsx$b7.$t+'</a>';
                 StatePolicydroplist.className="dropdown-item";
                 var element = document.getElementById("State_Policy_dropdown_menu");
-                element.appendChild(StatePolicydroplist);
+                element.appendChild(StatePolicydroplist);*/
 
                 string = '<table class="table table-striped table-hover table-sm">'
                                 +'<thead>'
@@ -813,7 +813,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   {
                     var div = document.createElement('div');
                     div.id = json.feed.entry[i].gsx$states.$t;
-                    div.innerHTML = '<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+((json.feed.entry[i].gsx$states.$t!="Bihar"&&json.feed.entry[i].gsx$states.$t!="Uttar Pradesh")?' - Updated until October 2020':'')+'</h4>';
+                    div.innerHTML = '<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+'</h4>';
                     div.innerHTML += '<div class="container my-4">';
                     div.innerHTML += '<div id="'+json.feed.entry[i].gsx$states.$t+'_linkstable"></div></div>';
                     div.className="col-lg-12 col-md-12 col-md-12 col-xs-12";
@@ -852,6 +852,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               else if(json.feed.entry[0].gsx$type.$t=="National_International_Resources")
               {
 
+                ul = document.getElementById("myUL");
+                for (var i =0; i < len; i++)
+                {
+                    var li = document.createElement("li");
+                    li.innerHTML = '<a href="'+json.feed.entry[i].gsx$link.$t+'" target="_blank">'+json.feed.entry[i].gsx$title.$t+'</a>';
+                    ul.appendChild(li);
+                }
 
 
                 //var string="";
