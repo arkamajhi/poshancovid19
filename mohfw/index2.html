@@ -60,7 +60,7 @@ if((data[i].new_positive!=0) && data[i].state_name!="" && data[i].state_name=="A
 	row=row+ data[i].new_active+"<td><span class='up'> "+diffa+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td>";}
 	if(data[i].new_active-data[i].active<0)	{
 	var diffa=data[i].active-data[i].new_active;
-	row=row+ data[i].new_active+"<td><span class='down'> "+diffa+" <i class='fa fa-arrow-down' style='color:red'></i></span> " +  "</td>";}
+	row=row+ data[i].new_active+"<td><span class='down'> "+diffa+" <i class='fa fa-arrow-down' style='color:green'></i></span> " +  "</td>";}
 
 
 //for cured cases
@@ -70,7 +70,7 @@ if((data[i].new_positive!=0) && data[i].state_name!="" && data[i].state_name=="A
 	row=row + data[i].cured+  "</td><td><span>&nbsp;</span>  </td>";}
 	if(data[i].new_cured-data[i].cured>0)	{
 	var diffc=data[i].new_cured-data[i].cured;
-	row=row+ data[i].new_cured+"<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td>";}
+	row=row+ data[i].new_cured+"<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:green'></i></span> " +  "</td>";}
 if(data[i].new_cured-data[i].cured<0)	{
 	var diffc=data[i].cured-data[i].new_cured;
 	row=row + data[i].new_cured+ "<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:red'></i></span> "+ "</td>";}
