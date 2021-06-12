@@ -344,11 +344,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               	row=row + data[i].active+  "</td><td><span>&nbsp;</span>  </td>";}
               	if(data[i].new_active-data[i].active>0)	{
               	var diffa=data[i].new_active-data[i].active;
-              	row=row+ data[i].new_active+"<td><span class='up'> "+diffa+" <i class='fa fa-arrow-up'></i></span> " +  "</td>";}
+              	row=row+ data[i].new_active+"<td><span class='up'> "+diffa+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td>";}
               	if(data[i].new_active-data[i].active<0)	{
               	var diffa=data[i].active-data[i].new_active;
-              	row=row+ data[i].new_active+"<td><span class='down'> "+diffa+" <i class='fa fa-arrow-down'></i></span> " +  "</td>";}
-
+              	row=row+ data[i].new_active+"<td><span class='down'> "+diffa+" <i class='fa fa-arrow-down' style='color:green'></i></span> " +  "</td>";}
 
               //for cured cases
               	row=row+"<td>";
@@ -357,11 +356,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               	row=row + data[i].cured+  "</td><td><span>&nbsp;</span>  </td>";}
               	if(data[i].new_cured-data[i].cured>0)	{
               	var diffc=data[i].new_cured-data[i].cured;
-              	row=row+ data[i].new_cured+"<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up'></i></span> " +  "</td>";}
+              	row=row+ data[i].new_cured+"<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:green'></i></span> " +  "</td>";}
               if(data[i].new_cured-data[i].cured<0)	{
               	var diffc=data[i].cured-data[i].new_cured;
-              	row=row + data[i].new_cured+ "<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up'></i></span> "+ "</td>";}
-
+              	row=row + data[i].new_cured+ "<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:red'></i></span> "+ "</td>";}
 
               //for death cases
               	row=row+"<td>";
@@ -370,7 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               	row=row +data[i].new_death+  "</td><td><span>&nbsp;</span>  </td></tr>";}
               if(data[i].new_death-data[i].death>0)	{
               	var diffd=data[i].new_death-data[i].death;
-              	row=row+data[i].new_death+"</td><td><span class='up'> "+diffd+" <i class='fa fa-arrow-up'></i></span> " +  "</td></tr>";}
+              	row=row+data[i].new_death+"</td><td><span class='up'> "+diffd+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td></tr>";}
 
               $('.statetable').append(row);
               }
