@@ -155,7 +155,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="Services"></div>
       </div-->
 
-      <div id="State Resources" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;">
+      <div id="State Resources" class="col-lg-12 col-md-12 col-md-12 col-xs-12">
         <h4><br><br>State and National Monitoring</h4>
         <div id="States"></div>
       </div>
@@ -248,7 +248,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             console.log("Length of StateUpdates = "+len);
             for (var i=0; i<100; i++)
             {
-              var tableCOS="";
+              var tableStateUpdates="";
 
               for (var j=0; j<len; j++)
               {
@@ -259,7 +259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   +"<th>"+'<div class="container">'+json.feed.entry[j].gsx$date.$t+"</div>"+"</th>"
                   +"<td>"+json.feed.entry[j].gsx$stateupdates.$t+"</td>"
                   +'</tr>';
-                  tableCOS+=tablebuffer;
+                  tableStateUpdates+=tablebuffer;
                   count++;
                 }
               }
@@ -267,14 +267,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
               if(count>0)
               {
-                var stringCOS='<center><h4>State Updates : '+json.feed.entry[i].gsx$states.$t+'</h4></center><br>'
+                var stringStateUpdates='<center><h4>State Updates : '+json.feed.entry[i].gsx$states.$t+'</h4></center><br>'
                                 +'<table class="table_res table-striped table-hover table-sm table-responsive" id = '+json.feed.entry[i].gsx$statecode.$t+'_COS><thead>'
                                 +'<tr>'
                                   +'<th scope="col"><center>'+json.feed.entry[0].gsx$header.$t+'</center></th>'
                                   +'<th scope="col"><center>'+json.feed.entry[1].gsx$header.$t+'</center></th>'
                                 +'</tr></thead>'
-                                +'<tbody>'+tableCOS+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_COS></div><br>';
-                $(stringCOS).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
+                                +'<tbody>'+tableStateUpdates+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_StateUpdates></div><br>';
+                $(stringStateUpdates).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
                 count=0;
               }
             }
@@ -290,86 +290,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               if(json.feed.entry[i].gsx$states.$t!="")
               {
                 var newdivstring='<div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black" id="'+json.feed.entry[i].gsx$statecode.$t+'">';
-                newdivstring+='<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+'</h4><br>'+"</div>";
+                newdivstring+='<h4 id="'+json.feed.entry[i].gsx$states.$t+'_title"><br><br>'+json.feed.entry[i].gsx$states.$t+'</h4><br>';
+                newdivstring+='<div id="'+json.feed.entry[i].gsx$statecode.$t+'_Covid_Table'+'"></div>';
+                newdivstring+='</div>';
                 $(newdivstring).appendTo("#States");
 
                 var droplist = '<a class="dropdown-item" href="#'+json.feed.entry[i].gsx$statecode.$t+'">'+json.feed.entry[i].gsx$states.$t+'</a>';
                 $(droplist).appendTo("#State_Monitoring_dropdown_menu");
-
-                var covidheading='<table id="covid_'+json.feed.entry[i].gsx$statecode.$t+'" border="1" cellspacing="1" cellpadding="1" class="'+'covid_'+json.feed.entry[i].gsx$statecode.$t+' statetable table table-striped" style="font-weight:bold">';
-                    covidheading+='<thead>';
-                    covidheading+='<tr><h5>COVID-19 INDIA <span>as on : 11 June 2021, 08:00 IST (GMT+5:30)	[&#8593;&#8595; Status change since yesterday]</span></h5></tr>';
-                    covidheading+='<tr class="row1">';
-                    covidheading+='<th rowspan="2" style="width:24%;"><strong>Name of State / UT</strong></th>';
-                    covidheading+='<th colspan="2" style="text-align:center;width:24%;"><strong>Active Cases*</strong></th>';
-                    covidheading+='<th colspan="2" style="text-align:center;width:24%;"><strong>Cured/Discharged/Migrated*</strong></th>';
-                    covidheading+='<th colspan="2" style="text-align:center;width:24%;"><strong>Deaths**</strong></th>';
-                    covidheading+='</tr>';
-                    covidheading+='<tr class="row2"><th style="width: 12%;">Total</th><th style="width: 12%;">Change since yesterday</th>';
-                    covidheading+='<th style="width: 12%;">Cumulative</th><th style="width: 12%;">Change since yesterday</th>';
-                    covidheading+='<th style="width: 12%;">Cumulative</th><th style="width: 12%;">Change since yesterday</th></tr>';
-                    covidheading+='</thead>';
-                    covidheading+='<tbody>';
-
-                var currentstate=json.feed.entry[i].gsx$states.$t;
-                var statecode=json.feed.entry[i].gsx$statecode.$t;
-
-                $(document).ready(function() {
-                 jq224.getJSON('https://www.mohfw.gov.in/data/datanew.json', function(data) {
-                	var noofval=data.length-1;
-                for (var i=0; i<data.length; i++)
-                {
-                	row="<tr>";
-                  if((data[i].new_positive!=0) && data[i].state_name!="" && data[i].state_name==currentstate)
-                  {
-                  	//for active cases
-                  	row=row+"<td>" + data[i].state_name+ "</td><td>";
-                  	if(data[i].new_active==data[i].active)	{
-                  	var diffa=0;
-                  	row=row + data[i].active+  "</td><td><span>&nbsp;</span>  </td>";}
-                  	if(data[i].new_active-data[i].active>0)	{
-                  	var diffa=data[i].new_active-data[i].active;
-                  	row=row+ data[i].new_active+"<td><span class='up'> "+diffa+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td>";}
-                  	if(data[i].new_active-data[i].active<0)	{
-                  	var diffa=data[i].active-data[i].new_active;
-                  	row=row+ data[i].new_active+"<td><span class='down'> "+diffa+" <i class='fa fa-arrow-down' style='color:green'></i></span> " +  "</td>";}
-
-                  //for cured cases
-                  	row=row+"<td>";
-                  	if(data[i].new_cured-data[i].cured==0)	{
-                  	var diffc=0;
-                  	row=row + data[i].cured+  "</td><td><span>&nbsp;</span>  </td>";}
-                  	if(data[i].new_cured-data[i].cured>0)	{
-                  	var diffc=data[i].new_cured-data[i].cured;
-                  	row=row+ data[i].new_cured+"<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:green'></i></span> " +  "</td>";}
-                    if(data[i].new_cured-data[i].cured<0)	{
-                  	var diffc=data[i].cured-data[i].new_cured;
-                  	row=row + data[i].new_cured+ "<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:red'></i></span> "+ "</td>";}
-
-                  //for death cases
-                  	row=row+"<td>";
-                  	if(data[i].new_death-data[i].death==0)	{
-                  	var diffd=0;
-                  	row=row +data[i].new_death+  "</td><td><span>&nbsp;</span>  </td></tr>";}
-                    if(data[i].new_death-data[i].death>0)	{
-                  	var diffd=data[i].new_death-data[i].death;
-                  	row=row+data[i].new_death+"</td><td><span class='up'> "+diffd+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td></tr>";}
-
-                  //$('covid_'+currentstatecode).append(row);
-                  }
-
-                  covidheading+=row;
-
-                }
-                	});
-                    });
-
-
-                    covidheading+='</tbody>';
-                    covidheading+='</table>';
-                $(covidheading).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
-
-
               }
             }
 
@@ -381,7 +308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               stringSurvey += '<table class="table table-striped table-hover table-sm table-responsive text-center">'
                               +'<tbody id="'+json.feed.entry[i].gsx$statecode.$t+'_RP_table">';
 
-              stringSurvey+='<tr>'+'<th>'+'Nutrition Conditions'+'</th>'+'<th colspan="6" scope="colgroup">'+'Estimate, date of data collection and source'+'</th>'+'</tr>';
+              stringSurvey+='<tr>'+'<th style="width:50%;">'+'Nutrition Conditions'+'</th>'+'<th style="width:50%;">'+'Estimate, date of data collection and source'+'</th>'+'</tr>';
               for (var j=0; j<=3; j++)
               {
                 stringSurvey+='<tr>'+'<td><div class="text-left">'+json.feed.entry[(i*4)+j].gsx$nutritionconditions.$t+'</div></td>'+'<td colspan="6" scope="colgroup"><div class="text-left">'+json.feed.entry[(i*4)+j].gsx$survey.$t+'</div></td>'+'</tr>';
@@ -444,7 +371,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 +'<th scope="col"><center>'+json.feed.entry[11].gsx$header.$t+'</center></th>'
                                 +'<th scope="col"><center>'+json.feed.entry[12].gsx$header.$t+'</center></th>'
                               +'</tr></thead>'
-                              +'<tbody>'+tableCalendar+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_COS></div><br>';
+                              +'<tbody>'+tableCalendar+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_Calendar></div><br>';
               $(stringCalendar).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
             }
           }
@@ -988,7 +915,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 +'<tbody>'+string+'</tbody>';
 
                 var resource_table = document.createElement('table');
-                resource_table.id = json.feed.entry[i].gsx$states.$t;
+                resource_table.id = json.feed.entry[i].gsx$states.$t+"_Assessments_Table";
                 resource_table.innerHTML = final_string;
                 resource_table.className="table_res  table-striped table-hover table-sm table-responsive";
                 //resource_table.style="";
@@ -1066,6 +993,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!--Risk Profile RP_Survey-->
       <script src="https://spreadsheets.google.com/feeds/list/1BuD5lidJLZedPs-pY2LLdf1HMPf8TQEgnuBoYpsy_rY/4/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+
+      <!--Risk Profile COVID-->
+      <script>
+        $(document).ready(function() {
+          jq224.getJSON('https://www.mohfw.gov.in/data/datanew.json', function(data) {
+
+            for (var k=0; k<data.length; k++)
+            {
+              if((data[k].new_positive!=0) && data[k].state_name!="")
+              {
+                var covidheading='<table border="1" cellspacing="1" cellpadding="1" class="statetable table table-striped" style="font-weight:bold">';
+                covidheading+='<thead>';
+                var date=new Date();
+                const month=date.toLocaleString('default', { month: 'long' })
+                var day=date.getDate();
+                var year=date.getFullYear();
+                var h=date.getHours();
+                if(h<8)
+                {
+                  day-=1;
+                }
+
+                covidheading+='<h5><center>COVID-19 Updates as on : '+day+" "+month+" "+year+', 08:00 IST (GMT+5:30) <br> Source : <a href="https://www.mohfw.gov.in/" target="_blank">Ministry of Health and Family Welfare Website</a> <br>	['+'<i class="fa fa-arrow-up" style="color:red"></i>'+'<i class="fa fa-arrow-down" style="color:green"></i>'+' Status change since yesterday]</center></h5><br>';
+                covidheading+='<tr class="row1">';
+                covidheading+='<th rowspan="2" style="width:24%;"><strong>Name of State / UT</strong></th>';
+                covidheading+='<th colspan="2" style="text-align:center;width:24%;"><strong>Active Cases*</strong></th>';
+                covidheading+='<th colspan="2" style="text-align:center;width:24%;"><strong>Cured/Discharged/Migrated*</strong></th>';
+                covidheading+='<th colspan="2" style="text-align:center;width:24%;"><strong>Deaths**</strong></th>';
+                covidheading+='</tr>';
+                covidheading+='<tr class="row2"><th style="width: 12%;">Total</th><th style="width: 12%;">Change since yesterday</th>';
+                covidheading+='<th style="width: 12%;">Cumulative</th><th style="width: 12%;">Change since yesterday</th>';
+                covidheading+='<th style="width: 12%;">Cumulative</th><th style="width: 12%;">Change since yesterday</th></tr>';
+                covidheading+='</thead>';
+                covidheading+='<tbody>';
+
+                row="<tr>";
+                //for active cases
+                row=row+"<td>" + data[k].state_name.replaceAll("*", "")+ "</td><td>";
+                if(data[k].new_active==data[k].active)	{
+                var diffa=0;
+                row=row + data[k].active+  "</td><td><span>&nbsp;</span>  </td>";}
+                if(data[k].new_active-data[k].active>0)	{
+                var diffa=data[k].new_active-data[k].active;
+                row=row+ data[k].new_active+"<td><span class='up'> "+diffa+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td>";}
+                if(data[k].new_active-data[k].active<0)	{
+                var diffa=data[k].active-data[k].new_active;
+                row=row+ data[k].new_active+"<td><span class='down'> "+diffa+" <i class='fa fa-arrow-down' style='color:green'></i></span> " +  "</td>";}
+
+                //for cured cases
+                row=row+"<td>";
+                if(data[k].new_cured-data[k].cured==0)	{
+                var diffc=0;
+                row=row + data[k].cured+  "</td><td><span>&nbsp;</span>  </td>";}
+                if(data[k].new_cured-data[k].cured>0)	{
+                var diffc=data[k].new_cured-data[k].cured;
+                row=row+ data[k].new_cured+"<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:green'></i></span> " +  "</td>";}
+                if(data[k].new_cured-data[k].cured<0)	{
+                var diffc=data[k].cured-data[k].new_cured;
+                row=row + data[k].new_cured+ "<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:red'></i></span> "+ "</td>";}
+
+                //for death cases
+                row=row+"<td>";
+                if(data[k].new_death-data[k].death==0)	{
+                var diffd=0;
+                row=row +data[k].new_death+  "</td><td><span>&nbsp;</span>  </td></tr>";}
+                if(data[k].new_death-data[k].death>0)	{
+                var diffd=data[k].new_death-data[k].death;
+                row=row+data[k].new_death+"</td><td><span class='up'> "+diffd+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td></tr>";}
+
+                covidheading+=row;
+                covidheading+='</tbody>';
+                covidheading+='</table>';
+                $(covidheading).appendTo("#"+data[k].state_name.replaceAll(" ", "").replaceAll("*", "")+"_Covid_Table");
+              }
+            }
+
+          });
+        });
+      </script>
+
       <!--Risk Profile RP_Calendar-->
       <script src="https://spreadsheets.google.com/feeds/list/1BuD5lidJLZedPs-pY2LLdf1HMPf8TQEgnuBoYpsy_rY/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
       <!--Risk Profile StateUpdates-->
@@ -1086,5 +1093,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
   </body>
 </html>
