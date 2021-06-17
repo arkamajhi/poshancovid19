@@ -393,7 +393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         l2=json.feed.entry[i].gsx$l2.$t;
                                         var l2div = document.createElement('div');
                                         l2div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t;
-                                        l2div.innerHTML = "<div><h4>"+l2+"</h4></div>";
+                                        l2div.innerHTML = "<br><br><div><h4>"+l2+"</h4></div>";
                                         l2div.className="container";
                                         l2div.style="";
 
@@ -431,11 +431,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t;
                                         if(json.feed.entry[i].gsx$l4.$t==""&&json.feed.entry[i].gsx$l5.$t=="")
                                         {
-                                          div.innerHTML = "<div>"+"<ul><li><h5>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+(json.feed.entry[i].gsx$publisher.$t!=""?" : ":"")+l3+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h5>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
+                                          div.innerHTML = "<br><div>"+"<ul><li><h5>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+(json.feed.entry[i].gsx$publisher.$t!=""?" : ":"")+l3+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h5>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
                                         }
                                         else
                                         {
-                                          div.innerHTML = "<div>"+"<ul><li><h5>"+l3+"</h5></li></ul>"+"</div>";
+                                          div.innerHTML = "<br><div>"+"<ul><li><h5>"+l3+"</h5></li></ul>"+"</div>";
                                         }
                                         div.className="container";
                                         div.style="";
