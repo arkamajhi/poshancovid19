@@ -857,7 +857,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                       {
                                         l2=json.feed.entry[i].gsx$l2.$t;
                                         var l2div = document.createElement('div');
-                                        l2div.id = json.feed.entry[i].gsx$l2.$t;
+                                        l2div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t;
                                         l2div.innerHTML = "<div><h4>"+l2+"</h4></div>";
                                         l2div.className="container";
                                         l2div.style="";
@@ -867,11 +867,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                                         if(json.feed.entry[i].gsx$l1.$t=="National Resources")
                                         {
-                                          nationaldroplist.innerHTML += '<a href="#'+json.feed.entry[i].gsx$l2.$t+'">'+json.feed.entry[i].gsx$l2.$t+'</a><br>';
+                                          nationaldroplist.innerHTML += '<a href="#'+json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+'">'+json.feed.entry[i].gsx$l2.$t+'</a><br>';
                                         }
                                         else
                                         {
-                                          internationaldroplist.innerHTML += '<a href="#'+json.feed.entry[i].gsx$l2.$t+'">'+json.feed.entry[i].gsx$l2.$t+'</a><br>';
+                                          internationaldroplist.innerHTML += '<a href="#'+json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+'">'+json.feed.entry[i].gsx$l2.$t+'</a><br>';
                                         }
 
                                       }
@@ -893,7 +893,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                       {
                                         l3=json.feed.entry[i].gsx$l3.$t;
                                         var div = document.createElement('div');
-                                        div.id = json.feed.entry[i].gsx$l3.$t;
+                                        div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t;
                                         if(json.feed.entry[i].gsx$l4.$t==""&&json.feed.entry[i].gsx$l5.$t=="")
                                         {
                                           div.innerHTML = "<div>"+"<ul><li><h5>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l3+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h5>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
@@ -905,7 +905,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         div.className="container";
                                         div.style="";
 
-                                        var element = document.getElementById(json.feed.entry[i].gsx$l2.$t);
+                                        var element = document.getElementById(json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t);
                                         element.appendChild(div);
 
 
@@ -923,7 +923,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                       {
                                         l4=json.feed.entry[i].gsx$l4.$t;
                                         var div = document.createElement('div');
-                                        div.id = json.feed.entry[i].gsx$l4.$t;
+                                        div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t+"_"+json.feed.entry[i].gsx$l4.$t;
                                         if(json.feed.entry[i].gsx$l5.$t=="")
                                         {
                                           div.innerHTML = "<div>"+"<ul><li><h6>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l4+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h6>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
@@ -935,7 +935,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         div.className="container";
                                         div.style="";
 
-                                        var element = document.getElementById(json.feed.entry[i].gsx$l3.$t);
+                                        var element = document.getElementById(json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t);
                                         element.appendChild(div);
 
                                       }
@@ -951,12 +951,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         if(l5!="")
                                         {
                                           var div = document.createElement('div');
-                                          div.id = json.feed.entry[i].gsx$l5.$t;
+                                          div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t+"_"+json.feed.entry[i].gsx$l4.$t+"_"+json.feed.entry[i].gsx$l5.$t;
                                           div.innerHTML = "<div>"+"<ul><li><h7>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l5+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h7>"+"<br>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
                                           div.className="container l5";
                                           div.style="";
 
-                                          var element = document.getElementById(json.feed.entry[i].gsx$l4.$t);
+                                          var element = document.getElementById(json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t+"_"+json.feed.entry[i].gsx$l4.$t);
                                           element.appendChild(div);
                                         }
 
