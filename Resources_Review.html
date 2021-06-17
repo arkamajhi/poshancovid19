@@ -178,8 +178,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div id="States"></div>
       </div>
 
-      <div id="Global Guidelines and Materials on COVID-19" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black">
-        <h4><br><br>Global Guidelines and Materials on COVID-19</h4>
+      <div id="International Resources" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black">
+        <h4><br><br>International Resources</h4>
       </div>
 
       <!-- Search Modal -->
@@ -285,471 +285,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                   string += "</td></tr></tbody></table></center><br>";
                                   $(string).appendTo(json.feed.entry[i].gsx$tag.$t);
                                 }
-                              }
-
-                              else if(json.feed.entry[0].gsx$type.$t=="StatePolicy")
-                              {
-
-                                /*var StatePolicydroplist = document.createElement('a');
-                                //droplist.id = json.feed.entry[i].gsx$states.$t;
-                                StatePolicydroplist.innerHTML = '<a href="#'+json.feed.entry[0].gsx$b1.$t+'">'+json.feed.entry[0].gsx$b1.$t+'</a><br>'
-                                                               +'<a href="#'+json.feed.entry[0].gsx$b1.$t+'">'+json.feed.entry[0].gsx$b2.$t+'</a><br>'
-                                                               +'<a href="#'+json.feed.entry[0].gsx$b3.$t+'">'+json.feed.entry[0].gsx$b3.$t+'</a><br>'
-                                                               +'<a href="#'+json.feed.entry[0].gsx$b4.$t+'">'+json.feed.entry[0].gsx$b4.$t+'</a><br>'
-                                                               +'<a href="#'+json.feed.entry[0].gsx$b5.$t+'">'+json.feed.entry[0].gsx$b5.$t+'</a><br>'
-                                                               +'<a href="#'+json.feed.entry[0].gsx$b6.$t+'">'+json.feed.entry[0].gsx$b6.$t+'</a><br>'
-                                                               +'<a href="#'+json.feed.entry[0].gsx$b6.$t+'">'+json.feed.entry[0].gsx$b7.$t+'</a>';
-                                StatePolicydroplist.className="dropdown-item";
-                                var element = document.getElementById("State_Policy_dropdown_menu");
-                                element.appendChild(StatePolicydroplist);*/
-
-                                string = '<table class="table table-striped table-hover table-sm">'
-                                                +'<thead>'
-                                                +'<tr>'
-                                                  +'<th scope="col" class="text-center">Key</th>'
-                                                  +'<th scope="col" class="text-center">'+json.feed.entry[0].gsx$indication.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=1; i<5; i++)
-                                {
-                                  string+='<tr>'
-                                  +json.feed.entry[i].gsx$a1.$t
-                                  +'<td>'+json.feed.entry[i].gsx$indication.$t+'</td>'
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-
-                                string = '<table id="'+json.feed.entry[0].gsx$b1.$t+'" class="table table-striped table-hover table-sm table-responsive text-center sticky-header">'
-                                                +'<thead>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2">'+json.feed.entry[0].gsx$a1.$t+'</th>'
-                                                  +'<th colspan="3" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b1.$t+'</h3></th>'
-                                                  +'<th colspan="3" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b2.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a2.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a3.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a4.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a5.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a6.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a7.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=5; i<len-1; i++)
-                                {
-                                  string+='<tr>'
-                                  +'<th scope="row" class="text-left">'+"<a href='#"+json.feed.entry[i].gsx$a1.$t+"'>"+json.feed.entry[i].gsx$a1.$t+'</a>'+'</th>'
-                                  +json.feed.entry[i].gsx$a2.$t
-                                  +json.feed.entry[i].gsx$a3.$t
-                                  +json.feed.entry[i].gsx$a4.$t
-                                  +json.feed.entry[i].gsx$a5.$t
-                                  +json.feed.entry[i].gsx$a6.$t
-                                  +json.feed.entry[i].gsx$a7.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-                                string = '<table id="'+json.feed.entry[0].gsx$b3.$t+'" class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<col>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2">'+json.feed.entry[0].gsx$a1.$t+'</th>'
-                                                  +'<th colspan="14" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b3.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a8.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a9.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a10.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a11.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a12.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a13.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a14.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a15.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a16.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a17.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a18.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a19.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a20.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a21.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=5; i<len-1; i++)
-                                {
-                                  string+='<tr>'
-                                  +'<th scope="row" class="text-left">'+"<a href='#"+json.feed.entry[i].gsx$a1.$t+"'>"+json.feed.entry[i].gsx$a1.$t+'</a>'+'</th>'
-                                  +json.feed.entry[i].gsx$a8.$t
-                                  +json.feed.entry[i].gsx$a9.$t
-                                  +json.feed.entry[i].gsx$a10.$t
-                                  +json.feed.entry[i].gsx$a11.$t
-                                  +json.feed.entry[i].gsx$a12.$t
-                                  +json.feed.entry[i].gsx$a13.$t
-                                  +json.feed.entry[i].gsx$a14.$t
-                                  +json.feed.entry[i].gsx$a15.$t
-                                  +json.feed.entry[i].gsx$a16.$t
-                                  +json.feed.entry[i].gsx$a17.$t
-                                  +json.feed.entry[i].gsx$a18.$t
-                                  +json.feed.entry[i].gsx$a19.$t
-                                  +json.feed.entry[i].gsx$a20.$t
-                                  +json.feed.entry[i].gsx$a21.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-
-                                string = '<table id="'+json.feed.entry[0].gsx$b4.$t+'" class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<col>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2">'+json.feed.entry[0].gsx$a1.$t+'</th>'
-                                                  +'<th colspan="15" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b4.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a22.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a23.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a24.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a25.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a26.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a27.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a28.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a29.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a30.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a31.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a32.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a33.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a34.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a35.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a36.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=5; i<len-1; i++)
-                                {
-                                  string+='<tr>'
-                                  +'<th scope="row" class="text-left">'+"<a href='#"+json.feed.entry[i].gsx$a1.$t+"'>"+json.feed.entry[i].gsx$a1.$t+'</a>'+'</th>'
-                                  +json.feed.entry[i].gsx$a22.$t
-                                  +json.feed.entry[i].gsx$a23.$t
-                                  +json.feed.entry[i].gsx$a24.$t
-                                  +json.feed.entry[i].gsx$a25.$t
-                                  +json.feed.entry[i].gsx$a26.$t
-                                  +json.feed.entry[i].gsx$a27.$t
-                                  +json.feed.entry[i].gsx$a28.$t
-                                  +json.feed.entry[i].gsx$a29.$t
-                                  +json.feed.entry[i].gsx$a30.$t
-                                  +json.feed.entry[i].gsx$a31.$t
-                                  +json.feed.entry[i].gsx$a32.$t
-                                  +json.feed.entry[i].gsx$a33.$t
-                                  +json.feed.entry[i].gsx$a34.$t
-                                  +json.feed.entry[i].gsx$a35.$t
-                                  +json.feed.entry[i].gsx$a36.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-                                string = '<table id="'+json.feed.entry[0].gsx$b5.$t+'" class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<col>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2">'+json.feed.entry[0].gsx$a1.$t+'</th>'
-                                                  +'<th colspan="14" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b5.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a37.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a38.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a39.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a40.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a41.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a42.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a43.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a44.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a45.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a46.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a47.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a48.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a49.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a50.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=5; i<len-1; i++)
-                                {
-                                  string+='<tr>'
-                                  +'<th scope="row" class="text-left">'+"<a href='#"+json.feed.entry[i].gsx$a1.$t+"'>"+json.feed.entry[i].gsx$a1.$t+'</a>'+'</th>'
-
-                                  +json.feed.entry[i].gsx$a37.$t
-                                  +json.feed.entry[i].gsx$a38.$t
-                                  +json.feed.entry[i].gsx$a39.$t
-                                  +json.feed.entry[i].gsx$a40.$t
-                                  +json.feed.entry[i].gsx$a41.$t
-                                  +json.feed.entry[i].gsx$a42.$t
-                                  +json.feed.entry[i].gsx$a43.$t
-                                  +json.feed.entry[i].gsx$a44.$t
-                                  +json.feed.entry[i].gsx$a45.$t
-                                  +json.feed.entry[i].gsx$a46.$t
-                                  +json.feed.entry[i].gsx$a47.$t
-                                  +json.feed.entry[i].gsx$a48.$t
-                                  +json.feed.entry[i].gsx$a49.$t
-                                  +json.feed.entry[i].gsx$a50.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-                                string = '<table id="'+json.feed.entry[0].gsx$b6.$t+'" class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<col>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2">'+json.feed.entry[0].gsx$a1.$t+'</th>'
-                                                  +'<th colspan="1" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b6.$t+'</h3></th>'
-                                                  +'<th colspan="4" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b7.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a51.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a52.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a53.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a54.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a55.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=5; i<len-1; i++)
-                                {
-                                  string+='<tr>'
-                                  +'<th scope="row" class="text-left">'+"<a href='#"+json.feed.entry[i].gsx$a1.$t+"'>"+json.feed.entry[i].gsx$a1.$t+'</a>'+'</th>'
-
-                                  +json.feed.entry[i].gsx$a51.$t
-                                  +json.feed.entry[i].gsx$a52.$t
-                                  +json.feed.entry[i].gsx$a53.$t
-                                  +json.feed.entry[i].gsx$a54.$t
-                                  +json.feed.entry[i].gsx$a55.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-                                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2"><h1>Key</h1></th>'
-                                                  +'<th colspan="3" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b1.$t+'</h3></th>'
-                                                  +'<th colspan="3" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b2.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a2.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a3.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a4.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a5.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a6.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a7.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=1; i<5; i++)
-                                {
-                                  string+='<tr>'
-                                  +json.feed.entry[i].gsx$a1.$t
-                                  +json.feed.entry[i].gsx$a2.$t
-                                  +json.feed.entry[i].gsx$a3.$t
-                                  +json.feed.entry[i].gsx$a4.$t
-                                  +json.feed.entry[i].gsx$a5.$t
-                                  +json.feed.entry[i].gsx$a6.$t
-                                  +json.feed.entry[i].gsx$a7.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-                                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<col>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2"><h1>Key</h1></th>'
-                                                  +'<th colspan="14" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b3.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a8.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a9.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a10.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a11.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a12.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a13.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a14.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a15.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a16.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a17.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a18.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a19.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a20.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a21.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=1; i<5; i++)
-                                {
-                                  string+='<tr>'
-                                  +json.feed.entry[i].gsx$a1.$t
-                                  +json.feed.entry[i].gsx$a8.$t
-                                  +json.feed.entry[i].gsx$a9.$t
-                                  +json.feed.entry[i].gsx$a10.$t
-                                  +json.feed.entry[i].gsx$a11.$t
-                                  +json.feed.entry[i].gsx$a12.$t
-                                  +json.feed.entry[i].gsx$a13.$t
-                                  +json.feed.entry[i].gsx$a14.$t
-                                  +json.feed.entry[i].gsx$a15.$t
-                                  +json.feed.entry[i].gsx$a16.$t
-                                  +json.feed.entry[i].gsx$a17.$t
-                                  +json.feed.entry[i].gsx$a18.$t
-                                  +json.feed.entry[i].gsx$a19.$t
-                                  +json.feed.entry[i].gsx$a20.$t
-                                  +json.feed.entry[i].gsx$a21.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-                                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<col>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2"><h1>Key</h1></th>'
-                                                  +'<th colspan="15" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b4.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a22.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a23.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a24.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a25.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a26.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a27.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a28.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a29.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a30.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a31.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a32.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a33.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a34.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a35.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a36.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=1; i<5; i++)
-                                {
-                                  string+='<tr>'
-                                  +json.feed.entry[i].gsx$a1.$t
-                                  +json.feed.entry[i].gsx$a22.$t
-                                  +json.feed.entry[i].gsx$a23.$t
-                                  +json.feed.entry[i].gsx$a24.$t
-                                  +json.feed.entry[i].gsx$a25.$t
-                                  +json.feed.entry[i].gsx$a26.$t
-                                  +json.feed.entry[i].gsx$a27.$t
-                                  +json.feed.entry[i].gsx$a28.$t
-                                  +json.feed.entry[i].gsx$a29.$t
-                                  +json.feed.entry[i].gsx$a30.$t
-                                  +json.feed.entry[i].gsx$a31.$t
-                                  +json.feed.entry[i].gsx$a32.$t
-                                  +json.feed.entry[i].gsx$a33.$t
-                                  +json.feed.entry[i].gsx$a34.$t
-                                  +json.feed.entry[i].gsx$a35.$t
-                                  +json.feed.entry[i].gsx$a36.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-                                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<col>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2"><h1>Key</h1></th>'
-                                                  +'<th colspan="14" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b5.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a37.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a38.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a39.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a40.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a41.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a42.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a43.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a44.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a45.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a46.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a47.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a48.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a49.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a50.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=1; i<5; i++)
-                                {
-                                  string+='<tr>'
-                                  +json.feed.entry[i].gsx$a1.$t
-                                  +json.feed.entry[i].gsx$a37.$t
-                                  +json.feed.entry[i].gsx$a38.$t
-                                  +json.feed.entry[i].gsx$a39.$t
-                                  +json.feed.entry[i].gsx$a40.$t
-                                  +json.feed.entry[i].gsx$a41.$t
-                                  +json.feed.entry[i].gsx$a42.$t
-                                  +json.feed.entry[i].gsx$a43.$t
-                                  +json.feed.entry[i].gsx$a44.$t
-                                  +json.feed.entry[i].gsx$a45.$t
-                                  +json.feed.entry[i].gsx$a46.$t
-                                  +json.feed.entry[i].gsx$a47.$t
-                                  +json.feed.entry[i].gsx$a48.$t
-                                  +json.feed.entry[i].gsx$a49.$t
-                                  +json.feed.entry[i].gsx$a50.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
-                                string = '<table class="table table-striped table-hover table-sm table-responsive text-center">'
-                                                +'<thead>'
-                                                +'<col>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<colgroup span="2"></colgroup>'
-                                                +'<tr>'
-                                                  +'<th rowspan="2"><h1>Key</h1></th>'
-                                                  +'<th colspan="1" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b6.$t+'</h3></th>'
-                                                  +'<th colspan="4" scope="colgroup"><h3>'+json.feed.entry[0].gsx$b7.$t+'</h3></th>'
-                                                +'</tr>'
-                                                +'<tr>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a51.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a52.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a53.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a54.$t+'</th>'
-                                                  +'<th scope="col">'+json.feed.entry[0].gsx$a55.$t+'</th>'
-                                                +'</tr></thead>'
-                                                +'<tbody>';
-                                for (var i=1; i<5; i++)
-                                {
-                                  string+='<tr>'
-                                  +json.feed.entry[i].gsx$a1.$t
-                                  +json.feed.entry[i].gsx$a51.$t
-                                  +json.feed.entry[i].gsx$a52.$t
-                                  +json.feed.entry[i].gsx$a53.$t
-                                  +json.feed.entry[i].gsx$a54.$t
-                                  +json.feed.entry[i].gsx$a55.$t
-                                  +'</tr>';
-                                }
-                                string += '</tbody></table><br>';
-                                $(string).appendTo("#PS");
-
                               }
 
                               else if(json.feed.entry[0].gsx$type.$t=="StateResources")
@@ -896,7 +431,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t;
                                         if(json.feed.entry[i].gsx$l4.$t==""&&json.feed.entry[i].gsx$l5.$t=="")
                                         {
-                                          div.innerHTML = "<div>"+"<ul><li><h5>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l3+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h5>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
+                                          div.innerHTML = "<div>"+"<ul><li><h5>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+(json.feed.entry[i].gsx$publisher.$t!=""?" : ":"")+l3+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h5>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
                                         }
                                         else
                                         {
@@ -926,7 +461,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t+"_"+json.feed.entry[i].gsx$l4.$t;
                                         if(json.feed.entry[i].gsx$l5.$t=="")
                                         {
-                                          div.innerHTML = "<div>"+"<ul><li><h6>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l4+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h6>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
+                                          div.innerHTML = "<div>"+"<ul><li><h6>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+(json.feed.entry[i].gsx$publisher.$t!=""?" : ":"")+l4+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h6>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
                                         }
                                         else
                                         {
@@ -952,7 +487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         {
                                           var div = document.createElement('div');
                                           div.id = json.feed.entry[i].gsx$l1.$t+"_"+json.feed.entry[i].gsx$l2.$t+"_"+json.feed.entry[i].gsx$l3.$t+"_"+json.feed.entry[i].gsx$l4.$t+"_"+json.feed.entry[i].gsx$l5.$t;
-                                          div.innerHTML = "<div>"+"<ul><li><h7>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+" : "+l5+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h7>"+"<br>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
+                                          div.innerHTML = "<div>"+"<ul><li><h7>"+"<a href='"+json.feed.entry[i].gsx$link.$t+"' target='_blank'>"+json.feed.entry[i].gsx$publisher.$t+(json.feed.entry[i].gsx$publisher.$t!=""?" : ":"")+l5+"</a>"+"  "+(json.feed.entry[i].gsx$new.$t=='New'?'<span class="badge badge-pill badge-success">New</span>':'')+"</h7>"+"<br>"+json.feed.entry[i].gsx$description.$t+"</li></ul>"+"</div>";
                                           div.className="container l5";
                                           div.style="";
 
@@ -1029,9 +564,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       </style>
 
-      <script src="https://spreadsheets.google.com/feeds/list/1_9C_Ja2FMyCplZew2MZ90XWv4nqNHXULX5BxZF6qtQU/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
-      <script src="https://spreadsheets.google.com/feeds/list/1VYwJ-6uTdSncDF-eu9BlBfPabFHFFfXdK0O_FbfcLaI/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+      <script src="https://spreadsheets.google.com/feeds/list/1AamRiMUG5Gqn3XKbBUTnjKt2pxDjJQ12ynIwn4R676g/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+      <!--State Policy Shifted to Monitoring-->
+      <!--script src="https://spreadsheets.google.com/feeds/list/1VYwJ-6uTdSncDF-eu9BlBfPabFHFFfXdK0O_FbfcLaI/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script-->
+      <!--National_International_Resources-->
       <script src="https://spreadsheets.google.com/feeds/list/1AamRiMUG5Gqn3XKbBUTnjKt2pxDjJQ12ynIwn4R676g/2/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+      <!--StateResources-->
       <script src="https://spreadsheets.google.com/feeds/list/1AamRiMUG5Gqn3XKbBUTnjKt2pxDjJQ12ynIwn4R676g/3/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
 
 
