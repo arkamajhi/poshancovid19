@@ -926,6 +926,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
           }
 
+          else if(json.feed.entry[0].gsx$type.$t=="Archive")
+          {
+            console.log("Length of Archive = "+len);
+            for (var i=0; i<len; i++)
+            {
+              
+            }
+          }
+
         }
       </script>
 
@@ -1091,6 +1100,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!--State Policy Analysis-->
       <script src="https://spreadsheets.google.com/feeds/list/1qnumiB4mEMdeiurvb95Vqtw3fbkzZPX_SUgtx_BK33o/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+
+      <!--Archive-->
+      <script src="https://spreadsheets.google.com/feeds/list/1BuD5lidJLZedPs-pY2LLdf1HMPf8TQEgnuBoYpsy_rY/8/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
