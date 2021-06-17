@@ -285,7 +285,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           {
             console.log("Length of Survey = "+len);
 
-            for (var i=0; i<17; i++)
+            for (var i=0; i<18; i++)
             {
               if(json.feed.entry[i].gsx$states.$t!="")
               {
@@ -867,7 +867,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           else if(json.feed.entry[0].gsx$type.$t=="StateResources")
           {
-            for (var i=0; i<10; i++)
+            for (var i=0; i<11; i++)
             {
               var string="";
               var count=0;
@@ -1001,7 +1001,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             for (var k=0; k<data.length; k++)
             {
-              if((data[k].new_positive!=0) && data[k].state_name!="")
+              statename=data[k].state_name;
+              statename=((data[k].sno=="11111")?"India":"");
+              if((data[k].new_positive!=0) && statename!="")
               {
                 var covidheading='<table border="1" cellspacing="1" cellpadding="1" class="statetable table table-striped table_res table-hover table-sm table-responsive" style="font-weight:bold">';
                 covidheading+='<thead>';
@@ -1030,7 +1032,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 row="<tr>";
                 //for active cases
-                row=row+"<td>" + data[k].state_name.replaceAll("*", "")+ "</td><td>";
+                row=row+"<td>" + statename.replaceAll("*", "")+ "</td><td>";
                 if(data[k].new_active==data[k].active)	{
                 var diffa=0;
                 row=row + data[k].active+  "</td><td><span>&nbsp;</span>  </td>";}
@@ -1065,7 +1067,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 covidheading+=row;
                 covidheading+='</tbody>';
                 covidheading+='</table>';
-                $(covidheading).appendTo("#"+data[k].state_name.replaceAll(" ", "").replaceAll("*", "")+"_Covid_Table");
+                $(covidheading).appendTo("#"+statename.replaceAll(" ", "").replaceAll("*", "")+"_Covid_Table");
               }
             }
 
