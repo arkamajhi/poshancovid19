@@ -357,19 +357,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               var stringCalendar='<center><h4>Mapping of Seasonal Threats / Conditions : '+json.feed.entry[i].gsx$states.$t+'</h4></center><br>'
                               +'<table class="table_res table-striped table-hover table-sm table-responsive" id = '+json.feed.entry[i].gsx$statecode.$t+'_COS><thead>'
                               +'<tr>'
-                                +'<th scope="col" width="40%"><center>'+json.feed.entry[0].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[1].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[2].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[3].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[4].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[5].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[6].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[7].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[8].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[9].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[10].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[11].gsx$header.$t+'</center></th>'
-                                +'<th scope="col" width="5%"><center>'+json.feed.entry[12].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[0].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[1].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[2].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[3].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[4].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[5].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[6].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[7].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[8].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[9].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[10].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[11].gsx$header.$t+'</center></th>'
+                                +'<th scope="col" width="1%"><center>'+json.feed.entry[12].gsx$header.$t+'</center></th>'
                               +'</tr></thead>'
                               +'<tbody>'+tableCalendar+'</tbody></table><div id='+json.feed.entry[i].gsx$statecode.$t+'_after_Calendar></div><br>';
               $(stringCalendar).appendTo("#"+json.feed.entry[i].gsx$statecode.$t);
@@ -1003,7 +1003,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             {
               if((data[k].new_positive!=0) && data[k].state_name!="")
               {
-                var covidheading='<table border="1" cellspacing="1" cellpadding="1" class="statetable table table-striped" style="font-weight:bold">';
+                var covidheading='<table border="1" cellspacing="1" cellpadding="1" class="statetable table table-striped table_res table-hover table-sm table-responsive" style="font-weight:bold">';
                 covidheading+='<thead>';
                 var date=new Date();
                 const month=date.toLocaleString('default', { month: 'long' })
