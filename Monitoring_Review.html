@@ -1031,13 +1031,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!--Risk Profile COVID-->
       <script>
+
         $(document).ready(function() {
           jq224.getJSON('https://www.mohfw.gov.in/data/datanew.json', function(data) {
 
             for (var k=0; k<data.length; k++)
             {
               statename=data[k].state_name;
-              statename=((data[k].sno=="11111")?"India":"");
+              statename=((data[k].sno=="11111")?"India":statename);
               if((data[k].new_positive!=0) && statename!="")
               {
                 var covidheading='<table border="1" cellspacing="1" cellpadding="1" class="statetable table table-striped table_res table-hover table-sm table-responsive" style="font-weight:bold">';
@@ -1070,34 +1071,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 row=row+"<td>" + statename.replaceAll("*", "")+ "</td><td>";
                 if(data[k].new_active==data[k].active)	{
                 var diffa=0;
-                row=row + data[k].active+  "</td><td><span>&nbsp;</span>  </td>";}
+                row=row + (Number(data[k].active).toLocaleString('en-IN'))+  "</td><td><span>&nbsp;</span>  </td>";}
                 if(data[k].new_active-data[k].active>0)	{
                 var diffa=data[k].new_active-data[k].active;
-                row=row+ data[k].new_active+"<td><span class='up'> "+diffa+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td>";}
+                row=row+ (Number(data[k].new_active).toLocaleString('en-IN'))+"</td><td><span class='up'> "+diffa.toLocaleString('en-IN')+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td>";}
                 if(data[k].new_active-data[k].active<0)	{
                 var diffa=data[k].active-data[k].new_active;
-                row=row+ data[k].new_active+"<td><span class='down'> "+diffa+" <i class='fa fa-arrow-down' style='color:green'></i></span> " +  "</td>";}
+                row=row+ (Number(data[k].new_active).toLocaleString('en-IN'))+"</td><td><span class='down'> "+diffa.toLocaleString('en-IN')+" <i class='fa fa-arrow-down' style='color:green'></i></span> " +  "</td>";}
 
                 //for cured cases
                 row=row+"<td>";
                 if(data[k].new_cured-data[k].cured==0)	{
                 var diffc=0;
-                row=row + data[k].cured+  "</td><td><span>&nbsp;</span>  </td>";}
+                row=row + (Number(data[k].cured).toLocaleString('en-IN'))+  "</td><td><span>&nbsp;</span>  </td>";}
                 if(data[k].new_cured-data[k].cured>0)	{
                 var diffc=data[k].new_cured-data[k].cured;
-                row=row+ data[k].new_cured+"<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:green'></i></span> " +  "</td>";}
+                row=row+ (Number(data[k].new_cured).toLocaleString('en-IN'))+"</td><td><span class='cup'> "+diffc.toLocaleString('en-IN')+" <i class='fa fa-arrow-up' style='color:green'></i></span> " +  "</td>";}
                 if(data[k].new_cured-data[k].cured<0)	{
                 var diffc=data[k].cured-data[k].new_cured;
-                row=row + data[k].new_cured+ "<td><span class='cup'> "+diffc+" <i class='fa fa-arrow-up' style='color:red'></i></span> "+ "</td>";}
+                row=row + (Number(data[k].new_cured).toLocaleString('en-IN'))+ "</td><td><span class='cup'> "+diffc.toLocaleString('en-IN')+" <i class='fa fa-arrow-up' style='color:red'></i></span> "+ "</td>";}
 
                 //for death cases
                 row=row+"<td>";
                 if(data[k].new_death-data[k].death==0)	{
                 var diffd=0;
-                row=row +data[k].new_death+  "</td><td><span>&nbsp;</span>  </td></tr>";}
+                row=row +(Number(data[k].new_death).toLocaleString('en-IN'))+  "</td><td><span>&nbsp;</span>  </td></tr>";}
                 if(data[k].new_death-data[k].death>0)	{
                 var diffd=data[k].new_death-data[k].death;
-                row=row+data[k].new_death+"</td><td><span class='up'> "+diffd+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td></tr>";}
+                row=row+(Number(data[k].new_death).toLocaleString('en-IN'))+"</td><td><span class='up'> "+diffd.toLocaleString('en-IN')+" <i class='fa fa-arrow-up' style='color:red'></i></span> " +  "</td></tr>";}
 
                 covidheading+=row;
                 covidheading+='</tbody>';
