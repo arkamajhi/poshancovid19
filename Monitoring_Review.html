@@ -77,7 +77,7 @@ body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animatio
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <nav id="navbar-example2" class="navbar navbar-expand-lg navbar-header navbar-inverse navbar-light bg-light sticky-top " >
+    <nav id="navbar-example2" class="navbar  navbar-header navbar-inverse navbar-light bg-light sticky-top " >
       <a class="nav-link" href="">POSHAN COVID-19</a>
       <a class="navbar-brand badge  badge-secondary" href="https://poshancovid19.in/Resources.html"><h6 style="color:white; padding-left:5px;padding-right:5px;">Resources</h6></a>
       <a class="navbar-brand badge  badge-primary" href="#"><h6 style="color:white; padding-left:5px;padding-right:5px;">Monitoring</h6></a>
@@ -85,8 +85,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse " id="navbarNavDropdown">
-        <ul class="nav nav-pills ml-auto justify-content-end">
+        <ul class="nav nav-pills ml-auto justify-content-center">
 
           <li class="nav-item">
             <a class="nav-link" href="#Update">Update</a>
@@ -114,6 +115,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <!--li class="nav-item">
             <a class="nav-link" href="#Feedback">Feedback</a>
           </li-->
+          <li class="nav-item">
+            <a class="nav-link" href="#Archives">Archives</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -170,6 +174,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div id="Methods" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black" >
         <h4><br><br>Methods</h4>
+      </div>
+
+      <div id="Archives" class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-bottom:5%;border-bottom: 1px solid black" >
+        <h4><br><br>Archives</h4>
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding-bottom:5%;border-right: 1px solid black">
+            <center><h5>POSHAN Covid-19 Resources Archives</h5></center>
+            <ul id="Resources_Archive">
+            </ul>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <center><h5>POSHAN Covid-19 Monitoring Archives</h5></center>
+            <ul id="Monitoring_Archive">
+            </ul>
+          </div>
+        </div>
       </div>
 
       <!--script>
@@ -931,7 +951,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             console.log("Length of Archive = "+len);
             for (var i=0; i<len; i++)
             {
-              
+              var listelement = document.createElement('li');
+              listelement.innerHTML = '<a href="'+json.feed.entry[i].gsx$link.$t+'" target="_blank">'+json.feed.entry[i].gsx$title.$t+"</a>";
+              //div.className="container l5";
+              //div.style="";
+
+              var list = document.getElementById(json.feed.entry[i].gsx$id.$t);
+              list.appendChild(listelement);
             }
           }
 
@@ -1102,7 +1128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <script src="https://spreadsheets.google.com/feeds/list/1qnumiB4mEMdeiurvb95Vqtw3fbkzZPX_SUgtx_BK33o/5/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
 
       <!--Archive-->
-      <script src="https://spreadsheets.google.com/feeds/list/1BuD5lidJLZedPs-pY2LLdf1HMPf8TQEgnuBoYpsy_rY/8/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
+      <script src="https://spreadsheets.google.com/feeds/list/1I73mqP2USPAGw7nauXa4et5eFosJLAN3HEU5xHgfFRE/1/public/values?alt=json-in-script&amp;callback=display" type="text/javascript"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
