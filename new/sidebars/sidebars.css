@@ -17,6 +17,11 @@ main {
   overflow-y: hidden;
 }
 
+.anchor
+{
+  scroll-margin-top: 2em;
+}
+
 .b-example-divider {
   flex-shrink: 0;
   width: 0.5%;
