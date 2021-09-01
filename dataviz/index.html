@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NM3HMS7');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162064668-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-162064668-1');
+    </script>
+
+    <!-- Hotjar Tracking Code for http://www.arkadesignstudio.in/dataviz/covid19/Cov -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:1762795,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    <meta name = "keywords" content = "" />
+    <meta name = "description" content = "COVID-19 data visualization for India at state and district level. Data source: Ministry of Health and Family Welfare site. Made by IIT Bombay Nutrition Group"/>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name = "author" content = "Arka Majhi">
+
+    <title>COVID-19 data visualization for India State and District wise by IIT Bombay</title>
+
+    <style>
+      .flourish-credit
+      {
+        visibility: hidden;
+      }
+      .dw-chart-footer
+      {
+        visibility: hidden;
+      }
+      .jumbotron
+      {
+        background-color: #2E2D88;
+        color: white;
+      }
+      .row
+      {
+        padding-top: : 40%;
+        padding-bottom:  5%;
+      }
+      .fixed-top
+      {
+        background-color: #2E2D88;
+        color: white;
+        padding: 1.5%;
+      }
+      .fixed-bottom
+      {
+        background-color: #2E2D88;
+        color: white;
+        padding: 1%;
+      }
+      .over
+      {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+
+      .cent
+      {
+        margin: 0;
+        margin-left: -57px;
+        margin-top: 0px;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translateX(-55px);
+        animation: pulse 20s infinite;
+        pointer-events: none;
+      }
+
+      @keyframes pulse
+      {
+        0% {
+          transform: scale(1) rotate(0deg);
+        }
+        12% {
+          transform: scale(2) rotate(45deg);
+        }
+        25% {
+          transform: scale(1) rotate(90deg);
+        }
+        37% {
+          transform: scale(2) rotate(135deg);
+        }
+        50% {
+          transform: scale(1) rotate(180deg);
+        }
+        62% {
+          transform: scale(2) rotate(225deg);
+        }
+        75% {
+          transform: scale(1) rotate(270deg);
+        }
+        89% {
+          transform: scale(2) rotate(315deg);
+        }
+        100% {
+          transform: scale(1) rotate(360deg);
+        }
+      }
+
+      .virus-bounce
+      {
+        animation-name:bounce;
+        animation-timing-function: ease;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes bounce
+      {
+        0%   { transform: scale(1,1)    translateY(0); }
+        10%  { transform: scale(1.1,.9) translateY(0); }
+        30%  { transform: scale(.9,1.1) translateY(-20px); }
+        50%  { transform: scale(1,1)    translateY(0); }
+        100% { transform: scale(1,1)    translateY(0); }
+      }
+
+      .virus-rotate
+      {
+        animation-name:vrotate;
+        animation-timing-function: ease;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+      }
+      @keyframes vrotate
+      {
+        from
+        {
+          transform: rotate(0deg);
+        }
+        to
+        {
+          transform: rotate(360deg);
+        }
+      }
+
+      .over-box
+      {
+        margin-left: 100%;
+        transform: translateX(-160px) translateY(-130px);
+
+        display: block;
+      }
+
+      .rotating-box
+      {
+        perspective: 1000px;
+      }
+      .single-rb
+      {
+        width: 120px;
+        color:#ffffff;
+        text-align: center;
+        animation: rotate 15s linear infinite;
+        transform-style: preserve-3d;
+        margin-top: -25px;
+      }
+      .single-rb div
+      {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+      }
+      .front-side
+      {
+        transform: translateZ(60px);
+        background: tomato;
+      }
+      .back-side
+      {
+        transform: rotateY(180deg) translateZ(60px);
+        background: tomato;
+      }
+      .left-side
+      {
+        transform: rotateY(-90deg) translateX(-60px);
+        background: tomato;
+        transform-origin: left;
+      }
+      .right-side
+      {
+        transform: rotateY(90deg) translateX(60px);
+        background: tomato;
+        transform-origin: right;
+      }
+      .top-side
+      {
+        transform: rotateX(-90deg) translateY(-60px);
+        background: tomato;
+        transform-origin: top;
+      }
+      .bottom-side
+      {
+        transform: rotateX(90deg) translateY(60px);
+        background: tomato;
+        transform-origin: bottom;
+      }
+      @keyframes rotate {
+        0%{transform: rotateY(0);}
+        100%{transform: rotateY(360deg);}
+      }
+
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NM3HMS7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+
+      <div class="page-header"><center><h1><br><br></h1></center></div>
+
+      <div class="row">
+        <div class="fixed-top">
+          <center><h5><strong>Data Visualization of Covid-19 cases in India (State and District wise) by IIT Bombay Nutrition Group</strong></h5></center>
+        </div>
+        <div class="fixed-bottom" style="text-align:center">
+          <div class="rotating-box over-box">
+
+            <style>
+            .close-btn
+            {
+              position: absolute;
+              width: 20px;
+              height: 20px;
+              top: -20px;
+              left: 25px;
+              cursor: pointer;
+              background-image: url('/dataviz/images/close.png');
+              background-repeat: no-repeat;
+              font-size: 0;
+              transform: translateX(120px);
+            }
+            </style>
+
+            <div class="">
+              <button data-toggle="collapse" data-target="#collapsecube" style="border:0px">
+                <div class="close-btn "></div>
+              </button>
+            </div>
+
+            <div class="single-rb" id="collapsecube">
+
+              <div class="front-side" style="border: 1px solid black; line-height: 1; font-weight: bold;"><br>
+                <font size="5" ><center><b>India</b></center></font>
+                <font size="1.99">
+                  Confirmed : 2,97,535 <br>
+                </font>
+                <font size="1.98">
+                  Active Cases : 1,41,842 <br>
+                </font>
+                <font size="2">
+                  Cured : 1,47,195 <br>
+                  Deaths : 8,498 <br>
+                </font>
+              </div>
+
+              <div class="left-side" style="border: 1px solid black; line-height: 1; font-weight: bold;"><br>
+                <font size="3" ><center><b>Maharashtra</b></center></font><br>
+                <font size="2">
+                  Confirmed : 97,648 <br>
+                </font>
+                <font size="1.98">
+                  Active Cases : 47,980 <br>
+                </font>
+                <font size="2">
+                  Cured : 46,078 <br>
+                  Deaths : 3,590 <br>
+                </font>
+              </div>
+
+              <div class="back-side" style="border: 1px solid black; line-height: 1; font-weight: bold;"><br>
+                <font size="4" ><center><b>Tamil Nadu</b></center></font><br>
+                <font size="2">
+                  Confirmed : 38,716 <br>
+                </font>
+                <font size="1.98">
+                  Active Cases : 17,662 <br>
+                </font>
+                <font size="2">
+                  Cured : 20,705 <br>
+                  Deaths : 349 <br>
+                </font>
+              </div>
+
+              <div class="right-side" style="border: 1px solid black; line-height: 1; font-weight: bold;"><br>
+                <font size="4" ><center><b>Delhi</b></center></font><br>
+                <font size="2">
+                  Confirmed : 34,687 <br>
+                </font>
+                <font size="1.98">
+                  Active Cases : 20,871 <br>
+                </font>
+                <font size="2">
+                  Cured : 12,731 <br>
+                  Deaths : 1,085 <br>
+                </font>
+              </div>
+
+              <div class="top-side" style="border: 1px solid black">Test 5</div>
+              <div class="bottom-side" style="border: 1px solid black">Test 6</div>
+            </div>
+          </div>
+
+          <span class="d-none d-md-block" >
+            <strong><h6>Charts, maps and website are made by <a href="https://bit.ly/arkaiitbn" target="_blank" style="color:orange">Arka Majhi</a></h6></strong>
+          </span>
+
+
+
+          <span class="d-md-none" >
+            <strong><h6>Charts, maps and website are made by <a href="https://bit.ly/arkaiitbn" target="_blank" style="color:orange">Arka Majhi</a></h6></strong>
+          </span>
+        </div>
+
+
+            <div class="col-lg-2 col-md-2 col-sm-2 d-none d-md-block" style="padding-right:1%;padding-right:1%;border-right: 2px solid black">
+              <div class="virus-rotate"><center><a href="https://poshancovid19.in/dataviz/"><img src="/dataviz/images/covid-19.png" alt="Data Visualization of Covid-19 cases in India (State and District wise) by IIT Bombay Nutrition Group" width="100%"></a></center></div>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 d-none d-md-block" style="margin: auto; font-size:14px; text-align: left;">
+              <strong>Drag this COVID-19 virus into the bookmarks bar (just below the address bar) to bookmark this page. If you don't see bookmarks bar press Ctrl+Shift+B. You can revisit this page later by clicking on it to check for updates.<br><br>
+                      Please note that all the data shown in this data visualization is taken form Ministry of Health and Family Welfare website from time to time.
+              </strong>
+            </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 d-none d-md-block" style="padding-bottom: 5%"></div>
+
+        <div class="stats-wrapper">
+          <div class="meta">
+            <div class="day-count">
+              <span id="lockdown-day"></span> Day of Lockdown
+            </div>
+            <div class="last-updated">Last Updated:<span id="lastUpdated"></span>
+            </div>
+          </div>
+          <div class="india-stats">
+            <div class="cases-count">
+              <div class="total-cases"><h5>Total Cases</h5><h1 id="totalCases">-</h1></div>
+              <div class="active-cases"><h5>Active Cases</h5><h1 id="activeCases">-</h1></div>
+              <div class="recovered-cases"><h5>Recovered</h5><h1 id="recovered">-</h1></div>
+              <div class="migrated-cases"><h5>Migrated</h5><h1 id="migrated">-</h1></div>
+              <div class="death-cases"><h5>Deaths</h5><h1 id="death">-</h1></div>
+            </div>
+          </div>
+          <div class="state-count">
+            <div class="marquee" id="stateCount"></div>
+          </div>
+        </div>
+
+        <link rel="stylesheet" href="widget.css">
+        <script  src="widget.js"></script>
+
+        <div class="col-lg-1 col-md-1 col-md-0 col-xs-0 d-none d-lg-block" style="padding-top:5%"></div>
+        <div class="col-lg-5 col-md-5 col-md-12 col-xs-12" style="padding-top:5%; border-right: 1px solid black">
+          <center><h3><strong>State-wise confirmed COVID-19 cases in India</strong></h3>
+          <h6>Put your mouse pointer on states for details</h6></center>
+          <iframe title="States reporting Covid-19 cases" aria-label="India states and union territories (2020) choropleth map" src="//datawrapper.dwcdn.net/71KJp/111/" scrolling="no" frameborder="0" style="border: none;" width="100%" height="600"></iframe>
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-md-12 col-xs-12" style="padding-top:5%;">
+          <center><h3><strong>District-wise confirmed COVID-19 cases in India</strong></h3>
+          <h6>Put your mouse pointer on districts for details</h6></center>
+          <iframe title="Districts reporting Covid-19 cases" aria-label="India districts (2019) choropleth map" src="//datawrapper.dwcdn.net/9URMP/28/" scrolling="no" frameborder="0" style="border: none;" width="100%" height="600"></iframe>
+        </div>
+        <div class="col-lg-1 col-md-1 col-md-0 col-xs-0 d-none d-lg-block" style="padding-top:5%;"></div>
+
+        <div class="col-lg-12 col-md-12 col-xs-12" style="padding-top:2%; padding-bottom:2%;">
+          <center><strong>
+            <h4>Covid-19 - Projecting future trajectory in India - Singh et al (IIPS)
+            <a href="/dataviz/covid19/analysis/Covid-19 - projecting future trajectory in India - Singh et al (IIPS).pdf" target="_blank" style="color:orange">Click Here</a></h4>
+            <h4>Covid-19 in the Southern states: a cautious sigh of relief ? To know more
+            <a href="/dataviz/covid19/analysis/Covid-19 in the Southern states - a cautious sigh of relief.pdf" target="_blank" style="color:orange">Click Here</a></h4>
+            <h4>Has Kerala turned the tide ? To know more
+            <a href="/dataviz/covid19/analysis/Covid-19 Has Kerala turned the tide.pdf" target="_blank" style="color:orange">Click Here</a></h4>
+            <h4>Is Karnataka stemming the tide ? To know more
+            <a href="/dataviz/covid19/analysis/COVID 19 Is Karnataka stemming the tide.pdf" target="_blank" style="color:orange">Click Here</a></h4>
+
+          </strong></center>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-xs-12" style="padding-top:2%; font-size:12px; padding-bottom:5%;">
+          <center><strong>We are happy to note that, WHO has also found these maps useful for their India Situation Reports (
+            <a href="https://www.who.int/docs/default-source/wrindia/situation-report/india-situation-report-9.pdf?sfvrsn=c883d0c2_2" target="_blank">WHO Report 9 on 28<sup>th</sup> March</a>
+            <a href="https://www.who.int/docs/default-source/wrindia/situation-report/india-situation-report-10.pdf?sfvrsn=48298da5_2" target="_blank">WHO Report 10 on 5<sup>th</sup> April</a> and
+            <a href="https://www.who.int/docs/default-source/wrindia/situation-report/india-situation-report-15.pdf?sfvrsn=48298da5_2" target="_blank">WHO Report 15 on 10<sup>th</sup> May</a> )
+          </strong></center>
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-top:5%;border-bottom: 5px solid black;border-top: 5px solid black">
+          <center><h3><strong>COVID-19 Statewise status in India</strong></h3>
+          <h6>Put your mouse pointer or tap over the bars for details</h6></center>
+          <div class="flourish-embed flourish-chart" data-src="visualisation/1665065"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-top:5%;border-bottom: 5px solid black">
+          <center><h3><strong>COVID-19 cases breakup in India (Sankey diagram)</strong></h3>
+          <h6>Put your mouse pointer over each ribbon or tap on them for details<br>
+          Pinch to zoom for better visibility</h6></center>
+          <div class="flourish-embed flourish-sankey" data-src="visualisation/1719491"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-xs-0 d-none d-lg-block" style="border-bottom: 5px solid black"></div>
+        <div class="col-lg-8 col-md-8 col-md-12 col-xs-12"  style="padding-top:5%;border-bottom: 5px solid black">
+          <center><h3><strong>Total confirmed, currently affected, cured and death cases<br>of COVID-19 in India</strong></h3>
+          <h6>Long press the segments to see details. Single tap on a segment to go deeper in and arrow (top right) to come out<br>
+            Put your mouse pointer over each segment to see details</h6></center>
+          <center><div class="flourish-embed flourish-hierarchy" data-src="visualisation/1689715"><script src="https://public.flourish.studio/resources/embed.js"></script></div></center>
+        </div>
+        <div class="col-lg-2 col-md-2 col-xs-0 d-none d-lg-block" style="border-bottom: 5px solid black"></div>
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-top:5%;border-bottom: 5px solid black">
+          <center><h3><strong>Timeline of Top 10 Ranking of States by<br>Total number of COVID-19 confirmed cases date-wise<br>(Currently infected, Cured, Migrated and Deaths combined. Indians and Foreign Nationals combined)</strong></h3>
+          <h6>Click or tap on any date to see the details. Click or tap on the black button to start/stop animation</h6></center>
+          <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/1680112"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-top:5%">
+          <center><h3><strong>Total confirmed cases, Cured/Discharged/Migrated and Death cases in India (Datewise)</strong></h3>
+          <h6>(Put your mouse pointer over each points for details)</h6></center>
+          <div class="flourish-embed flourish-chart" data-src="visualisation/1694841"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12"  style="border-bottom: 5px solid black">
+          <center><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapselog" aria-expanded="false" aria-controls="collapseExample">
+            <h3>Click or tap here to see the above line chart in Logarithmic scale</h3>
+          </button></center>
+          <div class="collapse" id="collapselog">
+            <div class="flourish-embed flourish-chart" data-src="visualisation/1727100"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+          </div>
+          <br><br>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-top:5%;border-bottom: 5px solid black">
+          <center><h3><strong>Total confirmed cases and Total samples tested in India (Datewise)</strong></h3>
+          <h6>(Put your mouse pointer over each points for details)</h6></center>
+          <div class="flourish-embed flourish-chart" data-src="visualisation/2448465" data-url="https://flo.uri.sh/visualisation/2448465/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-xs-6" style="padding-top:5%; border-bottom: 5px solid black; border-right: 1px solid black">
+          <center>
+            <h3><strong>Age Profiles of COVID-19 confirmed cases in India</strong></h3>
+            <h6>(Put your mouse pointer or tap over each clusters for details)</h6>
+            <div class="flourish-embed flourish-parliament" data-src="visualisation/1805657" data-url="https://flo.uri.sh/visualisation/1805657/embed" data-width="100%"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+          </center>
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-6" style="padding-top:5%; border-bottom: 5px solid black; border-right: 1px solid black">
+          <center>
+            <h3><strong>Gender Profiles of COVID-19 confirmed cases in India</strong></h3>
+            <h6>(Put your mouse pointer or tap over each clusters for details)</h6>
+            <div class="flourish-embed flourish-parliament" data-src="visualisation/1842238" data-url="https://flo.uri.sh/visualisation/1842238/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+          </center>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-xs-6" style="padding-top:5%; border-bottom: 5px solid black; border-right: 1px solid black">
+          <center>
+            <h3><strong>Age Profiles of COVID-19 death cases in India</strong></h3>
+            <h6>(Put your mouse pointer or tap over each clusters for details)</h6>
+            <div class="flourish-embed flourish-parliament" data-src="visualisation/1842398" data-url="https://flo.uri.sh/visualisation/1842398/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+          </center>
+        </div>
+        <div class="col-lg-3 col-md-3 col-xs-6" style="padding-top:5%; border-bottom: 5px solid black">
+          <center>
+            <h3><strong>Gender Profiles of COVID-19 death cases in India</strong></h3>
+            <h6>(Put your mouse pointer or tap over each clusters for details)</h6>
+            <div class="flourish-embed flourish-parliament" data-src="visualisation/1842397" data-url="https://flo.uri.sh/visualisation/1842397/embed"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+          </center>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-top:5%">
+          <div class="flourish-embed flourish-hierarchy" data-src="visualisation/1682335"><script src="https://public.flourish.studio/resources/embed.js"></script>
+          </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12"  style="border-bottom: 5px solid black">
+          <center><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsesunburst" aria-expanded="false" aria-controls="collapseExample">
+            <h3>Click or tap here to see the above chart in Sunburst map</h3>
+          </button></center>
+          <div class="collapse" id="collapsesunburst">
+            <center><div class="flourish-embed flourish-hierarchy" data-src="visualisation/1727898" data-url="https://public.flourish.studio/visualisation/1727898/embed" data-width="50%"><script src="https://public.flourish.studio/resources/embed.js"></script></div></center>
+          </div>
+          <br><br>
+        </div>
+
+        <div class="col-lg-1 col-md-1 col-xs-0 d-none d-lg-block" style="border-bottom: 5px solid black"></div>
+        <div class="col-lg-10 col-md-10 col-md-12 col-xs-12" style="padding-top:5%;border-bottom: 5px solid black">
+          <div class="flourish-embed flourish-hierarchy" data-src="visualisation/1681905"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-xs-0 d-none d-lg-block" style="border-bottom: 5px solid black"></div>
+
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12"  style="padding-top:5%; border-bottom: 5px solid black">
+          <center><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsementions" aria-expanded="false" aria-controls="collapseExample">
+              <h3><strong>Click or tap here to expand the Special Mentions section</strong></h3>
+          </button></center>
+          <br>
+          <div class="collapse" id="collapsementions">
+            <div class="row">
+
+              <div class="col-lg-12 col-md-12 col-xs-12" style="padding-top:5%">
+                <center><h1><strong>Special Mentions</strong></h1></center>
+              </div>
+              <div class="col-lg-6 col-md-6 col-md-6 col-xs-12" style="padding-top:5%">
+                <center><a class="btn btn-primary btn-lg btn-block" href="https://indscicov.in/tracking-the-disease/" target="_blank" role="button"><h3><strong>Mentions by Scientists' community</strong></h3></a></center>
+              </div>
+              <div class="col-lg-6 col-md-6 col-md-6 col-xs-12" style="padding-top:5%">
+                <center><a class="btn btn-primary btn-lg btn-block" href="http://www.wheelsglobal.org/covid" target="_blank" role="button"><h3><strong>Mentions by Organization</strong></h3></a></center>
+              </div>
+              <div class="col-lg-6 col-md-6 col-md-6 col-xs-12" style="padding-top:5%">
+                <center><a class="btn btn-primary btn-lg btn-block" href="https://www.pratidintime.com/india-records-highest-single-day-surge/" target="_blank" role="button"><h3><strong>Mentions by Press</strong></h3></a></center>
+              </div>
+              <div class="col-lg-12 col-md-12 col-xs-12" style="padding-top:5%;padding-bottom:5%; border-bottom: 2px solid black">
+                <center><h3><strong>Thank you all for mentioning this data visualization</strong></h3></center>
+              </div>
+
+              <div class="col-lg-12 col-md-12 col-xs-12" style="padding-top:5%;padding-bottom:5%">
+                <center><h1><strong>Latest Tweets</strong></h1></center>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">For all of you interested in purely data &amp; visualization around <a href="https://twitter.com/hashtag/covid19?src=hash&amp;ref_src=twsrc%5Etfw">#covid19</a> in India - <a href="https://t.co/4usS1waSQE">https://t.co/4usS1waSQE</a> <a href="https://twitter.com/dharmeshba?ref_src=twsrc%5Etfw">@dharmeshba</a> <a href="https://twitter.com/adheetgogate?ref_src=twsrc%5Etfw">@adheetgogate</a> -&gt; this is a part that IIT Bombay contributed to a bigger collective of 200+ scientists and engineers from Indian research institutes.</p>&mdash; Srini Satyan (@srinicorn) <a href="https://twitter.com/srinicorn/status/1245198695022227456?ref_src=twsrc%5Etfw">April 1, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">COVID-19 Data visualization for India State and District wise.. interactive! <a href="https://t.co/u4RFDgiXxW">https://t.co/u4RFDgiXxW</a></p>&mdash; Rupal Dalal (@dalal_rupal) <a href="https://twitter.com/dalal_rupal/status/1245238682291802118?ref_src=twsrc%5Etfw">April 1, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Also,<a href="https://t.co/NJNYbfuzfA">https://t.co/NJNYbfuzfA</a></p>&mdash; Arpit Gupta (@arpitrage) <a href="https://twitter.com/arpitrage/status/1244000536359305216?ref_src=twsrc%5Etfw">March 28, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/CoronaOutbreak?src=hash&amp;ref_src=twsrc%5Etfw">#CoronaOutbreak</a><br>District Data Visualisation Developed at IIT (Bombay)<a href="https://twitter.com/RahulGandhi?ref_src=twsrc%5Etfw">@RahulGandhi</a><a href="https://t.co/30VRqI3DjI">https://t.co/30VRqI3DjI</a></p>&mdash; M Shashidhar Reddy (@MSReddyOfficial) <a href="https://twitter.com/MSReddyOfficial/status/1243452411601022976?ref_src=twsrc%5Etfw">March 27, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+              <div class="col-lg-12 col-md-12 col-xs-12" style="padding-top:5%;">
+                <center><h3><strong>Thank you all for tweeting</strong></h3></center>
+              </div>
+
+            </div>
+          </div>
+          <br>
+        </div>
+
+
+
+
+
+        <div class="col-lg-12 col-md-12 col-md-12 col-xs-12" style="padding-top:5%;padding-bottom:10%; border-bottom: 5px solid black">
+          <div class="typeform-widget" data-url="https://arkamajhi.typeform.com/to/BmQCQs" data-transparency="50" data-hide-headers=true data-hide-footer=true style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script> <div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;"> powered by <a href="https://admin.typeform.com/signup?utm_campaign=BmQCQs&utm_source=typeform.com-01D8JWV77BJ8WV561WFHW9QVJS-free&utm_medium=typeform&utm_content=typeform-embedded-poweredbytypeform&utm_term=EN" style="color: #999" target="_blank">Typeform</a> </div>
+        </div>
+
+        <br>
+        <br>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      </div>
+
+  </body>
+</html>
